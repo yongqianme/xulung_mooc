@@ -18,19 +18,19 @@ docker run -itP xulung
 ##  界面照片/screenshot
 
 - 主页/Home 
-![](desktop.index.png)
+![](images/desktop.index.png)
 
 - 课程/Course
-![](desktop.course.png)
+![](images/desktop.course.png)
 
 - 我的课程/Course
-![](desktop.mycourse.png)
+![](images/desktop.mycourse.png)
 
 - 我的心得/Share
-![](desktop.share.png)
+![](images/desktop.share.png)
 
 - 写心得/Editor
-![](xinde.png)
+![](images/xinde.png)
 
 - 学习报告/Report 
-![](desktop.report.png)
+![](images/desktop.report.png)
