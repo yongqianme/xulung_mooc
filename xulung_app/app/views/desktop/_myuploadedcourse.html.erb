@@ -1,0 +1,38 @@
+
+<div class="panel panel-green margin-bottom-40">
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th><%=t('videos.filename')  %></th>
+        
+        <th><%=t('videos.views')  %></th>
+        <th><%=t('videos.edit')  %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @useruploadedvideos.each do |video| %>
+      <tr>
+        <td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+        <td><%=video.hit  %></td>
+        <% if user_signed_in? and current_user.provider? %>
+        <td>
+        <%=link_to sanitize('<i class=
+          "fa fa-play fa-lg"></i>'),video_path(video), :class => 'btn btn-success' %>
+          <%= link_to sanitize('<i class=
+          "fa fa-edit fa-lg"></i>'),edit_video_path(video), :class => 'btn btn-primary' %>
+          <%= link_to sanitize('<i class=
+          "fa fa-trash-o fa-lg"></i>'),
+          video_path(video),
+          :method => :delete,
+          :data => { :confirm => t('videos.confirm') },
+          :class => 'btn btn-danger' %>
+          </td>
+        <% end %>
+      </tr>
+      <% end -%>
+      
+    </tbody>
+  </table>
+  
+</div>                                    

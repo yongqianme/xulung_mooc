@@ -1,0 +1,99 @@
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+
+<script src="https://cdnjs.com/libraries/Vidage/0.1.2/scripts/Vidage.min.js"></script>
+<script>
+    new Vidage(selector [, helperClass ]);
+</script>
+<body>
+
+<div class="container content">
+<div class="row margin-bottom-50">
+<!-- Content Info -->
+<div class="col-md-1"></div>
+<div class="col-md-5 howto">
+<h1><%=t('welcome.slogan1')%></h1>
+<br>
+<h3><%=t('welcome.slogdesc')%></h3>
+<br>
+<div class="row margin-bottom-10"></div>
+<% if !browser.device.mobile? %>
+<div class="col-md-2">
+<a href="<%=videos_path %>" class="btn-u btn-u-red rounded-2x">逛逛课程</a>
+</div>
+<div class="col-md-1"></div>
+<div class="col-md-2"><a href="<%=consultants_path %>" class="btn-u btn-u-orange rounded-2x">找找顾问</a></div>
+<div class="col-md-1"></div>
+<div class="col-md-2">
+<a href="<%=tech_path %>" class="btn-u btn-u-purple rounded-2x">学学技术</a></div>
+<%end%>
+</div>
+<!-- End Content Info -->
+<div class="col-md-6">
+  <%=render 'howto'  %>
+</div>
+</div><!--/row-->
+</div>
+
+<div class="container content">
+<div class="row margin-bottom-60">
+<div class="title-v1">
+<h2>技术辅助</h2>
+<p>您可以在诩阆得到不同程度的技术帮助</p>
+</div>
+
+<div class="col-sm-4">
+<div class="service-block-v1 md-margin-bottom-50">
+
+<a href="<%=videos_path%>">
+<i class="fa fa-space-shuttle fa-5x rounded-x grow"></i></a>
+<h3 class="title-v3-bg text-uppercase">逛课程</h3>
+<p>作为一个工程师，好的技术是立足之本,好工程师不嫌技术精</p>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="service-block-v1 md-margin-bottom-50">
+<a href="<%=new_post_path %>"><i class="fa fa-file fa-5x rounded-x"></i></a>
+<h3 class="title-v3-bg text-uppercase">写文章</h3>
+<p>技术浩如烟海，好记性不如烂笔头，写下经验，免费得工程师帐户</p>
+
+</div>
+</div>
+<div class="col-sm-4">
+<div class="service-block-v1 md-margin-bottom-50">
+<a href="<%=main_app.tech_path %>"> <i class="fa fa-jpy fa-5x rounded-x"></i></a>
+<h3 class="title-v3-bg text-uppercase">学技术</h3>
+<p>看看别人的学习心得，技术文章，看看能不能激起一些火花</p>
+</div>
+</div>
+</div><!--/row-->
+</div><!--/container-->
+
+</section>
+<div class="parallax-quote parallaxBg">
+<div class="container">
+<div class="parallax-quote-in">
+<p><strong class="color-green"> <%=t('welcome.slider.quotes')  %></strong>
+</div>
+</div>
+</div>
+<section id="course">
+<%=render 'course'  %>
+</section>
+<div class="parallax-quote parallaxBg">
+<div class="container">
+<div class="parallax-quote-in">
+<p><strong class="color-green"> <%=t('welcome.quotes')  %></strong>
+</div>
+</div>
+</div>
+<section id="about">
+<%=render 'about'  %>
+</section>
+
+
+</body>
+</html>

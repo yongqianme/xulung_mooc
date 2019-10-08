@@ -1,0 +1,24 @@
+
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+<div class="container">
+<h1 class="pull-left">服务条款</h1>
+<ul class="pull-right breadcrumb">
+<li><a href="<%=root_path %>">首页</a></li>
+<li><a href="<%=welcome_tos_path %>">服务条款</a></li>
+</ul>
+</div>
+</div><!--/breadcrumbs-->
+<% end %>
+<div class="container">
+<div class ="col-md-12">
+<%=t('tos.tos_all')
+</div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="panel panel-green margin-bottom-40">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-book"></i>Courses</h3>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Filename</th>
+        <th>Votes</th>
+        <th>Status</th>
+        <th>Publish</th>
+        <th>Approve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @videos.each do |video| %>
+      <tr>
+        <td><%=video.id %></td>
+        <td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+        <td><%=video.hit %></td>
+        <td>
+
+
+          <%= link_to sanitize('<button><i class="fa fa-trash-o"></i></button>'),
+          video_path(video),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+          :class => 'btn btn-danger btn-xs' %>
+
+
+          <%= link_to sanitize('<button><i class="fa fa-pencil"></i></button>'),edit_video_path(video) ,:class=>'btn btn-info btn-xs'%></td>
+
+          <td>
+            <%if video.published %>
+            <%= link_to sanitize('<button><i class="fa fa-check"></i> Publish</button>'), publish_video_path(video), method: "post",:class=>"btn btn-success btn-xs" %>
+            <% else %>
+            <%= link_to sanitize('<button><i class="fa fa-times"></i>  Not Publish</button>'), publish_video_path(video), method: "post",:class=>"btn btn-danger btn-xs" %>
+
+            <% end %>
+
+          </td>
+          <td>
+            <%if video.approved %>
+            <%= link_to sanitize('<button><i class="fa fa-check"></i> Approved</button>'), approve_video_admin_path(video), method: "post",:class=>"btn btn-success btn-xs" %>
+            <% else %>
+            <%= link_to sanitize('<button><i class="fa fa-times"></i> Not Approved</button>'), approve_video_admin_path(video), method: "post",:class=>"btn btn-danger btn-xs" %>
+
+            <% end %>
+
+          </td>
+        </tr>
+        <% end -%>
+      </tbody>
+    </table>
+
+  </div>

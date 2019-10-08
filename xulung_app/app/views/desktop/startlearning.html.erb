@@ -1,0 +1,41 @@
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<!-- Begin Content -->
+<div class="container">
+  <div class="col-md-12">
+    <%- if params[:tag] %>
+    <div class="row illustration-v2 margin-bottom-30">
+      <div class="col-md-12">
+        <%- @videos.each do |video| %>
+        <ul class="timeline-v2">
+          <li>
+            <time class="cbp_tmtime" datetime="">
+              <span><%=@tag%></span>
+              <span><%=video.filename  %></span>
+            </time>
+            <i class="cbp_tmicon rounded-x hidden-xs"></i>
+            <div class="cbp_tmlabel">
+              <div class="row">
+                  <!-- <img class="img-responsive" src="<%=video.still.large  %>" alt=""> -->
+                    <% if ['mp4', 'flv', 'avi'].include?(video.still.file.extension.downcase) %>
+                    <center><%=videojs_rails sources: { mp4: video.still}, setup: "{}",  controls: {
+                      preload:"false"},width:"640",height: "480", poster: video.still.thumb %>    </center>
+                    <% else %>
+                      <iframe src="/pdfjs/web/viewer.html?file=<%=video.still%>" style="border: 0" width="100%" height="800" frameborder="0" scrolling="yes" download="hidden" ></iframe>
+                    <% end %>
+
+              </div>
+            </div>
+          </li>
+          <hr>
+          <%end%>
+          <%end%>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

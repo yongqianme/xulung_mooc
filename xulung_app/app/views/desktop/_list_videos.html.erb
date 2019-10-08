@@ -1,0 +1,60 @@
+<div class="row illustration-v2 margin-bottom-30">
+<%- @videos.each do |video| %>
+<div class="col-md-12">
+  <% if video.id[0]!=1 %>
+  <div class="desktop funny-boxes funny-boxes-top-yellow">
+  <% else %>
+    <div class="desktop funny-boxes funny-boxes-top-sea">
+      <% end %>
+
+      <div class="row">
+
+        <div class="col-md-4 margin-bottom-30">
+          <a href="<%=video_path(video)%>"><img alt="" src="<%= video.still.thumb %>" class="img-responsive "></a>
+        </div>
+        <div class="col-md-8">
+          <% if video.created_at>(Time.now-7.day)%>
+          <ul class="list-inline badge-lists badge-box-v1">
+            <li>
+              <span class="badge badge-red rounded">New</span>
+              <h2>
+                <a href="<%=video_path(video)%>">
+                  Course #<%=video.id%>-<%=video.filename %></a>
+              </h2>
+              <p><%=video.description  %></p>
+            </li>
+          </ul>
+        <% else %>
+          <h2>
+            <a href="<%=video_path(video)%>">
+              <%=video.id%>-<%=video.filename %></a>
+          </h2>
+          <p><%=sanitize(video.description)  %></p>
+          <% end %>
+
+          <%-if user_signed_in? -%>
+          <%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+          <%= link_to t('videos.addlist'), favorites_path(video_id: video), method: :post, :class => 'btn-sm btn-success' %>
+        <%- else -%>
+          <%= link_to t('videos.removefromlist'), favorites_path(video_id:video), method: :delete,:class => 'btn-sm btn-danger' %>
+          <%- end -%>
+          <% end %>
+          <%=link_to sanitize('<i class=
+         "fa fa-play fa-lg"></i>'),video_path(video), :class => 'btn-sm btn-success' %>
+          <% if user_signed_in? and current_user.admin? %>
+          <%= link_to sanitize('<i class=
+         "fa fa-edit fa-lg"></i>'),edit_video_path(video), :class => 'btn-sm btn-primary' %>
+          <%= link_to sanitize('<i class=
+          "fa fa-trash-o fa-lg"></i>'),
+         video_path(video),
+         :method => :delete,
+         :data => { :confirm => t('videos.confirm') },
+         :class => 'btn-sm btn-danger' %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

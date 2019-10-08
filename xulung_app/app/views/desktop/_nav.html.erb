@@ -1,0 +1,52 @@
+<%if browser.device.mobile?%>
+<div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <% if user_signed_in? %>
+    <li class="<%= is_active?(desktop_mycourse_path) %>">
+      <a href="<%=desktop_mycourse_path%>">
+        <i class="fa fa-tree"></i><%=t('videos.courselist')%></a>
+    </li>
+    <li class="<%= is_active?(desktop_sharetech_path) %>">
+      <a href="<%=desktop_sharetech_path%>">
+        <i class="fa fa-pencil"></i><%=t('videos.sharetech') %></a>
+    </li>
+    <% end %>
+  <% else %>
+    <ul class=" nav nav-pills nav-stacked" id="sidebar-nav">
+
+      <% if user_signed_in? %>
+      <li class="<%= is_active?(desktop_index_path) %>">
+        <a href="<%=desktop_index_path%>">
+          <i class="fa fa-user"></i>
+          <%=current_user.username %></a>
+      </li>
+      <% end %>
+
+      <li class="<%= is_active?(desktop_tech_path) %>">
+        <a href="<%=desktop_tech_path %>">
+          <i class="fa fa-gears"></i><%=t('videos.tech') %></a>
+      </li>
+
+      <!-- <li class="<%= is_active?(desktop_course_path) %>">
+        <a href="<%=desktop_course_path%>">
+          <i class="fa fa-graduation-cap"></i><%=t('videos.courses')%></a>
+      </li> -->
+
+      <li class="<%= is_active?(desktop_mycourse_path) %>">
+        <a href="<%=desktop_mycourse_path%>">
+          <i class="fa fa-tree"></i><%=t('videos.courselist')%></a>
+      </li>
+
+      <li class="<%= is_active?(desktop_report_path) %>"><a href="<%=desktop_report_path%>"><i class="fa fa-line-chart"></i><%=t('videos.report') %></a></li>
+
+      <li class="<%= is_active?(desktop_sharetech_path) %>">
+        <a href="<%=desktop_sharetech_path%>">
+          <i class="fa fa-pencil"></i><%=t('videos.sharetech') %></a>
+      </li>
+
+      <% if user_signed_in? %>
+      <li><%= link_to sanitize('<i class="fa fa-sign-out"></i>')+t('user.logout'),destroy_user_session_path, method: :delete %></li>
+      <% end %>
+
+    </ul>
+    <% end %>

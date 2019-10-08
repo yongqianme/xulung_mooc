@@ -1,0 +1,17 @@
+<div class="row illustration-v2 margin-bottom-30">
+    <%- @videos.each do |video| %>
+    <div class="listtight col-md-4">
+      <a href="<%=video_path(video)%>"><img alt="" src="<%= video.still.thumb %>" class="full-width img-responsive "></a>
+      <%-if user_signed_in?-%>
+      <%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+      <%= link_to t('videos.addlist'), favorites_path(video_id: video), method: :post, :class => 'btn-sm btn-success' %>
+    <%- else -%>
+      <%= link_to t('videos.removefromlist'), favorite_path(video), method: :delete,:class => 'btn-sm btn-danger' %>
+      <%- end -%>
+      <% end %>
+      <h5>
+        <a href="<%=video_path(video)%>"><%=video.filename %></a>
+      </h5>
+    </div>
+    <% end -%>
+</div>

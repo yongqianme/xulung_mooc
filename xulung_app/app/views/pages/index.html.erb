@@ -1,0 +1,74 @@
+
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+<!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">诩帮助</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li class="active">诩帮助</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+    <% end %>
+<div class="container content">
+<% if !browser.device.mobile? %>
+    <div class="col-md-9">
+    <% else %>
+    <div class="col-md-12">
+    <% end %>
+    <% @pages.each do |page| %>
+      <!--Blog page-->
+      <% if page.id[0]!=1 %>
+  <div class="funny-boxes funny-boxes-top-yellow">
+    <% else %>
+    <div class="funny-boxes funny-boxes-top-sea">
+      <% end %>
+
+      <div class="col-md-11">
+        <h1><a href="<%=page_path(page)%>"><%=page.title  %></a></h1>
+        <div class="yue">
+      <% if page.image? %>
+        <%= image_tag(page.image.large) %>
+        <% end %>
+        <%= truncate(strip_tags(page.body.html_safe), length: 200) %>
+        <p><a class="btn-u btn-brd btn-u-success" href="<%=page_path(page)%>"><i class="fa fa-plus"></i> Read More</a></p>
+        <p class="pull-right">
+        <% if user_signed_in? and current_user.admin? %>
+             <%= link_to sanitize('<button><i class="fa fa-trash-o"></i> Delete</button>'),
+          page_path(page),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+          :class => 'btn btn-danger btn-xs' %>
+
+          <%= link_to sanitize('<button><i class="fa fa-pencil"></i> Edit</button>'),edit_page_path(page) ,:class=>'btn btn-info btn-xs'%>
+          <% end %>
+          </p>
+          </div>
+    </div>
+    </div>
+<% end %>
+<hr class="devider devider-db-dashed">
+<%=paginate @pages %>
+</div>
+<% if !browser.device.mobile? %>
+          <div class="col-md-3">
+
+                <!-- pages -->
+                <div class="pages margin-bottom-40">
+                    <div class="headline headline-md"><h2>帮助列表</h2></div>
+                    <ul>
+                    <%@pages.each do |page| %>
+                       <li><h4><a href="<%=page_path(page)%>"><%=page.title  %></a></h4></li>
+                    <% end %>
+                    </ul>
+
+                </div><!--/pages-->
+            </div>
+            <% end %>

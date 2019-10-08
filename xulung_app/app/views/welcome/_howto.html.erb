@@ -1,0 +1,4 @@
+<div>
+    <center><%=videojs_rails sources: { mp4: @howtovideo.still}, setup: "{}",  controls: {
+      preload:"true",autoplay:"true",loop: "true"},width:"480",height: "320", poster: @howtovideo.still.thumb %>    </center>
+</div>

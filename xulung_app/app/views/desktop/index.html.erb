@@ -1,0 +1,12 @@
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+
+<% if !browser.device.mobile? %>
+<%=render "user"  %>
+<% else %>
+<%=render "user"  %>
+<!-- <%=render "user.mobile" %>  -->
+<% end %>

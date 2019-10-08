@@ -1,0 +1,52 @@
+
+<% if @page!=nil %>
+<% if @page.errors.any? %>
+<div class="alert alert-danger fade in">
+  <ul>
+    <h3 class="alter-danger"><%= pluralize(@page.errors.count, "error") %> prohibited this course from being saved:</h3>
+    <% @page.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="sky-form">
+  <%= form_for(@page) do |f| %>
+  <fieldset>
+    <section>
+      <label class="label"><strong><%= t('posts.title') %></strong></label>
+      <label class="input"><%= f.text_field :title,placeholder: "这里输入标题..."%></label>
+    </section>
+    <section>
+    <label class="label"><strong><%= t('posts.body') %></strong></label>
+    <%= f.text_field :body, :type=> 'hidden'%>
+    </section>
+    <section>
+      <label class="input-group margin-bottom-30">
+      <%= f.check_box :published, :as => :boolean %>
+      <span class="text-highlights text-highlights-purple rounded tooltips"><%=t('videos.publishedhint') %></span>
+     </label>
+   </section>
+    <section class="pull-right">
+    <%= f.submit t('posts.post'), :class => 'btn-u btn-lg' %>
+    </section>
+    </fieldset>
+  <% end %>
+  </div>
+  <% end %>
+
+ <script type="text/javascript">
+var editor = new Simditor({
+  textarea: $('#page_body'),
+  toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', 'link','image', '|','hr','indent','outdent','alignment','fullscreen'],
+  placeholder: '这里输入文字...',
+  pasteImage: true,
+  fileKey: 'file',
+  upload: {
+    url: '/photos',
+    params: null,
+    connectionCount: 3,
+    leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+  }
+});
+</script>

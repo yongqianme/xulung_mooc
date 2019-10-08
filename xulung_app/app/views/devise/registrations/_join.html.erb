@@ -1,0 +1,39 @@
+
+<div class="col-md-3"></div>
+<%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+<%= devise_error_messages! %>
+<div class="reg-block col-md-6">
+        <div class="reg-block-header">
+        <br>
+        </div>
+
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <%= f.text_field :username,autofocus: true,:class=>"form-control",:placeholder=>t('user.username')%>
+        </div>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <%= f.email_field :email,:class=>"form-control",:placeholder=>t('user.email')%>
+        </div>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <%= f.password_field :password, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.password')%>
+        </div>
+        <div class="input-group margin-bottom-30">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.confirmpassword')%>
+        </div>
+        <div class="input-group margin-bottom-20">
+            <%= f.check_box :terms_of_service,:checked=>true%>
+            <%="我同意诩阆 #{link_to '服务条款', "https://xulung.com/pages/fu-wu-tiao-kuan"}.".html_safe%>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <%= f.submit t('user.signup'),:class=>"btn-u btn-block" %>
+            </div>
+        </div>
+
+    </div>
+<% end %>
+<div class="col-md-3"></div>

@@ -1,0 +1,73 @@
+
+    <% if !browser.device.mobile? %>
+    <!--=== Header ===-->
+    <div class="header">
+
+        <div class="navbar navbar-default mega-menu" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <span><img src="<%=image_path('xulung_icon_2.2.png')%>" width="108" height="72" alt="Logo"></span>
+                  </a>
+                </div>
+                <div class="collapse navbar-collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav">
+                                <li class="<%=is_active?(service_isthisforme_path)%>"><a href="<%=main_app.service_isthisforme_path %>"><%=t('menu.header.isthisforme')%></a></li>
+                                <!-- <li class="<%=is_active?(service_successstories_path)%>"><a href="<%=main_app.service_successstories_path %>"><%=t('menu.header.successstories')%></a></li> -->
+                                <li class="<%=is_active?(videos_path)%>"><a href="<%=main_app.videos_path %>"><%=t('menu.header.course')%></a></li>
+                                <!-- <li class="<%=is_active?(tech_path)%>"><a href="<%=main_app.tech_path %>"><%=t('menu.header.tech')%></a></li> -->
+                                <!-- <li class="<%=is_active?(service_simulation_path)%>"><a href="<%=main_app.service_simulation_path %>"><%=t('menu.header.soft')%></a></li> -->
+                        <!-- <li class="<%=is_active?(pages_path)%>"><a href="<%=pages_path  %>"><%=t('menu.header.pages')%></a></li> -->
+                        <% if user_signed_in?%>
+                        <li class="<%=is_active?(desktop_index_path)%>"><a href="<%=main_app.desktop_index_path %>"><%=t('menu.header.myxulung')%></a></li>
+                        <% if current_user.admin? %>
+                            <li class="<%=is_active?(admin_index_path)%>"><a href="<%=main_app.admin_index_path %>"><%=t('menu.header.admin')%></a></li>
+                            <% end %>
+
+                        <%end%>
+                         <% if user_signed_in? %>
+                        <li class="<%=is_active?(destroy_user_session_path)%>"><%= link_to t('user.logout'), main_app.destroy_user_session_path, method: :delete%></li>
+                        <% else %>
+
+                        <li class="<%=is_active?(new_user_session_path)%>"><%= link_to t('user.signin'), main_app.new_user_session_path%></li>
+                        <!-- <li class="<%=is_active?(new_user_registration_path)%>"><%= link_to t('user.signup'), main_app.new_user_registration_path %></li> -->
+                        <% end %>
+                    </ul>
+                </div><!--/navbar-collapse-->
+                </div>
+                </div>
+                </div>
+
+<% else %>
+<div class="header">
+
+        <div class="navbar navbar-default mega-menu" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+              <a class="navbar-brand" href="/">
+                  <span class="text-center"><img src="<%=image_path('xulung_icon_2.2.png')%>" width="108" height="72" alt="Logo"></span>
+                </a>
+              </div>
+        <div>
+            <h4>
+              <a href="<%=main_app.service_isthisforme_path %>"><%=t('menu.header.isthisforme')%></a>
+              <a href="<%=main_app.videos_path %>"><%=t('menu.header.course')%></a>
+            <% if user_signed_in? %>
+            <%= link_to(t('menu.header.myxulung'), desktop_index_path ) %>
+                <% if current_user.admin? %>
+                  <%= link_to "后台管理", main_app.admin_index_path%>
+                  <% end %>
+            <%= link_to t('user.logout'), main_app.destroy_user_session_path, method: :delete%>
+            <% else %>
+            <%= link_to t('user.signin'), main_app.new_user_session_path%>
+            <%= link_to t('user.signup'), main_app.new_user_registration_path %>
+            <% end %>
+            </h4>
+        </div>
+
+            </div>
+        </div>
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->
+                <% end %>

@@ -1,0 +1,20 @@
+            <%
+meta title: t('meta.title'),
+     description: t('meta.description'),
+     keywords: t('meta.keywords')
+%>
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">开通帐户</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li class="active">开通帐户</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+    <div class="container">
+    <%=render 'join'  %>
+<!--<%= render 'buy'  %>-->
+</div>

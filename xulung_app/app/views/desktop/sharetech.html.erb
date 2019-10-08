@@ -1,0 +1,105 @@
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+
+<div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <% if user_signed_in? %>
+    <li class="active">
+      <a href="#posts" data-toggle="tab"><%=t('posts.postslist')  %></a>
+    </li>
+    <li>
+      <a href="#drafts" data-toggle="tab"><%=t('posts.draftslist')  %></a>
+    </li>
+    <li>
+      <a href="#newpost" data-toggle="tab"><%=t('posts.new') %></a>
+    </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="posts">
+      <div class="panel panel-green margin-bottom-40">
+        <% if @posts !=nil %>
+        <table class="table table-bordered">
+          <tbody>
+
+            <%- @posts.each do |post| %>
+            <tr>
+              <td>
+                <a href="<%=post_path(post)%>"><%=post.title %></a>
+              </td>
+              <td>
+                <%= link_to sanitize('<button><i class="fa fa-trash-o"></i></button>'),
+                  post_path(post),
+                  :method => :delete,
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default =>
+                'Are you sure?')) },
+                  :class => 'btn btn-danger btn-xs' %>
+                <%= link_to sanitize('<button><i class="fa fa-pencil"></i></button>'),edit_post_path(post) ,:class=>'btn btn-info btn-xs'%>
+              </td>
+              <td>
+                <%if post.published %>
+                <button class="btn btn-success btn-xs" ><i class="fa fa-check"></i> <%=t('posts.published')  %></button>
+              <% else %>
+                <button class="btn btn-danger btn-xs" ><i class="fa fa-times"></i></i> <%=t('posts.notpublished')  %></button>
+                <% end %>
+              </td>
+              <td>
+                <%if post.approved %>
+                <button class="btn btn-success btn-xs" ><i class="fa fa-check"></i> <%=t('posts.approved')  %></button>
+                <% else %>
+                <button class="btn btn-danger btn-xs" ><i class="fa fa-times"></i> <%=t('posts.approving')  %></button>
+                <% end %>
+
+              </td>
+            </tr>
+            <% end -%>
+          </tbody>
+        </table>
+      <% else %>
+        No post
+
+        <% end -%>
+      </div>
+    </div>
+    <div class="tab-pane fade in" id="drafts">
+      <div class="panel panel-green margin-bottom-40">
+        <% if @drafts !=nil %>
+        <table class="table table-bordered">
+          <tbody>
+
+            <%- @drafts.each do |post| %>
+            <tr>
+              <td>
+                <a href="<%=post_path(post)%>"><%=post.title %></a>
+              </td>
+              <td>
+                <%= link_to sanitize('<button><i class="fa fa-trash-o"></i></button>'),
+                    post_path(post),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm",
+                :default => 'Are you sure?')) },
+                    :class => 'btn btn-danger btn-xs' %>
+                <%= link_to sanitize('<button><i class="fa fa-pencil"></i></button>'),edit_post_path(post) ,:class=>'btn btn-info btn-xs'%></td>
+              <td>
+                <%= link_to t('posts.publish_now') , post_publish_path(post), method: "post",:class=>"btn btn-success btn-xs" %>
+              </td>
+            </tr>
+            <% end -%>
+
+          </tbody>
+        </table>
+      <% else %>
+        No Draft！
+
+        <% end -%>
+      </div>
+    </div>
+    <div class="tab-pane fade in" id="newpost">
+      <%=render 'posts/newpost' %>
+    </div>
+
+  </div>
+</div>

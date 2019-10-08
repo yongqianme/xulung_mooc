@@ -1,0 +1,9 @@
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+
+<h2><%=@video.filename  %></h2>
+		<%=videojs_rails sources: { mp4: @video.still}, setup: "{}",  controls: {
+			preload:"false"},width:"640",height: "480", poster: @video.still.thumb %>

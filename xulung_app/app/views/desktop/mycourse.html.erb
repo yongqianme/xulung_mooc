@@ -1,0 +1,25 @@
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<table class="table table-bordered">
+	<tbody>
+		<%current_user.favorite_videos.each do |video|  %>
+		<tr>
+			<td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+			<td>
+				<small>
+				<% if user_signed_in? %>
+					<%= link_to ("<i class='fa fa-play'></i>").html_safe, video_path(video), :class => 'btn btn-primary' %>
+					<%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+					<%= link_to ("<i class='fa fa-plus'></i>").html_safe, favorites_path(video_id: video), method: :post, :class => 'btn btn-success' %>
+					<%- else -%>
+					<%= link_to ("<i class='fa fa-minus'></i>").html_safe, favorite_path(video), method: :delete,:class => 'btn btn-danger' %>
+					<%- end -%>
+					<% end %></small>
+				</td>
+			</tr>
+			<% end -%>
+		</tbody>
+	</table>

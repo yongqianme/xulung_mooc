@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+
+	<%= metamagic %>
+	    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<%=image_path('favicon.ico')%>">
+    <%= canonical_tag -%>
+
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application" %>
+
+<% if @canonical_path.present? %>
+  <link href="http://<%= Settings.canonical_host %><%= @canonical_path %>" rel="<%= :canonical %>"></link>
+<% end %>
+
+</head>
+<body id="home">
+	<div class="wrapper">
+    <!--=== Header ===-->
+    <div class="header">
+
+        <div class="navbar navbar-default mega-menu" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+            <span class="text-center"><%=t('welcome.beta') %></span>
+            <a class="navbar-brand" href="/">
+                <span><%=t('welcome.title1')  %></span><%=t('welcome.title2')  %>
+                <!-- <img src="assets/img/logo1.png" alt="Logo"> -->
+            </a>
+        </div>
+        <div>
+        <h4><a href="<%=main_app.videos_path %>">逛课程</a>
+        <a href="<%=main_app.tech_path %>">学技术</a>
+        <% if user_signed_in? %>
+        <%= link_to("我的课程", desktop_index_path ) %>
+        <%= link_to t('user.logout'), main_app.destroy_user_session_path, method: :delete%>
+        <% else %>
+        <%= link_to t('user.signin'), main_app.new_user_session_path%>
+        <%= link_to t('user.signup'), main_app.new_user_registration_path %>
+        <% end %>
+        </h4>
+        </div>
+
+            </div>
+        </div>
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===-->
+
+		<div class="wrapper">
+		<%=render 'shared/flash'  %>
+		<%= yield  %>
+		</div>
+
+	<div class="text-center">
+		<div class="headline"><h2>关注我们</h2></div>
+                        <img src="<%=image_path('QRxulung.jpg')%>" width="60%">
+                        <div class="copyright">
+                <div class="container">
+                    <p class="text-center">
+                    <i class="fa fa-copyright"></i><%=t('version') %>
+                           <!-- <a href="#"><%=t('policy') %></a> | <a href="#"><%=t('tos') %></a>  -->
+                           </p>
+                </div>
+            </div><!--/copyright-->
+	</div>
+
+
+</body>
+</html>

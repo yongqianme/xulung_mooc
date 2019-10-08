@@ -1,0 +1,127 @@
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+
+<div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <% if user_signed_in? and current_user.admin? %>
+    <li class="active">
+      <a href="#posts" data-toggle="tab"><%=t('posts.postslist')  %></a>
+    </li>
+    <li>
+      <a href="#wait_for_approval" data-toggle="tab"><%=t('posts.wait_for_approval')  %></a>
+    </li>
+    <li>
+      <a href="#newpost" data-toggle="tab"><%=t('posts.new') %></a>
+    </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="posts">
+      <div class="panel panel-green margin-bottom-40">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Views</th>
+                <th>Author</th>
+                <th>Edit</th>
+                <th>Approve</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- @posts.each do |post| %>
+              <tr>
+                <td>
+                  <a href="<%=post_path(post)%>"><%=post.title %></a>
+                </td>
+                <td><%=post.hit %></td>
+                <td><%=post.author %></td>
+                <td>
+                  <%= link_to sanitize('<button><i class="fa fa-trash-o"></i></button>'),
+                  post_path(post),
+                  :method => :delete,
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm",
+                  :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger btn-xs' %>
+                  <%= link_to sanitize('<button><i class="fa fa-pencil"></i></button>'),edit_post_path(post) ,:class=>'btn btn-info btn-xs'%></td>
+                  <td>
+                    <%if post.approved %>
+                    <%= link_to sanitize('<button><i class="fa fa-check"></i> Approved</button>'), approve_post_admin_path(post), method: "post",:class=>"btn btn-success btn-xs" %>
+                    <% else %>
+                    <%= link_to sanitize('<button><i class="fa fa-times"></i> Not Approved</button>'), approve_post_admin_path(post), method: "post",:class=>"btn btn-danger btn-xs" %>
+
+                    <% end %>
+
+                  </td>
+              </tr>
+              <% end -%>
+            </tbody>
+          </table>
+      </div>
+    </div>
+    <div class="tab-pane fade in" id="wait_for_approval">
+      <div class="panel panel-green margin-bottom-40">
+          <% if @posts_wait_for_approval !=nil %>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <td>Author</td>
+                <th>Edit</th>
+                <th>Publish</th>
+                <th>Approve</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <%- @posts_wait_for_approval.each do |post| %>
+              <tr>
+                <td>
+                  <a href="<%=post_path(post)%>"><%=post.title %></a>
+                </td>
+                <td><%=post.author %></td>
+                <td>
+                  <%= link_to sanitize('<button><i class="fa fa-trash-o"></i></button>'),
+                    post_path(post),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm",
+                  :default => 'Are you sure?')) },
+                    :class => 'btn btn-danger btn-xs' %>
+                  <%= link_to sanitize('<button><i class="fa fa-pencil"></i></button>'),edit_post_path(post) ,:class=>'btn btn-info btn-xs'%></td>
+                  <td>
+                    <%if post.approved %>
+                    <%= link_to sanitize('<button><i class="fa fa-check"></i> Approved</button>'), approve_post_admin_path(post), method: "post",:class=>"btn btn-success btn-xs" %>
+                    <% else %>
+                    <%= link_to sanitize('<button><i class="fa fa-times"></i> Not Approved</button>'), approve_post_admin_path(post), method: "post",:class=>"btn btn-danger btn-xs" %>
+
+                    <% end %>
+
+                  </td>
+                                     <td>
+                    <%if post.published %>
+                    <button><i class="fa fa-check"></i> Published</button>
+                    <% else %>
+                    <button><i class="fa fa-times"></i> Not Published</button>
+                    <% end %>
+
+                  </td>
+              </tr>
+              <% end -%>
+
+            </tbody>
+          </table>
+        <% else %>
+          No Draft！
+
+          <% end -%>
+      </div>
+    </div>
+    <div class="tab-pane fade in" id="newpost">
+      <%=render 'posts/newpost' %>
+    </div>
+
+  </div>
+</div>

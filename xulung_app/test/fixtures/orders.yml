@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  out_trade_no: MyString
+  total_fee: 1.5
+  membership_id: 1
+  trade_status: MyString
+
+two:
+  subject: MyString
+  out_trade_no: MyString
+  total_fee: 1.5
+  membership_id: 1
+  trade_status: MyString

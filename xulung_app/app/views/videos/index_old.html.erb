@@ -1,0 +1,42 @@
+
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+<div class="container">
+<h1 class="pull-left">逛课程</h1>
+<ul class="pull-right breadcrumb">
+<li><a href="<%=root_path %>">首页</a></li>
+<li><a href="<%=videos_path %>">技术学院</a></li>
+<li class="active">逛课程</li>
+</ul>
+</div>
+</div><!--/breadcrumbs-->
+<% end %>
+<div class="container">
+<div class ="col-md-12">
+<% if !browser.device.mobile? %>
+<div class ="col-md-12">
+<% end %>
+<%- if params[:tag] %>
+<div class="infinite-table">
+<%= render :partial => 'listbytag', :object => @videos %>
+</div>
+<% else %>
+<div class="infinite-table">
+<%= render :partial => 'listthumb', :object => @videos %>
+</div>
+
+<% end %>
+</div>
+<!-- <% if !browser.device.mobile? %>
+<div class="col-md-3">
+<%= render 'shared/video_tag' %>
+</div> -->
+</div>
+<% end %>
+</div>

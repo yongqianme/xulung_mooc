@@ -1,0 +1,24 @@
+
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">诩软件</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li class="active">诩软件</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+    <div class="container content">
+<h2 class="text-center">目前支持的版本：<strong>离线企业版</strong>，<storng>离线教育版</storng>和<strong>仅供会员的在线版</strong></h2>
+<hr>
+<%=render 'about'  %>
+    </div><!--/container-->
+    <!--=== End Content Part ===-->

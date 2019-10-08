@@ -1,0 +1,65 @@
+
+<% if @video!=nil %>
+<% if @video.errors.any? %>
+<div class="alert alert-danger fade in">
+  <ul>
+    <h3 class="alter-danger"><%= pluralize(@video.errors.count, "error") %> prohibited this course from being saved:</h3>
+    <% @video.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="sky-form">
+  <%= form_for @video,:html => {:id => "fileupload"} do |f| %>
+  <fieldset>
+
+    <section>
+      <label class="label"><strong><%=t('videos.still') %></strong></label>
+      <%= f.file_field :still %>
+    </section>
+  <section>
+      <label class="label"><strong><%= t('videos.filename') %></strong></label>
+      <label class="input"><%= f.text_field :filename,placeholder: t('videos.filename')%></label>
+    </section>
+     <section>
+        <label class="label"><strong><%=t('videos.tags') %></strong></label>
+        <label class="input"><%= f.text_field :tag_list, placeholder: t('videos.tagshint') %></label>
+      </section>
+      <section>
+      <label class="label"><strong><%=t('videos.membergroups') %></strong></label>
+      <%= f.select(:membergroup, Video.membergroups.keys.map {|membergroup| [membergroup.upcase,membergroup]}) %>
+     </section>
+      <%= f.text_field :description,:type =>'hidden'%>
+
+      <section>
+        <label class="input-group margin-bottom-30">
+        <%= f.check_box :published, :as => :boolean %>
+        <span class="text-highlights text-highlights-purple rounded tooltips"><%=t('videos.publishedhint') %></span>
+       </label>
+     </section>
+      <%= f.submit t('videos.upload'), :class => 'btn btn-primary' %>
+      <%= link_to t('videos.cancel'),
+      videos_path, :class => 'btn btn-default' %>
+  </fieldset>
+  <% end %>
+</div>
+<% end %>
+
+
+
+ <script type="text/javascript">
+var editor = new Simditor({
+  textarea: $('#video_description'),
+  toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', 'link','image', '|','hr','indent','outdent','alignment','fullscreen'],
+  placeholder: '这里输入文字...',
+  pasteImage: true,
+  fileKey: 'file',
+  upload: {
+    url: '/photos',
+    params: null,
+    connectionCount: 3,
+    leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+  }
+});
+</script>

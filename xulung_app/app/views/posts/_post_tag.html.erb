@@ -1,0 +1,15 @@
+
+<div class='panel panel-success'>
+	<div class='panel-body' id="accordion-v2">
+		<ul class="list-group sidebar-nav-v1" id="sidebar-nav-1">
+		<ul class="list-unstyled blog-tags margin-bottom-30">
+			<% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
+			
+                	<li><%= link_to tag.name, posttag_path(tag.name) %></li>
+                	
+                
+			<% end %>
+			</ul>
+		</ul>
+	</div>
+</div>

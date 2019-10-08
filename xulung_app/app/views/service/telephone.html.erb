@@ -1,0 +1,33 @@
+
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">打电话</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li class="active">打电话</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+    <div class="container content">
+        <!-- Funny Boxes -->
+                            <div class="shadow-wrapper margin-bottom-60">
+                    <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
+                <h4>打电话!</h4>
+                “打电话”是<a href="http://xulung.com">诩阆</a>提供的有偿问询服务，你可以向工程师问询专业的建议和信息，而并非做“电话服务支持”。
+<ul class="list-unstyled">
+<li>1. 每次通话最长20分钟，收费400元</li>
+<li>2. 时间需要预约，请发邮件留下你需要问询的主题内容</li>
+<li>3. <%= mail_to("contact@xulung.com", "电子邮箱: contact@xulung.com", :encode => "hex") %></p></li>
+</ul>
+</div>
+     </div>
+    </div><!--/container-->
+    <!--=== End Content Part ===-->

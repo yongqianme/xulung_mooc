@@ -1,0 +1,55 @@
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+<div class="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left"><%=t('user.consultant') %></h1>
+    <ul class="pull-right breadcrumb">
+      <li>
+        <a href="<%=root_path %>">首页</a>
+      </li>
+      <li>
+        <a href="<%=main_app.tech_path  %>">技术顾问</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<% end %>
+<div class="container">
+
+  <div class="profile-body">
+    <div class="profile-bio">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="<%=consultant_path(@consultant)%>">
+            <% if @consultant.avatar.url.present? %>
+            <%= image_tag(@consultant.avatar.url) %>
+            <% else %>
+            <img class="pull-left media-object" src="<%=letter_avatar_url(PinYin.permlink(@consultant.realname), 200)%>", width="200">
+            <% end %>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <span>
+            <strong><%=t('user.company')%>:</strong>
+						<%= @consultant.company %></span>
+          <span>
+            <strong><%=t('user.position')%>:</strong>
+            <%= @consultant.position %></span>
+						<span>
+	            <strong><%=t('user.workyear')%>:</strong>
+	            <%= @consultant.workyear %></span>
+							<span>
+		            <strong><%=t('user.hourrate')%>:</strong>
+		            <%= @consultant.hourrate %></span>
+          <hr>
+          <p><%=markdown(sanitize(@consultant.experience))  %></p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    </div>
+  </div>

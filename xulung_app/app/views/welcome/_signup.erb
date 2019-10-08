@@ -1,0 +1,58 @@
+<div class="container content-lg">
+	<div class="title-v1">
+		<h2><%=t('welcome.iwantbeenginner') %><strong class="color-green"> </strong></h2>
+		<p><%=t('welcome.weareat')  %><strong class="color-green">  <%=t('welcome.beta')  %>   </strong><%=t('welcome.dev')  %>
+			<br><%=t('welcome.leaveemail')  %></p> 
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+			<div class="reg-block">
+				<%= devise_error_messages! %>
+				<div class="reg-block-header">
+					<h2><%=t('user.signup')  %></h2>
+					
+				</div>
+				<div class="input-group margin-bottom-20">
+					<span class="input-group-addon"><i class="fa fa-user"></i></span>
+					<%= f.text_field :username,autofocus: true,:class=>"form-control",:placeholder=>t('user.username')%>
+				</div>
+				<div class="input-group margin-bottom-20">
+					<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+					<%= f.email_field :email,:class=>"form-control",:placeholder=>t('user.email')%>
+				</div>
+				<div class="input-group margin-bottom-20">
+					<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+					<%= f.password_field :password, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.password')%>
+				</div>
+				<div class="input-group margin-bottom-30">
+					<span class="input-group-addon"><i class="fa fa-key"></i></span>
+					<%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.confirmpassword')%>
+				</div>
+
+				
+
+				<div class="input-group margin-bottom-30">
+					<%= f.check_box :provider, :as => :boolean %>
+
+					<span class="text-highlights text-highlights-purple rounded tooltips"><%=t('user.teacher') %></span> 
+				</div>
+				
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<%= f.submit t('user.signup'),:class=>"btn-u btn-block" %>
+					</div>
+				</div>
+				
+			</div>
+			<% end %>
+		</div>
+
+
+		
+	</div>
+
+</div>
+
+</div>
+</div>
+
+

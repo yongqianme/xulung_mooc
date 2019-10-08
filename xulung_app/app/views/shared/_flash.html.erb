@@ -1,0 +1,13 @@
+<% if !flash.now[:error].nil? %>
+<div class="alert alert-danger fade in alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= flash.now[:error] %>
+</div>                
+<<% end -%>
+
+<% if !flash.now[:notice].nil? %>
+<div class="alert alert-success fade in alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= flash.now[:notice] %>
+</div>
+<% end %>          

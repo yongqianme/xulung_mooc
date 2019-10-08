@@ -1,0 +1,22 @@
+<h2><%=t('user.changepassword')%></h2>
+<div class="reg-block">
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+
+<div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <%= f.password_field :password, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.newpassword')%>
+        </div>
+        <div class="input-group margin-bottom-30">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.newconfirmpassword')%>
+        </div>
+
+  
+  <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <%= f.submit t('user.changepassword'),:class=>"btn-u btn-block" %>
+            </div>
+        </div>
+<% end %>

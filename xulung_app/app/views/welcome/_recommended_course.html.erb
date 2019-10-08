@@ -1,0 +1,21 @@
+    <section id="services">
+        <div class="container content-lg">
+            <div class="title-v1">
+                <h2><%=t('welcome.slider.course')  %></h2>
+        <p><%=t('welcome.slider.course1_html')  %><br><p><%=t('welcome.slider.course2_html')  %>
+            </div>
+
+<div class="sorting-block">
+        <ul class="row sorting-grid">
+        <% @recommended_videos.each do |video| %>
+                <li class="col-md-3 col-sm-6 col-xs-12">
+                <a class="info" href="<%=video_path(video) %>">
+                <img class="img-responsive" src="<%=video.still.large  %>" alt="">
+                <span class="sorting-cover">
+                    <small><span><%=video.filename %></span></small>
+                </span>
+              </a>
+              </li>
+            <% end %>
+          </ul>
+            </div>

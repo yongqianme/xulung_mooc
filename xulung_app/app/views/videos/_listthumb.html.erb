@@ -1,0 +1,22 @@
+
+<div class="sorting-block">
+    <ul class="row sorting-grid">
+      <%- @all_videos.each do |video| %>
+            <li class="col-md-3 col-sm-6 col-xs-12">
+  <a class="info" href="<%=video_path(video) %>">
+              <ul class="list-inline badge-lists badge-box-v1">
+                <!-- <li><span class="badge badge-red rounded"><%=video.hit%></span> -->
+                     <li><span class="badge badge-red rounded"><%=video.membergroup.capitalize  %></span>
+            <img class="img-responsive" src="<%=video.still.large  %>" alt="<%=video.filename %>" width="100%" height="100%">
+
+        </li>
+      </ul>
+      <span class="sorting-cover">
+          <span><%=video.filename %></span>
+          <small><%=markdown(sanitize(video.description))  %></small>
+      </span>
+    </a>
+          </li>
+<% end %>
+      </ul>
+        </div>

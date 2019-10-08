@@ -1,0 +1,59 @@
+
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+<div class="breadcrumbs">
+<div class="container">
+<h1 class="pull-left"><%= @post.title %></h1>
+<ul class="pull-right breadcrumb">
+<li><a href="<%=root_path %>">首页</a></li>
+<li><a href="<%=main_app.tech_path  %>">找知识</a></li>
+</ul>
+</div>
+</div>
+<% end %>
+<div class="container">
+<!--=== Content Part ===-->
+<div class="post-area">
+
+<h1 class="text-center color-green"><a href="<%=post_path(@post)  %>"><%= @post.title %></a></h1>
+<div class="blog-post-tags text-center" >
+<ul class="list-unstyled list-inline blog-info">
+<li><i class="fa fa-calendar"></i> <%= @post.created_at.strftime("%Y-%m-%d") %></li>
+<li><i class="fa fa-pencil"></i> <%= @post.author %></li>
+<li><i class="fa fa-thumbs-up"></i><a href="<%=post_path(@post)%>"> <%= @post.hit %></a></li>
+<li><i class="fa fa-comments"></i> <a href="<%=post_path(@post)%>#leavecomment"><%=@post.comments.count  %></a></li>
+</ul>
+</div>
+
+<div class="col-md-12">
+<div class="yue">
+<%=sanitize(@post.body) %>
+<small class="pull-right"><% if user_signed_in? and current_user.admin? %>
+<%= link_to sanitize('<button><i class="fa fa-trash-o"></i> Delete</button>'),
+post_path(@post),
+:method => :delete,
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger btn-xs' %>
+
+<%= link_to sanitize('<button><i class="fa fa-pencil"></i> Edit</button>'),edit_post_path(@post) ,:class=>'btn btn-info btn-xs'%>
+<% end %>
+</small>
+<%= social_share_button_tag(@title + " " + "诩阆 xulung.com") %>
+
+<hr>
+<% if @user.consultant!=nil and @user.consultant.dashang.url.present? %>
+<h3 class="text-center color-green">打赏<br>
+<%= image_tag(@user.consultant.dashang.url) %>
+<%end %>
+</h3>
+<!-- Recent Comments -->
+<div class="media" id="comment"><div id="comments"><p><%= render :partial => @post.comments %></p></div></div>
+<div class="tag-box tag-box-v3"><div id="leavecomment"><%=render 'comments/comment_form'  %></div></div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,23 @@
+    <section id="services">
+        <div class="container content-lg">
+            <div class="title-v1">
+                <h2><%=t('welcome.slider.course')  %></h2>
+        <p><%=t('welcome.slider.course1_html')  %><br><p><%=t('welcome.slider.course2_html')  %>
+            </div>
+
+<div class="sorting-block">
+        <ul class="row sorting-grid">
+        <% tag_cloud Video.tag_counts.limit(12), %w{s m l} do |tag, css_class| %>
+                        <%video=Video.by_tag(tag.name).last  %>
+                <li class="col-md-3 col-sm-6 col-xs-12">
+                <a class="info" href="<%=videotag_path(tag.name) %>">
+                <img class="img-responsive" src="<%=video.still.large  %>" alt="">
+                <span class="sorting-cover">
+                    <span><%=tag.name %></span>
+                    <p><%=t('videos.readmore')  %></p>
+                </span>
+              </a>
+              </li>
+            <% end %>
+          </ul>
+            </div>

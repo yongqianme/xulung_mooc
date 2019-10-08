@@ -1,0 +1,83 @@
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+<div class="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left"><%= @user.username %></h1>
+    <ul class="pull-right breadcrumb">
+      <li>
+        <a href="<%=root_path %>">首页</a>
+      </li>
+      <li>
+        <a href="<%=main_app.tech_path  %>">Profile</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<% end %>
+<div class="container">
+
+  <div class="tab-v1">
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="profile">
+        <div class="panel panel-green margin-bottom-40">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <i class="fa fa-user"></i>
+              <%=t('user.profile')  %></h3>
+          </div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th><%=t('user.username')  %></th>
+                <th>Admin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="<%=user_path(@user)%>"><%=@user.username %></a>
+                </td>
+                <td>
+                  <%if @user.admin %>
+
+                  <button class="btn btn-warning btn-xs">
+                    <i class="fa fa-check"></i>
+                    ADMIN</button>
+                  <% end %>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel panel-blue margin-bottom-40">
+
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <i class="fa fa-pencil"></i>已发布的文章</h3>
+          </div>
+          <% if @published_user_posts !=nil %>
+          <table class="table table-bordered">
+            <tbody>
+
+              <%- @published_user_posts.each do |post| %>
+              <tr>
+                <td>
+                  <a href="<%=post_path(post)%>"><%=post.title %></a>
+                </td>
+                <td><%=post.hit %>
+                  <i class="fa fa-thumbs-o-up"></i>
+                </td>
+              </tr>
+              <% end -%>
+            </tbody>
+          </table>
+          <% end -%>
+
+        </div>
+
+      </div>

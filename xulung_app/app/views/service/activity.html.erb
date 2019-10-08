@@ -1,0 +1,35 @@
+
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">找活动</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li class="active">找活动</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+    <div class="container content">
+        <!-- Funny Boxes -->
+                            <div class="shadow-wrapper margin-bottom-60">
+                    <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
+                <h4>找活动!</h4>
+                <p>“找活动”是<a href="http://xulung.com">诩阆</a>组织的自动化圈技术交流活动，交流的目的是无障碍的进行交流，达到共同提升的目的。</p>
+
+<ul class="list-unstyled">
+<li>1. 可以讨论工程师在工作中碰到的难题</li>
+<li>2. 可以实际测试工程师的新想法新方案</li>
+<li>3. 不定期会在这里公布活动的剪影与主题</li>
+<li>4. 如有兴趣，也可邮件咨询<%= mail_to("contact@xulung.com", "电子邮箱: contact@xulung.com",:encode =>"hex") %></p></li>\
+</ul>
+</div>
+     </div>
+    </div><!--/container-->
+    <!--=== End Content Part ===-->

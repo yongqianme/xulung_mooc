@@ -1,0 +1,388 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title><%=t('welcome.welcome_greetings.subject')%></title>
+    <style>
+      /**
+     * yue.css
+     *
+     * yue.css is designed for readable content.
+     *
+     * Copyright (c) 2013 - 2014 by Hsiaoming Yang.
+     */
+
+      .yue {
+        font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+        color: #444443;
+        margin: 0 auto;
+        max-width: 640px;
+        padding: 0 16px;
+        line-height: 2;
+        word-wrap: break-word;
+      }
+
+      .windows .yue {
+        font-size: 16px;
+        font-family: "Georgia", "SimSun", sans-serif;
+      }
+
+      .yue ::-moz-selection {
+        background-color: rgba(0,0,0,0.2);
+      }
+      .yue ::selection {
+        background-color: rgba(0,0,0,0.2);
+      }
+
+      .yue h1,
+      .yue h2,
+      .yue h3,
+      .yue h4,
+      .yue h5,
+      .yue h6 {
+        font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+        color: #222223;
+      }
+
+      .yue h1 {
+        font-size: 1.8em;
+        margin: 0.67em 0;
+        color: #72c02c;
+
+      }
+      .yue span.color-green {color: #72c02c;}
+      .yue h2.color-green {color: #72c02c;}
+      .yue strong.color-green{color: #72c02c;}
+      .yue span.dropcap-bg {
+        float: left;
+        color: #fff;
+        padding: 7px 0;
+        min-width: 50px;
+        font-size: 35px;
+        font-weight: 200;
+        line-height: 35px;
+        text-align: center;
+        background: #72c02c;
+        margin: 4px 10px 0 0;
+      }
+
+      .yue > h1 {
+        margin-top: 0;
+        font-size: 2em;
+      }
+      .yue span {
+        color: #72c02c;
+      }
+      .yue h2 {
+        font-size: 1.5em;
+        margin: 0.83em 0;
+      }
+
+      .yue h3 {
+        font-size: 1.17em;
+        margin: 1em 0;
+      }
+
+      .yue h4,
+      .yue h5,
+      .yue h6 {
+        font-size: 1em;
+        margin: 1.6em 0 1em;
+      }
+
+      .yue h6 {
+        font-weight: 500;
+      }
+
+      .yue p {
+        margin-top: 0;
+        margin-bottom: 1.46em;
+      }
+
+      .yue a {
+        color: #111;
+        word-wrap: break-word;
+        -moz-text-decoration-color: rgba(0, 0, 0, 0.4);
+        text-decoration-color: rgba(0, 0, 0, 0.4);
+      }
+      .yue a:hover {
+        color: #555;
+        -moz-text-decoration-color: rgba(0, 0, 0, 0.6);
+        text-decoration-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .yue h1 a,
+      .yue h2 a,
+      .yue h3 a {
+        text-decoration: none;
+      }
+
+      .yue strong,
+      .yue b {
+        font-weight: 700;
+        color: #222223;
+      }
+
+      .yue em,
+      .yue i {
+        font-style: italic;
+        color: #222223;
+      }
+
+      .yue img {
+        max-width: 100%;
+        height: auto;
+        margin: 0.2em 0;
+      }
+
+      .yue a img {
+        /* Remove border on IE */
+        border: none;
+      }
+
+      .yue figure {
+        position: relative;
+        clear: both;
+        outline: 0;
+        margin: 10px 0 30px;
+        padding: 0;
+        min-height: 100px;
+      }
+
+      .yue figure img {
+        display: block;
+        max-width: 100%;
+        margin: auto auto 4px;
+        box-sizing: border-box;
+      }
+
+      .yue figure figcaption {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        left: 0;
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #666665;
+      }
+
+      .yue figure figcaption a {
+        text-decoration: none;
+        color: #666665;
+      }
+
+      .yue hr {
+        display: block;
+        width: 14%;
+        margin: 40px auto 34px;
+        border: 0 none;
+        border-top: 3px solid #dededc;
+      }
+
+      .yue blockquote {
+        margin: 0 0 1.64em;
+        border-left: 3px solid #dadada;
+        padding-left: 12px;
+        color: #666664;
+      }
+
+      .yue blockquote a {
+        color: #666664;
+      }
+
+      .yue ul,
+      .yue ol {
+        margin: 0 0 24px 6px;
+        padding-left: 16px;
+      }
+
+      .yue ul {
+        list-style-type: square;
+      }
+
+      .yue ol {
+        list-style-type: decimal;
+      }
+
+      .yue li {
+        margin-bottom: 0.2em;
+      }
+
+      .yue li ul,
+      .yue li ol {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 14px;
+      }
+
+      .yue li ul {
+        list-style-type: disc;
+      }
+
+      .yue li ul ul {
+        list-style-type: circle;
+      }
+
+      .yue li p {
+        margin: 0.4em 0 0.6em;
+      }
+
+      .yue .unstyled {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      /*.yue code,
+    .yue tt {
+    color: #808080;
+      font-size: 12px!important;
+      background-color: #F5F5F5 !important;
+      padding: 0!important;
+      border: none!important;
+      font-family: Helvetica;
+      display: block;
+      line-height: 150%;
+    }
+
+    .yue pre {
+      margin: 1.64em 0;
+      padding: 7px;
+      border: none;
+      border-left: 3px solid #dadada;
+      padding-left: 10px;
+      overflow: auto;
+      line-height: 1.5;
+      font-size: 0.96em;
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      color: #4c4c4c;
+      background-color: #f9f9f7;
+    }
+
+    .yue pre code,
+    .yue pre tt {
+      color: #4c4c4c;
+      border: none;
+      background-color: #333333
+      padding: 0;
+    }*/
+
+      .yue table {
+        width: 100%;
+        max-width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 1.5em;
+        font-size: 0.96em;
+        box-sizing: border-box;
+      }
+
+      .yue th,
+      .yue td {
+        text-align: left;
+        padding: 4px 8px 4px 10px;
+        border: 1px solid #dadada;
+      }
+
+      .yue td {
+        vertical-align: top;
+      }
+      .yue tr:nth-child(even) {
+        background-color: #efefee;
+      }
+
+      .yue iframe {
+        display: block;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .yue figure iframe {
+        margin: auto;
+      }
+
+      .yue table pre {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+      }
+
+      @media (min-width: 1100px) {
+        .yue blockquote {
+          margin-left: -24px;
+          padding-left: 20px;
+          border-width: 4px;
+        }
+
+        .yue blockquote blockquote {
+          margin-left: 0;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="yue">
+      <h1>Hi,<%=@hello%>,欢迎您！</h1>
+      <div class="container content">
+<section id="curriculum">
+  <p><span class="dropcap-bg">对</span>，您加入的是一个提高您自己的平台，在您使用我们的平台之前，请先读一下这篇文章，看看自己适合这个项目吗？</p>
+<section class="intro">
+<h1> <strong class="color-green">这个项目适合我吗？</strong></h1>
+</section>
+<p><span class="dropcap-bg">我</span>们这个培训项目不是为所有人准备的，我们也无法知道这个培训项目是不是真的适合你。我们将要做，和已经在做的，是继续开发符合我们的教学理念，我们的价值观的培训项目，同时也希望能满足您的预期。从这里，你们希望可以帮助你，指导一条通向智能制造工程师的正确的道路。我们有预备课程，可以帮助你理解我们的项目，也可以帮助你作出决定。不论您是何种工作背景，都应该从预备课程开始，感受一下我们的项目计划。如果您完成了预备课程，并且享受这个学习过程，您可以考虑我们的付费课程；如果您无法完成这个预备课程，并且也无法享受其中乐趣，那么您可能并不适合，可以考虑不要参加这个项目。</p>
+<section class="intro">
+<h1><strong class="color-green">我们的培训项目不适合以下类别的人</strong></h1>
+</section>
+<section>
+<p><span class="dropcap-bg">要</span>知道，做一份培训的课程是非常的花费时间的，学习一份也这样的课程，同样非常花费您的时间，如果您并没有下定决定，进入这个行业，那么您最先要做的是审视自己，如果您发现自己是以下类别的人，您需要考虑一下要不要参加这个课程</p>
+<br>
+<h3><strong class="color-green">您完全是一个门外汉或者你不确定智能制造适合你</strong></h3>
+<p>如果您对工业完全无知，我们的课程对您来说太难了。我们也确实看到过，有零知识的人真的完成了这个课程，但是他付出的努力是超乎想象的。对于零知识的人，我们非常建议，花一些时间，好好的看一下我们的免费课程，感觉一下，自己是不是可以接受。预备课程可以帮助您建立起一个基础，对于工业的基础，但是您也要做好花下数周或者数月的时间，去理解并且为第一个课程做好准备。</p>
+<h3><strong class="color-green">您需要在3个月中找一份新工作</strong></h3>
+<p>我们的培训计划需要耗费大量的时间和努力，我们也认为学习有一条正确的道路，我们将把架构帮您理清楚，基本重复的学习和作业，让您印象深刻。但是我们也不想把这些课程压缩到9到12周这样的时间，因为每个人学习的过程是不一样的。我们关注的是您掌握了多少内容，所以学习的时间是因人而异的。</p>
+<h3><strong class="color-green">您想要学完开始智能制造创业</strong></h3>
+<p>基于我们的经验，智能制造是也是属于传统行业，完全基于这个课程开始创业或者开发新产品并不能做的很好。我们的项目主要是基于那些想在要半年到一年之内找一份这个行业工作的人，和在这个行业内已经有经验的人想更深入的了解智能制造的人开发的。</p>
+<h3><strong class="color-green">您想要快速的学习工业机器人，PLC或者Process</strong></h3>
+<p>一个我们核心的教学理念是，从最基本的原则入手。基础知识和各种工具的使用，是用来解决各种工业问题的关键，这些是每一个工程师都需要掌握的。我们的教学过程是从最基本的初级课程开始，然后慢慢的讲解基础，从初级到高级，中间穿插工程师在实际情况中碰到的问题。在解决这些问题的过程中，循序渐进非常重要。每一块领域都是一个非常复杂的工业领域，您想快速的掌握这些领域，花费的时间是非常长的，还需要大量的现场工作经验。您期待学完后就能掌握，那么这个课程并不完全适合你。</p>
+<h3><strong class="color-green">您只是想花钱买一些培训课程或者讲义</strong></h3>
+<p>一旦您注册了这个项目，我们就在为您投资了。您在这个项目中学习的越久，我们的关系就越紧密，我们为您花费的时间就越多。培训的目的是为了帮助您，准备好人事智能制造工程师这个角色，不是说您为了买100小时的培训课程或者说100页的讲义。如果你的目的是花钱买课程，那么一些书本可能最适合您，我们这个项目不适合您了。</p>
+</section>
+<section class="intro">
+<h1><strong class="color-green">最适合这个计划的人</strong></h1>
+</section>
+<p><span class="dropcap-bg">学</span>，习是一个辛苦的过程，如果您已经看到这里了，那么您应该非常适合我们这个项目。我们会列出我们的优秀的学员的特质，您则可以自己选择这个是不是适合</p><p>如果您也是以下的学员类型，将会非常享受我们的项目：</p><ul><li>您将愿意把智能制造工程师，当做自己的职业发展</li><li>您愿意花费尽可能多的时间去学习这个项目，并在实践去练习</li><li>您不需要别人的督促就可以促使自己朝着正确的方向前进</li><li>您享受发现和解决问题的过程</li><li>您想学习作为一个工程师应该掌握的扎实基础，而不是那些使用各种厂商工具的的小技能</li><li>您勇于提出问题，您可以在线上学习并且去线下交流。</li><li>您有充足的耐心学习，在6个月到12个月的时间慢慢的学习成长</li></ul>
+<section class="intro">
+<h1><strong class="color-green">教学理念</strong></h1>
+</section>
+<section id="phases">
+<p><span class="dropcap-bg">习</span>惯于学习，也会是一种享受。很多行业的工程师，在学习新的技术时，总是很头痛。智能制造需要掌握的东西太多了，有各种机器人品牌，有各种PLC，有各种电气软件，虽然新技术更新不多，但是不同的厂家有各种不同的标准。对于工业机器人或者PLC来说，没有任何的要求说哪一家需要先学，或者市场上哪一种最为火就学那一种。</p>
+<br>
+<p>学生经常会问的是：“我应该学什么？”，“我应该学到什么程序？” “我应该怎么学？”， “学习这个要花费多少时间”， 和“什么时候我可以停下学习了？”</p><p>这些问题其实都是因人而异的，我们的预期是如果您能理念我们的教学理念，这会帮助您找到自己的答案。</p>
+<p>在诩阆学习，学生可以在任何适合自己的时间，打开教学视频，观看视频的时候可以根据需要暂停，完成思考或者做好学习笔记。如果观看一遍之后还没有掌握好，可以倒回去重新播放，就像把教师请回了家一样。如此一遍又一遍，直到掌握为止。在这个过程中，学得快的学生花费的学习时间比较少，学得慢的学生花费的学习时间比较多，但是，平衡起来，并没有发生延长学习时间、加重学生负担的报告。最不堪忍受的不平等是硬要把不同的学生同等对待，在诩阆，这个亚里斯多德的大声疾乎已经完美解决了。</p>
+<br>
+<p>我们关注的学习效果，是您对于这个知识的熟练使用，而不仅仅是领会。您需要学习用知识去分析问题，而不只养眼于解决问题，您需要熟练的运用知识，特别是专业的工程师，您还需要动手。对这个领域的知识，您需要可以信手粘来，同时也可以培训其他人。而成为这样的专家的方法只有一个，就是数千甚至上万小时的练习和实际操作。
+</section>
+<section id="phases">
+
+<p><span class="dropcap-bg">D</span>eal！既然您已经看到这里，那么这里非常适合您，因为接下来您要为您的学习付费，我们的收费标准是499.99一个月，学生是299.99一个月，入门会员19.99一个月。如果您能在一个月学完所有的课程，也是付这么多钱，我们希望您努力努力再努力，少付出，多收获！</p>
+
+</section>
+</section>
+</div>
+
+</div>
+    <!-- Footer -->
+    <hr>
+    <div style="text-align: center;">
+      <div class="headline">
+        <h3 style="text-align: center;">关注诩阆微信公众号</h3>
+      </div>
+      <img src="<%=image_path('QRxulung.jpg')%>">
+      <a href="/"><img src="<%=image_path('xulung_icon_2.2.png')%>" width="60%" height="60%" alt="Logo"></a>
+    </div>
+  </body>
+</html>

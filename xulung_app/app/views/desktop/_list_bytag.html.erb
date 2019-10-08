@@ -1,0 +1,35 @@
+<div class="row illustration-v2 margin-bottom-30">
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <div class="thumbnails thumbnail-style">
+        <% if video.created_at>(Time.now-7.day)%>
+        <ul class="list-inline badge-lists badge-box-v1">
+          <li>
+            <span class="badge badge-red rounded">New</span>
+            <a href="<%=video_path(video)%>"><img alt="" src="<%= video.still.thumb %>" class="full-width img-responsive "></a>
+          </li>
+        </ul>
+      <% else %>
+        <%-if user_signed_in? and current_user.membership!="free"  -%>
+        <a data-original-title="加入课程表" data-toggle="imgtips" data-placement="center" class="imgtips" href="<%=video_path(video)%>"><img alt="" src="<%= video.still.thumb %>" class="img-responsive "></a>
+        <% end %>
+        <% end %>
+
+        <!-- <a class="product-review" href="<%=video_path(video)%>"><%=t('videos.watch') %> </a> -->
+        <div class="product-description product-description-brd margin-bottom-30">
+          <div class="overflow-h margin-bottom-5">
+            <div class="pull-left">
+              <h4>
+                <a href="<%=video_path(video)%>">
+                  Course #<%=video.id%>-<%=video.filename %></a>
+              </h4>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

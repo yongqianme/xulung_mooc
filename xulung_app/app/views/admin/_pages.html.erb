@@ -1,0 +1,93 @@
+
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+
+
+<div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <% if user_signed_in? and current_user.admin? %>
+    <li class="active"><a href="#pages" data-toggle="tab"><%=t('pages.pageslist')  %></a></li>
+    <li><a href="#drafts" data-toggle="tab"><%=t('pages.draftslist')  %></a></li>
+    <li><a href="#newpage" data-toggle="tab"><%=t('pages.new') %></a></li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="pages">
+      <div class="panel panel-green margin-bottom-40">
+        <div class="sky-form">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Views</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% if @pages!=nil %>
+              <%- @pages.each do |page| %>
+              <tr>
+                <td><%=page.id %></td>
+                <td><a href="<%=page_path(page)%>"><%=page.title %></a></td>
+                <td><%=page.hit %></td>
+                <td>
+                  <%= link_to sanitize('<button><i class="fa fa-trash-o"></i> Delete</button>'),
+                  page_path(page),
+                  :method => :delete,
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger btn-xs' %>
+                  <%= link_to sanitize('<button><i class="fa fa-pencil"></i> Edit</button>'),edit_page_path(page) ,:class=>'btn btn-info btn-xs'%></td>
+                </tr>
+                <% end -%>
+                <% end -%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade in" id="drafts">
+        <div class="panel panel-green margin-bottom-40">
+          <div class="sky-form">
+          <% if @pages_draft !=nil %>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <%- @pages_draft.each do |page| %>
+                <tr>
+                  <td><a href="<%=page_path(page)%>"><%=page.title %></a></td>
+                  <td>
+                    <%= link_to sanitize('<button><i class="fa fa-trash-o"></i></button>'),
+                    page_path(page),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-danger btn-xs' %>
+                    <%= link_to sanitize('<button><i class="fa fa-pencil"></i></button>'),edit_page_path(page) ,:class=>'btn btn-info btn-xs'%></td>
+                  </tr>
+                  <% end -%>
+
+
+                </tbody>
+              </table>
+              <% else %>
+                  No Draft！
+
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      <div class="tab-pane fade in" id="newpage">
+        <%=render 'pages/newpage' %>
+      </div>
+
+    </div>
+  </div>

@@ -1,0 +1,59 @@
+<% if !browser.device.mobile? %>
+<div class="footer-v2">
+  <div class="footer">
+
+    <div class="container">
+      <p class="text-center">
+        <a href="/pages/guan-yu-xu-lang">关于我们</a>
+        |
+        <a href="/pages/jia-ru-wo-men">加入我们</a>
+        |
+        <a href="/pages">博客</a>
+        |
+        <%=t('version_html') %>|
+        <a href="https://xulung.com/pages/fu-wu-tiao-kuan"><%=t('policy') %><%=t('tos') %></a>
+      </p>
+    </div>
+
+  </div>
+</div>
+<!--/footer-->
+
+<!--[if lt IE 9]> <script src="assets/plugins/respond.js"></script> <script src="assets/plugins/html5shiv.js"></script> <script src="assets/js/plugins/placeholder-IE-fixes.js"></script> <![endif]-->
+<% else %>
+
+<div class="text-center">
+  <div class="headline">
+    <h2>关注我们</h2>
+  </div>
+  <img src="<%=image_path('QRxulung.jpg')%>" width="60%">
+  <div class="copyright">
+    <div class="container">
+      <p class="text-center">
+        <%=t('version_html') %>
+        <a href="https://xulung.com/pages/fu-wu-tiao-kuan"><%=t('policy') %><%=t('tos') %></a>
+        <!-- <%= APP_VERSION %></p> -->
+      </div>
+    </div>
+    <!--/copyright-->
+  </div>
+  <% end %>
+  <!--google-analytics-->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      },
+      i[r].l = 1 * new Date();
+      a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-73431216-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <!--google-analytics-->

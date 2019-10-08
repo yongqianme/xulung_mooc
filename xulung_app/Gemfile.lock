@@ -1,0 +1,360 @@
+GIT
+  remote: git://github.com/brucebot/friendly_id.git
+  revision: 8531cdce5737df541bc2dbf9c0fa3ee4824b6fc8
+  specs:
+    friendly_id (5.2.0.beta.1)
+      activerecord (>= 4.0.0)
+
+GIT
+  remote: git://github.com/brucebot/letter_avatar.git
+  revision: 3c55218e341eb70bac4f8513765b3af2c3b0623e
+  specs:
+    letter_avatar (0.0.9)
+
+GIT
+  remote: git://github.com/brucebot/simditor-rails.git
+  revision: 454fdcfbdb72e87f8ff37c8c0ccf8ddf26f8d264
+  specs:
+    simditor (2.3.5)
+
+GIT
+  remote: git://github.com/huobazi/carrierwave-qiniu.git
+  revision: 673ac85895fc072080b8fe0833e7c80809433c58
+  specs:
+    carrierwave-qiniu (0.2.2)
+      carrierwave
+      qiniu (~> 6.5.1)
+
+GIT
+  remote: git://github.com/jumph4x/canonical-rails.git
+  revision: 3b50d047066f04e1aa1a39cad3dad93b7e532310
+  specs:
+    canonical-rails (0.0.11)
+      rails (>= 3.1, < 5.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (4.1.8)
+      actionpack (= 4.1.8)
+      actionview (= 4.1.8)
+      mail (~> 2.5, >= 2.5.4)
+    actionpack (4.1.8)
+      actionview (= 4.1.8)
+      activesupport (= 4.1.8)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    actionview (4.1.8)
+      activesupport (= 4.1.8)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+    activemodel (4.1.8)
+      activesupport (= 4.1.8)
+      builder (~> 3.1)
+    activerecord (4.1.8)
+      activemodel (= 4.1.8)
+      activesupport (= 4.1.8)
+      arel (~> 5.0.0)
+    activesupport (4.1.8)
+      i18n (~> 0.6, >= 0.6.9)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.1)
+      tzinfo (~> 1.1)
+    addressable (2.4.0)
+    aliyun-oss-sdk (0.1.6)
+      addressable
+      gyoku
+      httparty
+    arel (5.0.1.20140414130214)
+    auto-space (0.0.4)
+      activesupport (> 3.0.0)
+    bcrypt (3.1.11)
+    brakeman (3.2.1)
+      erubis (~> 2.6)
+      haml (>= 3.0, < 5.0)
+      highline (>= 1.6.20, < 2.0)
+      ruby2ruby (~> 2.3.0)
+      ruby_parser (~> 3.8.1)
+      safe_yaml (>= 1.0)
+      sass (~> 3.0)
+      slim (>= 1.3.6, < 4.0)
+      terminal-table (~> 1.4)
+    browser (2.0.3)
+    builder (3.2.2)
+    carrierwave (0.6.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+    carrierwave-aliyun (0.4.3)
+      aliyun-oss-sdk (>= 0.1.6)
+      carrierwave (>= 0.5.7)
+    carrierwave-video-thumbnailer (0.1.4)
+      carrierwave
+    chinese_pinyin (1.0.0)
+    code_analyzer (0.4.5)
+      sexp_processor
+    coderay (1.1.1)
+    coffee-rails (4.1.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.1.x)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.10.0)
+    commonjs (0.2.7)
+    devise (3.5.6)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise-i18n (1.0.0)
+    erubis (2.7.0)
+    execjs (2.6.0)
+    fabrication (2.15.0)
+    faker (1.6.3)
+      i18n (~> 0.5)
+    font-awesome-rails (4.5.0.1)
+      railties (>= 3.2, < 5.1)
+    gyoku (1.3.1)
+      builder (>= 2.1.2)
+    haml (4.0.7)
+      tilt
+    highline (1.7.8)
+    hike (1.2.3)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    i18n (0.7.0)
+    jbuilder (2.4.1)
+      activesupport (>= 3.0.0, < 5.1)
+      multi_json (~> 1.2)
+    jquery-infinite-pages (0.2.0)
+      coffee-script
+      jquery-rails
+      railties (>= 3.1)
+    jquery-rails (3.1.4)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
+    json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.7.1)
+      actionpack (>= 4.0)
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
+    libv8 (3.16.14.13)
+    mail (2.6.4)
+      mime-types (>= 1.16, < 4)
+    metamagic (3.1.7)
+      rails (>= 3.0.0)
+    method_source (0.8.2)
+    mime-types (2.4.3)
+    mini_magick (4.5.1)
+    mini_portile2 (2.0.0)
+    minitest (5.8.4)
+    multi_json (1.11.2)
+    multi_xml (0.5.5)
+    netrc (0.11.0)
+    nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
+    nprogress-rails (0.1.6.7)
+    orm_adapter (0.5.0)
+    passenger (5.0.26)
+      rack
+      rake (>= 0.8.1)
+    pdfjs_rails (0.0.1)
+    posix-spawn (0.3.11)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
+    qiniu (6.5.1)
+      json (~> 1.8)
+      mime-types (~> 2.4.3)
+      rest-client (~> 1.7.3)
+      ruby-hmac (~> 0.4)
+    rack (1.5.5)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rails (4.1.8)
+      actionmailer (= 4.1.8)
+      actionpack (= 4.1.8)
+      actionview (= 4.1.8)
+      activemodel (= 4.1.8)
+      activerecord (= 4.1.8)
+      activesupport (= 4.1.8)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.1.8)
+      sprockets-rails (~> 2.0)
+    rails_best_practices (1.16.0)
+      activesupport
+      code_analyzer (>= 0.4.3)
+      erubis
+      i18n
+      json
+      require_all
+      ruby-progressbar
+    railties (4.1.8)
+      actionpack (= 4.1.8)
+      activesupport (= 4.1.8)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    rake (11.1.2)
+    randomstring (1.0.1)
+    rdoc (4.2.2)
+      json (~> 1.4)
+    redcarpet (3.3.4)
+    ref (2.0.0)
+    require_all (1.3.3)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
+    rest-client (1.7.3)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    reverse_markdown (0.8.2)
+      nokogiri
+    rmmseg-cpp (0.2.9)
+    rouge (1.10.1)
+    ruby-hmac (0.4.0)
+    ruby-pinyin (0.4.8)
+      rmmseg-cpp (~> 0.2)
+    ruby-progressbar (1.7.5)
+    ruby2ruby (2.3.0)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.0)
+    ruby_parser (3.8.1)
+      sexp_processor (~> 4.1)
+    rucaptcha (0.3.3)
+      posix-spawn (>= 0.3.0)
+    safe_yaml (1.0.4)
+    sass (3.2.19)
+    sass-rails (4.0.5)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.2.2)
+      sprockets (~> 2.8, < 3.0)
+      sprockets-rails (~> 2.0)
+    sdoc (0.4.1)
+      json (~> 1.7, >= 1.7.7)
+      rdoc (~> 4.0)
+    sexp_processor (4.7.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    slop (3.6.0)
+    social-share-button (0.2.0)
+      coffee-rails
+      sass-rails
+    sprockets (2.12.4)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.3.3)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
+    sqlite3 (1.3.11)
+    streamio-ffmpeg (2.0.0)
+      multi_json (~> 1.8)
+    super_cache (0.0.2)
+    temple (0.7.6)
+    terminal-table (1.5.2)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
+    thor (0.19.1)
+    thread_safe (0.3.5)
+    tilt (1.4.1)
+    traceroute (0.5.0)
+      rails (>= 3.0.0)
+    turbolinks (2.5.3)
+      coffee-rails
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
+    videojs_rails (4.12.14)
+    warden (1.2.6)
+      rack (>= 1.0)
+    yui-compressor (0.12.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  auto-space
+  brakeman
+  browser
+  canonical-rails!
+  carrierwave (= 0.6.2)
+  carrierwave-aliyun
+  carrierwave-qiniu!
+  carrierwave-video-thumbnailer
+  chinese_pinyin
+  coffee-rails
+  devise (~> 3.5.2)
+  devise-i18n
+  fabrication
+  faker
+  font-awesome-rails
+  friendly_id!
+  jbuilder (~> 2.0)
+  jquery-infinite-pages
+  jquery-rails
+  jquery-turbolinks
+  kaminari
+  less-rails
+  letter_avatar!
+  metamagic
+  mini_magick
+  nprogress-rails
+  passenger
+  pdfjs_rails
+  pry-rails
+  qiniu
+  rails (= 4.1.8)
+  rails_best_practices
+  randomstring
+  redcarpet
+  rest-client
+  reverse_markdown (= 0.8.2)
+  rouge
+  ruby-pinyin
+  rucaptcha
+  sass-rails (~> 4.0.3)
+  sdoc (~> 0.4.0)
+  simditor!
+  simple_form
+  social-share-button
+  sqlite3
+  streamio-ffmpeg
+  super_cache
+  therubyracer
+  traceroute
+  turbolinks
+  twitter-bootstrap-rails
+  uglifier (>= 1.3.0)
+  videojs_rails
+  yui-compressor
+
+BUNDLED WITH
+   1.10.2

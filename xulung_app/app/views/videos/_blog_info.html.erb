@@ -1,0 +1,17 @@
+<div class="blog-post-tags">
+				<ul class="list-unstyled list-inline blog-info">
+					<li><i class="fa fa-calendar"></i><%=@video.created_at  %></li>
+					<li><i class="fa fa-pencil"></i><%=User.find(@video.user_id).username  %></li>
+					<li><i class="fa fa-comments"></i> <a href="#">24 Comments</a></li>
+				</ul>
+				<ul class="list-unstyled list-inline blog-tags">
+					<li>
+						<i class="fa fa-tags"></i> 
+						<a href="#">Technology</a> 
+						<a href="#">Education</a>
+						<a href="#">Internet</a>
+						<a href="#">Media</a>
+					</li>
+				</ul>                                                
+			</div>
+			

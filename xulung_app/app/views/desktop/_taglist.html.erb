@@ -1,0 +1,34 @@
+  <div class="tab-v3">
+    <ul class="nav nav-tabs">
+      <% tag_cloud @videos.tag_counts, %w{s m l} do |tag, css_class| %>
+      <li>
+        <a href='#<%=tag.name.upcase.delete(' ') %>' data-toggle="tab"><%=tag.name.upcase %>
+          (<%=tag.count%>)</a>
+      </li>
+      <% end %>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="length">
+        <p><%=t('videos.videos_with_tag_html',:count=> @videos.tag_counts.length)%></p>
+      </div>
+
+      <% tag_cloud @videos.tag_counts, %w{s m l} do |tag, css_class| %>
+      <div class="tab-pane fade in" id='<%=tag.name.upcase.delete(' ') %>'>
+          <%@videos.by_tag(tag.name).each do |video|  %>
+          <div class="listtight col-md-4">
+            <a href="<%=video_path(video)%>"><img alt="" src="<%= video.still.thumb %>" class="full-width img-responsive "></a>
+            <%-if user_signed_in? -%>
+            <%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+            <%= link_to t('videos.addlist'), favorites_path(video_id: video), method: :post, :class => 'btn-sm btn-success' %>
+          <%- else -%>
+            <%= link_to t('videos.removefromlist'), favorite_path(video), method: :delete,:class => 'btn-sm btn-danger' %>
+            <%- end -%>
+            <% end %>
+            <h5><a href="<%=video_path(video)%>"><%=video.filename %></a></h5>
+          </div>
+          <% end %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>

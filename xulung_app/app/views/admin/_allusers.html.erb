@@ -1,0 +1,63 @@
+<div class="panel panel-green margin-bottom-40">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-user"></i> Users</h3>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮件</th>
+        <th>角色</th>
+        <th>加入时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @users.each do |user| %>
+      <tr>
+        <td><%=user.id %></td>
+        <td><%=user.username %></td>
+        <td><%=user.email %></td>
+        <td>
+          <%if user.provider %>
+          <%= link_to sanitize('<button><i class="fa fa-check"></i> Author</button>'), be_provider_admin_path(user), method: "post",:class=>"btn-u btn-u-green btn-xs" %>
+          <% else %>
+          <%= link_to sanitize('<button><i class="fa fa-times"></i> Author</button>'), be_provider_admin_path(user), method: "post",:class=>"btn-u btn-u-default btn-xs" %>
+          <% end %>
+          <%if user.admin %>
+          <%= link_to sanitize('<button><i class="fa fa-check"></i> Admin</button>'), be_admin_admin_path(user), method: "post",:class=>"btn-u btn-u-orange btn-xs" %>
+          <% else %>
+          <%= link_to sanitize('<button><i class="fa fa-times"></i> Admin</button>'), be_admin_admin_path(user), method: "post",:class=>"btn-u btn-u-default btn-xs" %>
+          <% end %>
+          <%if user.consultant!=nil %>
+          <button><i class="fa fa-check"></i>Expert</button>
+          <% end %>
+          <%if !user.admin %>
+        <% case user.membership %>
+        <% when "free" %>
+        <button class="btn-u btn-u-light-green btn-xs">
+        <i class="fa fa-child "></i>
+        <% when "student" %>
+        <button class="btn-u btn-u-yellow btn-xs">
+        <i class="fa fa-mortar-board "></i>
+        <% when "engineer" %>
+        <button class="btn-u btn-u-orange btn-xs">
+        <i class="fa fa-gear"></i>
+        <% when "enterprise" %>
+        <button class="btn-u btn-u-orange btn-xs">
+        <i class="fa fa-bank"></i>
+        <% end %>
+        <%= user.membership.upcase %>
+        </button>
+        <%end%>
+        </td>
+        <td>
+          <%=distance_of_time_in_words_to_now(user.created_at)%>
+        </td>
+      </tr>
+      <% end -%>
+    </tbody>
+  </table>
+
+
+</div>

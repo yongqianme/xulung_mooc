@@ -1,0 +1,100 @@
+<%= form_for [@user, @consultant] do |f| %>
+<div>
+		<h5>成为技术顾问，将您的知识转化为收益。
+		<ul>
+		<li>在业余时间制作课程，您将获得<strong class="color-red">80%</strong>的收入。</li>
+		<li>诩阆还将为您推荐经过我们严格筛选的靠谱兼职，
+			<strong class="color-red">按时薪付费，先支付后工作</strong>。</li>
+		<li>写技术文章，获得读者打赏，诩阆不收任何费用。</li>
+	</ul>
+</h5>
+		<hr>
+		<div class="reg-block col-md-12">
+		<div class="reg-block col-md-5">
+		<h2>隐私信息</h2>
+		<small class="color-red">只开放给诩阆和您的雇主</small>
+		<hr>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <%= f.text_field :realname,autofocus: true,:class=>"form-control",:placeholder=>t('user.realnamehint')%>
+            <span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
+            <%= f.text_field :tel,:class=>"form-control",:placeholder=>t('user.telhint')%>
+        </div>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-yen"></i></span>
+            <%= f.text_field :alipay, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.alipayhint')%>
+        </div>
+        </div>
+        <div class="reg-block col-md-1"></div>
+        <div class="reg-block col-md-5">
+        <h2>顾问信息</h2>
+				<small class="color-green">顾问信息是公开的，方便别人了解您的背景能力</small>
+        <hr>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-building"></i></span>
+            <%= f.text_field :company, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.company')%>
+            <span class="input-group-addon"><i class="fa fa-anchor"></i></span>
+            <%= f.text_field :position, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.position')%>
+        </div>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-fire"></i></span>
+            <%= f.text_field :workyear, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.workyear')%>
+            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+            <%= f.text_field :hourrate, autocomplete: "off",:class=>"form-control",:placeholder=>t('user.hourrate')%>
+            <span class="input-group-addon"><strong><i class="fa fa-yen"></i>/8小时</strong></span>
+        </div>
+        </div>
+        <div class="reg-block col-md-12">
+				<div class="col-md-7">
+        <h2>技术经验</h2>
+				<small class="color-green">请详细填写您的技术经验，方便您得到最适合您的兼职推荐</small>
+        <hr>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-trophy"></i></span>
+            <%= f.text_field :experience,  :type=> 'hidden',autocomplete: "off",:class=>"form-control"%>
+        </div>
+        </div>
+			<div class="col-md-3">
+				<h2>头像与打赏</h2>
+				<small class="color-green">个性化头像与技术文章打赏</small>
+        <hr>
+				<small class="color-green">个性化您的头像</small>
+				<div class="input-group margin-bottom-40">
+
+				<span class="input-group-addon"><%= image_tag(@consultant.avatar.url) if @consultant.avatar.present?%>
+        <%= f.file_field :avatar,:class=>"form-control"%></span>
+			</div>
+			<small class="color-green">请上传支付宝或者微信支付二维码，方便读者给您付费</small>
+			<div class="input-group margin-bottom-40">
+
+				<span class="input-group-addon">
+				<%= image_tag(@consultant.dashang.url) if @consultant.dashang.present?%>
+        <%= f.file_field :dashang,:class=>"form-control"%></span>
+			</div>
+		</div>
+	</div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <%= f.submit t('user.apply'),:class=>"btn-u btn-block" %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<% end %>
+
+<script type="text/javascript">
+var editor = new Simditor({
+  textarea: $('#consultant_experience'),
+  toolbar: ['title', 'bold','ol', 'link','image','alignment','fullscreen'],
+  placeholder: '请输入您在工业领域的经验，以方便我们给您推荐工作，也方便企业雇主了解您',
+  pasteImage: true,
+  fileKey: 'file',
+  upload: {
+    url: '/photos',
+    params: null,
+    connectionCount: 3,
+    leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+  }
+});
+</script>

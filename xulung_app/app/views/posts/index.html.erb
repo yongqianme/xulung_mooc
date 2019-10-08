@@ -1,0 +1,110 @@
+
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+<!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">找知识</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li class="active">找知识</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+    <% end %>
+<div class="container content">
+<% if !browser.device.mobile? %>
+    <div class="col-md-9">
+    <% @posts.each do |post| %>
+      <!--Blog Post-->
+      <% if post.id[0]!=1 %>
+  <div class="funny-boxes funny-boxes-top-yellow">
+    <% else %>
+    <div class="funny-boxes funny-boxes-top-sea">
+      <% end %>
+      <div class="col-md-1">
+      <img class="media-object" src="<%=letter_avatar_url(PinYin.permlink(post.author), 200)%>", width="50">
+
+      </div>
+      <div class="col-md-11">
+        <ul class="list-inline badge-lists badge-box-v1">
+               <li><span class="badge badge-red rounded"><%=post.membergroup.capitalize  %></span>
+      <h1><a href="<%=post_path(post)%>"><%=post.title  %></a></h1>
+
+  </li>
+</ul>
+
+        <div class="blog-post-tags">
+          <ul class="list-unstyled list-inline">
+            <li><h4>@<%=post.author  %></li></h4>
+            <li><i class="fa fa-calendar"></i><%= post.updated_at.strftime(" %d-%m-%Y") %></li>
+            <li><i class="fa fa-thumbs-up"></i><a href="<%=post_path(post)%>"> <%= post.hit %></a></li>
+            <li><i class="fa fa-comments"></i> <a href="<%=post_path(post)%>#leavecomment"><%=post.comments.count  %></a></li>
+          </ul>
+        </div>
+        <div class="yue">
+        <%= truncate(strip_tags(post.body), length: 200) %>
+        <p><a class="btn-u btn-brd btn-u-success" href="<%=post_path(post)%>"><i class="fa fa-plus"></i> Read More</a></p>
+        <p class="pull-right">
+        <% if user_signed_in? and current_user.admin? %>
+             <%= link_to sanitize('<button><i class="fa fa-trash-o"></i> Delete</button>'),
+          post_path(post),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+          :class => 'btn btn-danger btn-xs' %>
+          <%= link_to sanitize('<button><i class="fa fa-pencil"></i> Edit</button>'),edit_post_path(post) ,:class=>'btn btn-info btn-xs'%>
+          <% end %>
+          </p>
+          </div>
+    </div>
+    </div>
+<% end %>
+    <% else %>
+    <div class="col-md-12">
+    <% @posts.each do |post| %>
+      <!--Blog Post-->
+      <% if post.id[0]!=1 %>
+  <div class="funny-boxes funny-boxes-top-yellow">
+    <% else %>
+    <div class="funny-boxes funny-boxes-top-sea">
+      <% end %>
+        <h1><img class="pull-left" src="<%=letter_avatar_url(post.author, 200)%>", width="30"><a href="<%=post_path(post)%>"><%=post.title  %></a></h1>
+    </div>
+<% end %>
+<% end %>
+<hr class="devider devider-db-dashed">
+<%=paginate @posts %>
+</div>
+<% if !browser.device.mobile? %>
+          <div class="col-md-3">
+           <!-- Social Icons -->
+                <div class="margin-bottom-30">
+                    <div class="headline headline-md"><h2>Tag</h2></div>
+                    <%=render "post_tag" %>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- End Social Icons -->
+
+                <!-- Posts -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md"><h2>Popular</h2></div>
+                    <ol>
+                    <%@posts.each do |post| %>
+                       <li><h4><a href="<%=post_path(post)%>"><%=post.title  %></a></h4></li>
+                    <% end %>
+                    </ol>
+
+                </div><!--/posts-->
+                <div class="margin-bottom-30">
+                    <div class="headline headline-md"><h2>Advertisement</h2></div>
+
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+            <% end %>

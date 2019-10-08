@@ -1,0 +1,67 @@
+<% if current_user.consultant!=nil %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <% if !browser.device.mobile? %>
+      <th>头像</th>
+      <% end %>
+      <th>隐私信息</th>
+      <th>公开信息</th>
+    </tr>
+    <tbody>
+      <tr>
+        <% if !browser.device.mobile? %>
+        <td>
+          <% if current_user.consultant.avatar.url.present? %>
+          <%= image_tag(current_user.consultant.avatar.url) %>
+          <% else %>
+          <img class="img-responsive md-margin-bottom-10" src="<%=letter_avatar_url(PinYin.permlink(@consultant.realname), 200)%>" , width="100">
+          <% end %>
+        </td>
+        <%end%>
+        <td>
+
+          <ul>
+            <li>
+              <strong><%=t('user.realname')%>:</strong>
+              <%= @consultant.realname %></li>
+            <li>
+              <strong><%=t('user.tel')%>:</strong>
+              <%= @consultant.tel %></li>
+            <li>
+              <strong><%=t('user.alipay')%>:</strong>
+              <%= @consultant.alipay %></li>
+            <li>
+              <strong><%=t('user.dashang')%>:</strong>
+              <p>
+              <% if current_user.consultant.dashang.url.present? %>
+              <%= image_tag(current_user.consultant.dashang.url) %>
+              <% else %>
+              <img class="img-responsive md-margin-bottom-10" src="<%=letter_avatar_url(PinYin.permlink(@consultant.realname), 200)%>" , width="100">
+              <% end %>
+            </p>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <h4>职位角色</h4>
+        <ul>
+          <li>
+            <strong><%=t('user.company')%>:</strong>
+            <%= @consultant.company %></li>
+          <li>
+            <strong><%=t('user.position')%>:</strong>
+            <%= @consultant.position %></li>
+          <li>
+            <strong><%=t('user.workyear')%>:</strong>
+            <%= @consultant.workyear %></li>
+          <li>
+            <strong><%=t('user.hourrate')%>:</strong>
+            <%= @consultant.hourrate %></li>
+        </ul>
+        <h4>技术经验</h4>
+        <p><%=markdown(sanitize(@consultant.experience))  %></p>
+      </td>
+    </tr>
+  </table>
+  <% end %>

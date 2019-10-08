@@ -1,0 +1,42 @@
+
+<%
+meta title: @title,
+description: @description,
+keywords: @keywords
+%>
+
+<body id="body" data-spy="scroll" class="demo-lightbox-gallery">
+<!--=== Header ===-->    
+<%=render 'shared/headerV2'  %>
+
+<section id="home" class="intro-section"><%=render 'home'  %></section>
+
+<section id="about">
+<%=render 'about'  %>
+</section>
+<div class="parallax-quote parallaxBg">
+<div class="container">
+<div class="parallax-quote-in">
+<p><strong class="color-green"> <%=t('welcome.slider.quotes')  %></strong>
+<a href="#join" class="btn-u btn-u-lg pull-right"><i class="fa fa-rocket fa-lg"></i><%=t('user.signupnow')  %></a></p>
+<small>- <%=t('welcome.title')  %> -</small>
+
+</div>
+</div>
+</div>        
+
+
+<!--- Courses -->
+<section id="course" class="about-section">
+<%= render 'techcourse'  %>
+</section>
+<section id="features" class="about-section">
+<%= render 'features'  %>
+</section>
+<section id="join" class="about-section">
+<%= render 'signup'  %>
+</section>
+
+<%=render 'shared/footer'  %>
+</body>
+</html>

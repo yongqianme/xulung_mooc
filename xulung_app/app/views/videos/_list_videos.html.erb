@@ -1,0 +1,93 @@
+
+<%- @videos.each do |video| %>
+<% if !browser.device.mobile? %>
+<div class="col-md-12">
+  <% if video.id[0]!=1 %>
+  <div class="funny-boxes funny-boxes-top-yellow">
+    <% else %>
+    <div class="funny-boxes funny-boxes-top-sea">
+      <% end %>
+
+      <div class="row">
+        <div class="col-md-10">
+          <% if video.created_at>(Time.now-7.day)%>
+          <ul class="list-inline badge-lists badge-box-v1">
+            <li><span class="badge badge-red rounded">New</span>
+             <h1><a href="<%=video_path(video)%>"> <%=video.filename %></a></h1>
+           </li>
+         </ul>
+         <% else %>
+         <ul class="list-inline badge-lists badge-box-v1">
+            <li><span class="badge badge-red rounded"><%=video.membergroup  %></span>
+             <h1><a href="<%=video_path(video)%>"><%=video.filename %></a></h1>
+           </li>
+         </ul>
+         <% end %>
+         <ul class="list-unstyled list-inline pull-right">
+           <%-if user_signed_in? -%>
+           <li><%= link_to sanitize('<button><i class="fa fa-play"></i></button>'), video_path(video), :class => 'btn-sm btn-success' %></li>
+           <% end %>
+           <%-if user_signed_in?-%>
+           <%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+           <li><%= link_to sanitize('<button><i class="fa fa-plus"></i></button>'), favorites_path(video_id: video), method: :post, :class => 'btn-sm btn-success' %></li>
+           <%- else -%>
+             <li><%= link_to sanitize('<button><i class="fa fa-minus"></i></button>'), favorite_path(video), method: :delete,:class => 'btn-sm btn-danger' %></li>
+           <%- end -%>
+           <% end %>
+        <% if user_signed_in? and current_user.admin? %>
+        <li><%= link_to sanitize('<button><i class="fa fa-pencil"></i></button>'),edit_video_path(video), :class => 'btn-sm btn-primary' %></li>
+        <li><%= link_to sanitize('<button><i class="fa fa-trash-o"></i></button>'),
+        video_path(video),
+        :method => :delete,
+        :data => { :confirm => t('videos.confirm') },
+        :class => 'btn-sm btn-danger' %>
+        <% end %></li>
+        </ul>
+        <hr class="devider-db-dashed">
+        <a href="<%=video_path(video)%>"><img alt="" src="<%= video.still.large %>" class="img-responsive " ></a>
+          <%= markdown(video.description) %>
+      </div>
+
+
+<!--      <div class="counters col-md-2">
+       <%= link_to sanitize('<span class="counter-icon"><i class="fa fa-thumbs-up rounded"></i></span>'), upvote_video_path(video), method: "post" %>
+       <span class=""><%=video.votes.count %></span>
+     </div> -->
+   </div>
+ </div>
+</div>
+<% else %>
+  <% if video.id[0]!=1 %>
+  <div class="funny-boxes funny-boxes-top-yellow">
+    <% else %>
+    <div class="funny-boxes funny-boxes-top-sea">
+      <% end %>
+          <% if video.created_at>(Time.now-7.day)%>
+          <ul class="list-inline badge-lists badge-box-v1">
+            <li><span class="badge badge-red rounded">New</span>
+             <h2><a href="<%=video_path(video)%>"> Course #<%=video.id%>-<%=video.filename %></a></h2>
+           </li>
+         </ul>
+         <% else %>
+         <div class="pull-left">
+         <%-if user_signed_in?-%>
+        <%= link_to ("<i class='fa fa-play'></i>").html_safe, video_path(video), :class => 'btn-u btn-success' %>
+        <%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+        <%= link_to ("<i class='fa fa-plus'></i>").html_safe, favorites_path(video_id: video), method: :post, :class => 'btn-u btn-success' %>
+        <%- else -%>
+          <%= link_to ("<i class='fa fa-minus'></i>").html_safe, favorite_path(video), method: :delete,:class => 'btn-u btn-danger' %>
+        <%- end -%>
+        <% end %>
+        </div>
+         <ul class="list-inline badge-lists badge-box-v1">
+            <li><span class="badge badge-red rounded"><%=video.membergroup  %></span>
+             <h2><a href="<%=video_path(video)%>"><%=video.filename %></a></h2>
+           </li>
+         </ul>
+         <% end %>
+</div>
+<% end %>
+<% end %>
+
+<!-- <hr class="devider devider-db-dashed"> -->
+<%=paginate @videos %>

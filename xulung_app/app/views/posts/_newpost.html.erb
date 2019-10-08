@@ -1,0 +1,58 @@
+<div class="sky-form">
+  <%= form_for(Post.new) do |f| %>
+  <fieldset>
+    <section>
+      <label class="label"><strong><%= t('posts.title') %></strong></label>
+      <label class="input"><%= f.text_field :title,placeholder: "这里输入标题..."%></label>
+    </section>
+    <section>
+    <label class="label"><strong><%= t('posts.body') %></strong></label>
+    <%= f.text_field :body, :type=> 'hidden'%>
+    </section>
+    <section>
+    <label class="label"><strong>Tag</strong></label>
+    <label class="input"><%= f.text_field :tag_list, placeholder: t('videos.tagshint') %></label>
+    </section>
+    <section>
+      <label class="input-group margin-bottom-30">
+      <%= f.check_box :published, :as => :boolean %>
+      <span class="text-highlights text-highlights-purple rounded tooltips"><%=t('posts.publishedhint') %></span>
+     </label>
+         <label class="label"><strong><%=t('videos.membergroups') %></strong></label>
+      <%= f.select(:membergroup, Post.membergroups.keys.map {|membergroup| [membergroup.upcase,membergroup]}) %>
+     </section>
+    <section class="pull-right">
+    <%= f.submit t('posts.post'), :class => 'btn-u btn-lg' %>
+    </section>
+    </fieldset>
+  <% end %>
+  </div>
+
+  <script type="text/javascript">
+ var editor = new Simditor({
+   textarea: $('#post_body'),
+   toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', 'link','image', '|','hr','indent','outdent','alignment','fullscreen'],
+   placeholder: '请在这里写下您的技术文章...',
+   pasteImage: true,
+   fileKey: 'file',
+   upload: {
+     url: '/photos',
+     params: null,
+     connectionCount: 3,
+     leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+   },
+   codeLanguages:
+   [
+   { name: 'RAPID', value: 'rapid' },
+   { name: 'KRL', value: 'krl' },
+   { name: 'VAL3', value: 'val3' },
+   { name: 'V+', value: 'v+' },
+   { name: 'C++', value: 'c++' },
+   { name: 'C#', value: 'cs' },
+   { name: 'Diff', value: 'diff' },
+   { name: 'HTML,XML', value: 'html' },
+   { name: 'Markdown', value: 'markdown' },
+ ],
+
+ });
+ </script>

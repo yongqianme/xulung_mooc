@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<%=render 'shared/head'  %>
+			<%
+meta title: t('meta.title'),
+     description: t('meta.description'),
+     keywords: t('meta.keywords')
+%>
+</head>
+<body id="home">
+	<%=render 'shared/header'  %>
+	<%=render 'shared/flash'  %>
+	<div class="container content">
+		<div class="wrapper">
+
+			<div class ="col-md-12">
+				<%= yield :layout %>
+			</div>	
+			<% end %>
+	
+	</div>
+<%=render 'shared/footer' %>
+</body>
+
+</html>

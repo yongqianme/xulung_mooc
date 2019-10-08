@@ -1,0 +1,56 @@
+
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">管理后台</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="">首页</a></li>
+                <li class="active">管理后台</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <% if !browser.device.mobile? %>
+<div class="container">
+<div class="row tab-v3">
+  <div class="col-sm-3">
+
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active"><a href="#users" data-toggle="tab"><i class="fa fa-user"></i> Users</a></li>
+      <li><a href="#courses" data-toggle="tab"><i class="fa fa-book"></i> Courses</a></li>
+      <li><a href="#postsindex" data-toggle="tab"><i class="fa fa-file"></i> Posts</a></li>
+      <li><a href="#pagesindex" data-toggle="tab"><i class="fa fa-file"></i> Pages</a></li>
+    </ul>
+  </div>
+  <div class="col-sm-9">
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="users">
+       <%=render 'allusers'  %>
+     </div>
+    <div class="tab-pane fade in " id="courses">
+      <%=render 'course'  %>
+    </div>
+    <div class="tab-pane fade in" id="postsindex">
+      <%=render 'posts'  %>
+    </div>
+    <div class="tab-pane fade in" id="pagesindex">
+      <%=render 'pages'  %>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- Tab v3 -->
+<%else%>
+<div class="container">
+<div class="row tab-v3">
+  <div class="col-sm-12">
+<ul class="nav nav-pills nav-stacked">
+  <li><h2><i class="fa fa-user"></i> Users: <%=@users_count%></h2></li>
+  <li><h2><i class="fa fa-book"></i> Courses: <%=@courses_count%></h2></li>
+  <li><h2><i class="fa fa-file"></i> Posts: <%=@posts_count%></h2></li>
+  <li><h2><i class="fa fa-file"></i> Pages: <%=@pages_count%></h2></li>
+</ul>
+</div>
+</div>
+</div>
+<%end%>

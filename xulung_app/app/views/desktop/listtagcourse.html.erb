@@ -1,0 +1,24 @@
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="<%=desktop_listtagcourse_path%>">
+        <i class="fa fa-th"></i><%=t('desktop.tagstyle')  %></a>
+    </li>
+    <li class="">
+      <a href="<%=desktop_listcourse_path%>">
+        <i class="fa fa-list"></i><%=t('desktop.liststyle')  %></a>
+    </li>
+
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active ">
+      <%=render 'list_videos_tight'  %>
+
+    </div>
+  </div>
+</div>

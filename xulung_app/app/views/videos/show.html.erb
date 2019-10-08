@@ -1,0 +1,160 @@
+
+<%
+meta title: t('welcome.title')+"-"+@title,
+     description: @description,
+     keywords: @keywords
+%>
+<% if !browser.device.mobile? %>
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left"><%=@video.filename  %></h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li><a href="<%=videos_path %>">技术学院</a></li>
+                <li class="active"><%=@video.filename  %></li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+<div class="container">
+<div class="row tab-v3">
+	<!-- Begin Sidebar Menu -->
+	<div class="col-md-3">
+		<%=render 'desktop/nav'  %>
+	</div>
+	<!-- End Sidebar Menu -->
+	<div class="col-md-9 md-margin-bottom-60">
+	<div class="tab-v1">
+			<ul class="nav nav-tabs">
+				<li ><a href="#description" data-toggle="tab"><%=t('videos.description')  %></a></li>
+				<li class="active"><a href="#watchvideo" data-toggle="tab"><%=t('videos.watching')+ @video.filename%></a></li>
+				<li><a href="#courselist" data-toggle="tab"><%=t('videos.courselist') %></a></li>
+				<li><a href="#similarvideo" data-toggle="tab"><%=t('videos.similarvideo') %></a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in " id="description">
+ 					<h3><%=@video.filename  %></h3>
+					<p><%= markdown(@video.description) %></p>
+
+				</div>
+				<div class="tab-pane fade in " id="courselist">
+					<table class="table table-bordered">
+
+						<tbody>
+						<% cache do %>
+							<%current_user.favorite_videos.each do |video|  %>
+							<tr>
+								<td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+
+								<td>
+									<small><% if user_signed_in? %>
+					<%= link_to ("<i class='fa fa-play'></i>").html_safe, video_path(video), :class => 'btn btn-primary' %>
+					<%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+					<%= link_to ("<i class='fa fa-plus'></i>").html_safe, favorites_path(video_id: video), method: :post, :class => 'btn btn-success' %>
+					<%- else -%>
+					<%= link_to ("<i class='fa fa-minus'></i>").html_safe, favorite_path(video), method: :delete,:class => 'btn btn-danger' %>
+					<%- end -%>
+					<% end %></small>
+									</td>
+								</tr>
+								<% end -%>
+								<% end %>
+							</tbody>
+						</table>
+
+					</div>
+
+					<div class="tab-pane fade in active" id="watchvideo">
+
+						<div class="blog-img">
+              <% if ['mp4', 'flv', 'avi'].include?(@video.still.file.extension.downcase) %>
+              <center><%=videojs_rails sources: { mp4: @video.still}, setup: "{}",  controls: {
+                preload:"false"},width:"640",height: "480", poster: @video.still.thumb %>    </center>
+              <% else %>
+                <iframe src="/pdfjs/web/viewer.html?file=<%=@video.still%>" style="border: 0" width="100%" height="800" frameborder="0" scrolling="yes" download="hidden" ></iframe>
+              <% end %>
+							</div>
+						</div>
+						<div class="tab-pane fade in " id="similarvideo">
+							<table class="table table-bordered">
+
+								<tbody>
+
+
+									<%@usernotfavideos.each do |video|  %>
+									<tr>
+										<td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+
+										<td>
+											<small>
+						<%= link_to ("<i class='fa fa-play'></i>").html_safe, video_path(video), :class => 'btn btn-primary' %>
+					<%= link_to ("<i class='fa fa-plus'></i>").html_safe, favorites_path(video_id: video), method: :post, :class => 'btn btn-success' %>
+											</small>
+										</td>
+									</tr>
+									<% end %>
+
+
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>
+				</div>
+
+<% else %>
+<div class="container">
+		<div class="tab-v1">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#watchvideo" data-toggle="tab"><%=t('videos.watching')%></a></li>
+				<li><a href="#similarvideo" data-toggle="tab"><%=t('videos.similarvideo') %></a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in " id="description">
+ 					<h3><%=@video.filename  %></h3>
+					<p><%= markdown(@video.description) %></p>
+
+				</div>
+
+					<div class="tab-pane fade in active" id="watchvideo">
+						<center><h2><%=@video.filename  %></h2></center>
+
+            <% if ['mp4', 'flv', 'avi'].include?(@video.still.file.extension.downcase) %>
+            <center><%=videojs_rails sources: { mp4: @video.still}, setup: "{}",  controls: {
+              preload:"false"},width:"640",height: "480", poster: @video.still.thumb %>    </center>
+            <% else %>
+              <iframe src="/pdfjs/web/viewer.html?file=<%=@video.still%>" style="border: 0" width="100%" height="800" frameborder="0" scrolling="yes" download="hidden" ></iframe>
+            <% end %>
+						</div>
+						<div class="tab-pane fade in " id="similarvideo">
+							<table class="table table-bordered">
+								<tbody>
+									<%@usernotfavideos.each do |video|  %>
+									<tr>
+										<td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+
+										<td>
+											<small>
+											<%= link_to ("<i class='fa fa-play'></i>").html_safe, video_path(video), :class => 'btn btn-primary' %>
+					<%= link_to ("<i class='fa fa-plus'></i>").html_safe, favorites_path(video_id: video), method: :post, :class => 'btn btn-success' %>
+
+
+
+											</small>
+										</td>
+									</tr>
+									<% end %>
+
+
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+
+				</div>
+				<% end %>

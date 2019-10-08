@@ -1,0 +1,59 @@
+
+<div class="tab-v1">
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="profile">                         
+      <div class="panel panel-green margin-bottom-40">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-user"></i> <%=t('user.profile')  %></h3>
+        </div>
+        <div class="sky-form">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th><%=t('user.username')  %></th>
+              <th><%=t('user.email')  %></th>
+              <% if current_user.provider %>
+              <th><%=t('user.provider')  %></th>
+              <% end %>
+              <% if current_user.admin %>
+              <th><%=t('user.admin')  %></th>
+              <% end %>
+              <th><%=t('user.membership')  %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%=current_user.username %></td>
+              <td><%=current_user.email %></td>
+              <%if current_user.provider %>
+              <td>
+                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i> PROVIDER</button>
+              </td>
+              <% end %>
+              <%if current_user.admin %>
+              <td>
+                <button class="btn btn-warning btn-xs"><i class="fa fa-check"></i> ADMIN</button>
+              </td>
+              <% end %>
+              <td>
+                <a href="<%=service_membership_path  %>"><button class="btn btn-success btn-xs">
+                <% case current_user.membership %>
+        <% when "free" %>
+        <i class="fa fa-child "></i>
+        <% when "student" %>
+        <i class="fa fa-mortar-board "></i>
+        <% when "engineer" %>
+        <i class="fa  fa-gear"></i>
+        <% when "enterprise" %>
+        <i class="fa fa-bank"></i>
+        <% end %><%=current_user.membership.upcase %></button></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>

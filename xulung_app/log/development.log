@@ -1,0 +1,1661 @@
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-08 21:53:39 +0800
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.1.8) lib/active_record/migration.rb:389:in `check_pending!'
+  activerecord (4.1.8) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.8) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.5) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/bruceboty/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/bruceboty/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/bruceboty/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.2ms)
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateVideos (20141229050633)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "filename" varchar(255), "filesize" integer, "permalink" varchar(255), "description" text, "still" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141229050633"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20141230044425)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141230044425"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddAdminToUsers (20141230050648)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "admin" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141230050648"]]
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTags (20141231021529)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141231021529"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTaggings (20141231021551)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141231021551"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVotes (20141231035031)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141231035031"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddUsernameToUsers (20141231142909)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "username" varchar(255)[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141231142909"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to AddProviderToUsers (20150101020344)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "provider" boolean DEFAULT 'f'
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150101020344"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to AddPublishedToVideos (20150102035438)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "videos" ADD "published" boolean DEFAULT 'f'
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150102035438"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to ChangePublishedToTrue (20150104125032)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TEMPORARY TABLE "avideos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "filename" varchar(255), "filesize" integer, "permalink" varchar(255), "description" text, "still" varchar(255), "created_at" datetime, "updated_at" datetime, "published" boolean DEFAULT 'f') 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "videos"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "videos"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "filename" varchar(255), "filesize" integer, "permalink" varchar(255), "description" text, "still" varchar(255), "created_at" datetime, "updated_at" datetime, "published" boolean DEFAULT 't') [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "avideos"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "avideos"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150104125032"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBetausers (20150107220316)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "betausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_betausers_on_email" ON "betausers" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150107220316"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to AddUserIdToVideos (20150113120603)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "videos" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_videos_on_user_id" ON "videos" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150113120603"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddViewsToVideosAndViewers (20150113162354)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "videos" ADD "hit" integer DEFAULT 0[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150113162354"]]
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddVisitoridsToVideos (20150113170820)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "videos" ADD "visitor_ids" text[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150113170820"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCourselists (20150114184026)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "courselists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "videos" ADD "courselist_id" integer
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_videos_on_courselist_id" ON "videos" ("courselist_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150114184026"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to CreateFavorites (20150115062927)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "favorited_id" integer, "favorited_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_favorites_on_user_id" ON "favorites" ("user_id")[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_favorites_on_favorited_id_and_favorited_type" ON "favorites" ("favorited_id", "favorited_type")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150115062927"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateInvites (20150116213719)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "invites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "sender_id" integer, "recipient_id" integer, "token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "courselists"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150116213719"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to AddDescriptionToBetasuer (20150120052129)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "betausers" ADD "description" text
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150120052129"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to AddLocaleToUser (20150121042129)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "locale" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150121042129"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to CreatePosts (20150124022422)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "author" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_posts_on_user_id" ON "posts" ("user_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150124022422"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to CreateComments (20150124025220)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "post_id" integer, "body" text, "author" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "comments" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150124025220"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to AddPostimgToPost (20150129114131)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "posts" ADD "postimg" stirng
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150129114131"]]
+  [1m[35m (0.3ms)[0m  commit transaction
+Migrating to AddPostToTaggings (20151103133630)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "taggings" ADD "post_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_taggings_on_post_id" ON "taggings" ("post_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151103133630"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePages (20151123044530)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "author" varchar(255), "image" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "pages" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_pages_on_user_id" ON "pages" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151123044530"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddMembershipToUser (20151125141014)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "membership" integer DEFAULT 0[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125141014"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddVideogroupToVideo (20151125144857)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "videos" ADD "membergroup" integer DEFAULT 0[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125144857"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePhotos (20151215013924)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "image" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "photos" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_photos_on_user_id" ON "photos" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151215013924"]]
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddPublishedToPostsAndPages (20151228070037)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "posts" ADD "published" boolean DEFAULT 't'[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "pages" ADD "published" boolean DEFAULT 't'
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151228070037"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to AddHitToPostsPages (20151231090909)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "posts" ADD "hit" integer DEFAULT 3677
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "pages" ADD "hit" integer DEFAULT 1677[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151231090909"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddApprovedToPostsVideos (20151231125758)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "posts" ADD "approved" boolean DEFAULT 'f'[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_posts_on_approved" ON "posts" ("approved")[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "videos" ADD "approved" boolean DEFAULT 'f'
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_courselist_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_courselist_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_videos_on_approved" ON "videos" ("approved")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151231125758"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddPostgroupToPost (20160114102241)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "posts" ADD "membergroup" integer DEFAULT 0[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160114102241"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateConsultants (20160129034800)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "consultants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "realname" varchar(255), "tel" varchar(255), "email" varchar(255), "alipay" varchar(255), "dashang" varchar(255), "company" varchar(255), "position" varchar(255), "workyear" varchar(255), "hourrate" integer, "experience" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_consultants_on_user_id" ON "consultants" ("user_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160129034800"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to AddAvatarDashangToConsultant (20160202002002)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "consultants" ADD "avatar" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160202002002"]]
+  [1m[35m (0.3ms)[0m  commit transaction
+Migrating to DeviseInvitableAddToUsers (20160216013324)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "invitation_token" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "invitation_created_at" datetime[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "invitation_sent_at" datetime
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "invitation_accepted_at" datetime[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "invitation_limit" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "invited_by_id" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "invited_by_type" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "invitations_count" integer DEFAULT 0[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_username' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_username' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (1.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_users_on_invitations_count" ON "users" ("invitations_count")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_username' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_username' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_invitation_token" ON "users" ("invitation_token")
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_username' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_username' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_users_on_invited_by_id" ON "users" ("invited_by_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160216013324"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to AddSlugToPosts (20160310115843)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "posts" ADD "slug" varchar(255)
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_approved' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_approved' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_posts_on_slug" ON "posts" ("slug")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160310115843"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateFriendlyIdSlugs (20160310122416)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "friendly_id_slugs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "slug" varchar(255) NOT NULL, "sluggable_id" integer NOT NULL, "sluggable_type" varchar(50), "scope" varchar(255), "created_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_friendly_id_slugs_on_sluggable_id" ON "friendly_id_slugs" ("sluggable_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type" ON "friendly_id_slugs" ("slug", "sluggable_type")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope" ON "friendly_id_slugs" ("slug", "sluggable_type", "scope")[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_friendly_id_slugs_on_sluggable_type" ON "friendly_id_slugs" ("sluggable_type")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160310122416"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddSlugToPages (20160310125823)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "pages" ADD "slug" varchar(255)[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pages_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pages_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_pages_on_slug" ON "pages" ("slug")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160310125823"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddSlugToVideos (20160310125834)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "videos" ADD "slug" varchar(255)[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_approved' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_approved' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_courselist_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_courselist_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_videos_on_slug" ON "videos" ("slug")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160310125834"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddTosToUser (20160417135326)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "terms_of_service" boolean DEFAULT 't'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160417135326"]]
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateOrders (20160419014330)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255), "out_trade_no" varchar(255), "total_fee" float, "membership_id" integer, "trade_status" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "orders" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160419014330"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddOrderType (20160423130007)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160423130007"]]
+  [1m[35m (0.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_betausers_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_betausers_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_consultants_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_consultants_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_favorited_id_and_favorited_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_favorited_id_and_favorited_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_slug_and_sluggable_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendly_id_slugs_on_sluggable_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_orders_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_orders_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pages_on_slug' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pages_on_slug' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pages_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pages_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_photos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_photos_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_taggings_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_taggings_on_post_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invited_by_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invited_by_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_username' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_username' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_slug' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_slug' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_approved' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_approved' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_courselist_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_courselist_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_videos_on_user_id' AND type='index'
+
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-08 21:54:06 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#home as HTML
+  [1m[35mVideo Load (0.1ms)[0m  SELECT  "videos".* FROM "videos"  WHERE "videos"."id" = ? LIMIT 1  [["id", 79]]
+Completed 404 Not Found in 35ms
+
+ActiveRecord::RecordNotFound (Couldn't find Video with 'id'=79):
+  app/controllers/welcome_controller.rb:10:in `home'
+
+
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-08 21:55:31 +0800
+Processing by WelcomeController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 404 Not Found in 17ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/welcome_controller.rb:12:in `home'
+
+
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-08 21:55:39 +0800
+Processing by WelcomeController#home as HTML
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mVideo Load (0.1ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at DESC[0m
+  Rendered welcome/_mastery.html.erb (0.3ms)
+  Rendered welcome/_register.html.erb (0.2ms)
+  Rendered welcome/home.html.erb within layouts/home (4.7ms)
+  Rendered shared/_head.html.erb (1618.6ms)
+  Rendered shared/_headerV3.html.erb (8.5ms)
+  Rendered shared/_flash.html.erb (0.4ms)
+  Rendered shared/_footerV3.html.erb (0.6ms)
+Completed 200 OK in 1980ms (Views: 1638.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/welcome-3abc1076e0ea303e0073ed45dd48d088.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/bootstrap.min-cf3bffc0d15c2edac3d060a95cb3a36d.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/app-4eab84cfd13b8277f997cf6b6332112f.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/style-25fc65ab3227b7d17ca35c73c5808bc0.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/default-f0ffb332f546bbf75810a5f143f673eb.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/font-awesome-827edf15427e84ecb95419ecf69fcdae.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/custom-32619e5600d7833b45a5c110ae3019fc.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/jquery.fancybox-90bfdfe7ffcfd39f3219604c850d028e.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/owl.carousel-36574c9e5cfb3e56649bb177a444316f.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/sky-forms-e35b8a814b757a08a47a8dee89ec6752.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/social-share-button-ff13298fd60cc41cd01dfd7b32f5f1e5.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/assets/price_v8-afdb9090bad347a6322806c0e04ac35a.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-08 21:55:41 +0800
+Processing by WelcomeController#home as HTML
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mVideo Load (0.1ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at DESC[0m
+  Rendered welcome/_mastery.html.erb (0.0ms)
+  Rendered welcome/_register.html.erb (0.0ms)
+  Rendered welcome/home.html.erb within layouts/home (1.0ms)
+  Rendered shared/_head.html.erb (628.9ms)
+  Rendered shared/_headerV3.html.erb (2.5ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 638ms (Views: 636.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/font-awesome-827edf15427e84ecb95419ecf69fcdae.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/default-f0ffb332f546bbf75810a5f143f673eb.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/custom-32619e5600d7833b45a5c110ae3019fc.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.fancybox-90bfdfe7ffcfd39f3219604c850d028e.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/social-share-button-ff13298fd60cc41cd01dfd7b32f5f1e5.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/sky-forms-e35b8a814b757a08a47a8dee89ec6752.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/owl.carousel-36574c9e5cfb3e56649bb177a444316f.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/price_v8-afdb9090bad347a6322806c0e04ac35a.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/yue-e3f603222f2c92ced8a96638529f0bc5.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/footer-v2-a5e7ac0c22ef50783059efc894f7573f.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/header-v2-f765db74f052707effc333b4e5c4b704.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/nprogress-de69ef553b318df91178ce99a97c5325.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor-cfe708e7b8f1431253850e6cd3aa0e17.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor-markdown-704568782b26550a3e1a290c4a695677.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/highlight-59a3e8e41ce2cbbf85114a81315a2981.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/timeline-8e916114024d42f08e08943f88a5d04c.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/roadmap-dd05470ae0814e341515be9cf4815c50.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/flexslider-a28827201a0ff4e39fb73956b835a231.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/line-icons-462d861521321ea4560ca19fbb7342ae.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/rouge-f3564bdf69e31681d8e9887d2b740c78.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor-html-1240bcc2b2eec62f50daa88dd4e4a213.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/viewer-bbd6694794da6294567c3924e013ca7a.css?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery-077cddd2ed0d7b498d01f9f97afbe2f6.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery_ujs-83093127d59e98bc682636a01009064c.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/back-to-top-5e9d0c862c820c0c867a40d7c92f546f.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery-1.11.1.min-e6da1cd127b8ec3c4fd9155b464b7be9.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery-migrate-1.2.1.min-be677ac9cfe761bdccc25b6236854d0c.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/bootstrap.min-27929ffd91b48abf397ccb63f9785968.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.easing.min-a2100b12192d8bd6a4a842e8d294a194.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/waypoints.min-e433dd2ac390727bf6b2957273acb4fa.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.counterup.min-3067d3f1fac61b177aac4890f5177fe1.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/owl.carousel-2b01d932d2d63d7c6028117ef742b607.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.themepunch.tools.min-0816e350c26ab9af14d2874be7ce328d.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.themepunch.revolution.min-4af115e3327d76846f80f23034838d94.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.cubeportfolio.min-5838196fef8e62a81e4c1e297dd6c117.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/one.app-c5d7dd59847b8187cb2375391d5a048e.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/pace-loader-ad8ce674da76c589a4d65c8d0d26eabf.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/style-switcher-531bafca3d8beb9c4fd1081a09c5e321.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.mousewheel-2db9ab6127db511a5304b668c1f352c6.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.pjax-d21a3a45ce2dcd2ed2f8f51cac731187.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/jquery.infinite-pages-86f9a86e11978a3eba95621dc8fcca76.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/nprogress-a4c22799c4556ca33d9912df4081cdd8.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/nprogress-turbolinks-c5982c5a76413c90a1945a63e11fa184.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/module-8353f28fe25947ba866e7325ae32a0d8.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/hotkeys-14a73e2a9d968fb561976bb564a8b8f9.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/uploader-98ca612566d6dca0fad189238700f1d2.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/simditor-6d79d280bc6233e47560be81316c9f9f.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor-d054e6a370cabed9a42ddc973876c918.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/simditor-fullscreen-57661efc8aac8e7bf313a291aa87404e.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/marked.min-4a13fb14c911425cccf63ca46dc4a7e4.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/to-markdown-96eaae5180dc495106491624aa22eb70.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/simditor/simditor-markdown-b2e39d45d04ffb28598500c0ca76c1fa.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/assets/social-share-button-0297b4493870f039e1dbf4a3aba2f010.js?body=1" for 127.0.0.1 at 2018-04-08 21:55:42 +0800
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-04-08 21:55:45 +0800
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/app (23.2ms)
+  Rendered shared/_head.html.erb (651.6ms)
+  Rendered shared/_headerV3.html.erb (2.5ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 697ms (Views: 683.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/favicon.ico" for 127.0.0.1 at 2018-04-08 21:55:46 +0800
+
+ActionController::RoutingError (No route matches [GET] "/images/favicon.ico"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.5) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/bruceboty/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/bruceboty/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/bruceboty/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.3ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.4ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (47.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-04-08 21:55:52 +0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/_join.html.erb (4.6ms)
+  Rendered devise/registrations/_buy.html.erb (0.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/app (7.4ms)
+  Rendered shared/_head.html.erb (635.4ms)
+  Rendered shared/_headerV3.html.erb (1.7ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 651ms (Views: 649.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-08 21:56:08 +0800
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tZtWHQIuvf2u9cf1Or0oEc9/44qM5PaXPFXHLqRqGH0=", "user"=>{"username"=>"hello", "email"=>"hello@hello.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "terms_of_service"=>"1"}, "commit"=>"注册"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hello@hello.com' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'hello@hello.com' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = 'hello' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at", "username") VALUES (?, ?, ?, ?, ?)  [["created_at", "2018-04-08 21:56:08.238321"], ["email", "hello@hello.com"], ["encrypted_password", "$2a$10$Pxxb91CgGWkdgp9eQUJlG.yhl.OfdJL5qKrhCWk4l4butAwsN.uui"], ["updated_at", "2018-04-08 21:56:08.238321"], ["username", "hello"]]
+  Rendered welcome/welcome_greetings.html (5.5ms)
+
+Welcome#welcome_greetings: processed outbound mail in 189.4ms
+
+Sent mail to hello@hello.com (783.2ms)
+Date: Sun, 08 Apr 2018 21:56:08 +0800
+From: contact@xulung.com
+To: hello@hello.com
+Message-ID: <5aca1f786b883_52ee3fc2d1671c94108b3@QIANYongs-MacBook-Pro.local.mail>
+Subject: =?UTF-8?Q?=E6=AC=A2=E8=BF=8E=E6=82=A8=E6=88=90=E4=B8=BA=E4=BC=98=E7=A7=80=E5=B7=A5=E7=A8=8B=E5=B8=88?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFkb2N0eXBlIGh0bWw+CjxodG1sIHhtbG5zPSJodHRwOi8vd3d3LnczLm9y
+Zy8xOTk5L3hodG1sIj4KICA8aGVhZD4KICAgIDxtZXRhIGh0dHAtZXF1aXY9
+IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVU
+Ri04Ii8+CiAgICA8dGl0bGU+5qyi6L+O5oKo5oiQ5Li65LyY56eA5bel56iL
+5biIPC90aXRsZT4KICAgIDxzdHlsZT4KICAgICAgLyoqCiAgICAgKiB5dWUu
+Y3NzCiAgICAgKgogICAgICogeXVlLmNzcyBpcyBkZXNpZ25lZCBmb3IgcmVh
+ZGFibGUgY29udGVudC4KICAgICAqCiAgICAgKiBDb3B5cmlnaHQgKGMpIDIw
+MTMgLSAyMDE0IGJ5IEhzaWFvbWluZyBZYW5nLgogICAgICovCgogICAgICAu
+eXVlIHsKICAgICAgICBmb250OiA0MDAgMThweC8xLjYyICJHZW9yZ2lhIiwg
+IlhpbiBHb3RoaWMiLCAiSGlyYWdpbm8gU2FucyBHQiIsICJEcm9pZCBTYW5z
+IEZhbGxiYWNrIiwgIk1pY3Jvc29mdCBZYUhlaSIsIHNhbnMtc2VyaWY7CiAg
+ICAgICAgY29sb3I6ICM0NDQ0NDM7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87
+CiAgICAgICAgbWF4LXdpZHRoOiA2NDBweDsKICAgICAgICBwYWRkaW5nOiAw
+IDE2cHg7CiAgICAgICAgbGluZS1oZWlnaHQ6IDI7CiAgICAgICAgd29yZC13
+cmFwOiBicmVhay13b3JkOwogICAgICB9CgogICAgICAud2luZG93cyAueXVl
+IHsKICAgICAgICBmb250LXNpemU6IDE2cHg7CiAgICAgICAgZm9udC1mYW1p
+bHk6ICJHZW9yZ2lhIiwgIlNpbVN1biIsIHNhbnMtc2VyaWY7CiAgICAgIH0K
+CiAgICAgIC55dWUgOjotbW96LXNlbGVjdGlvbiB7CiAgICAgICAgYmFja2dy
+b3VuZC1jb2xvcjogcmdiYSgwLDAsMCwwLjIpOwogICAgICB9CiAgICAgIC55
+dWUgOjpzZWxlY3Rpb24gewogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJn
+YmEoMCwwLDAsMC4yKTsKICAgICAgfQoKICAgICAgLnl1ZSBoMSwKICAgICAg
+Lnl1ZSBoMiwKICAgICAgLnl1ZSBoMywKICAgICAgLnl1ZSBoNCwKICAgICAg
+Lnl1ZSBoNSwKICAgICAgLnl1ZSBoNiB7CiAgICAgICAgZm9udC1mYW1pbHk6
+ICJHZW9yZ2lhIiwgIlhpbiBHb3RoaWMiLCAiSGlyYWdpbm8gU2FucyBHQiIs
+ICJEcm9pZCBTYW5zIEZhbGxiYWNrIiwgIk1pY3Jvc29mdCBZYUhlaSIsICJT
+aW1TdW4iLCBzYW5zLXNlcmlmOwogICAgICAgIGNvbG9yOiAjMjIyMjIzOwog
+ICAgICB9CgogICAgICAueXVlIGgxIHsKICAgICAgICBmb250LXNpemU6IDEu
+OGVtOwogICAgICAgIG1hcmdpbjogMC42N2VtIDA7CiAgICAgICAgY29sb3I6
+ICM3MmMwMmM7CgogICAgICB9CiAgICAgIC55dWUgc3Bhbi5jb2xvci1ncmVl
+biB7Y29sb3I6ICM3MmMwMmM7fQogICAgICAueXVlIGgyLmNvbG9yLWdyZWVu
+IHtjb2xvcjogIzcyYzAyYzt9CiAgICAgIC55dWUgc3Ryb25nLmNvbG9yLWdy
+ZWVue2NvbG9yOiAjNzJjMDJjO30KICAgICAgLnl1ZSBzcGFuLmRyb3BjYXAt
+YmcgewogICAgICAgIGZsb2F0OiBsZWZ0OwogICAgICAgIGNvbG9yOiAjZmZm
+OwogICAgICAgIHBhZGRpbmc6IDdweCAwOwogICAgICAgIG1pbi13aWR0aDog
+NTBweDsKICAgICAgICBmb250LXNpemU6IDM1cHg7CiAgICAgICAgZm9udC13
+ZWlnaHQ6IDIwMDsKICAgICAgICBsaW5lLWhlaWdodDogMzVweDsKICAgICAg
+ICB0ZXh0LWFsaWduOiBjZW50ZXI7CiAgICAgICAgYmFja2dyb3VuZDogIzcy
+YzAyYzsKICAgICAgICBtYXJnaW46IDRweCAxMHB4IDAgMDsKICAgICAgfQoK
+ICAgICAgLnl1ZSA+IGgxIHsKICAgICAgICBtYXJnaW4tdG9wOiAwOwogICAg
+ICAgIGZvbnQtc2l6ZTogMmVtOwogICAgICB9CiAgICAgIC55dWUgc3BhbiB7
+CiAgICAgICAgY29sb3I6ICM3MmMwMmM7CiAgICAgIH0KICAgICAgLnl1ZSBo
+MiB7CiAgICAgICAgZm9udC1zaXplOiAxLjVlbTsKICAgICAgICBtYXJnaW46
+IDAuODNlbSAwOwogICAgICB9CgogICAgICAueXVlIGgzIHsKICAgICAgICBm
+b250LXNpemU6IDEuMTdlbTsKICAgICAgICBtYXJnaW46IDFlbSAwOwogICAg
+ICB9CgogICAgICAueXVlIGg0LAogICAgICAueXVlIGg1LAogICAgICAueXVl
+IGg2IHsKICAgICAgICBmb250LXNpemU6IDFlbTsKICAgICAgICBtYXJnaW46
+IDEuNmVtIDAgMWVtOwogICAgICB9CgogICAgICAueXVlIGg2IHsKICAgICAg
+ICBmb250LXdlaWdodDogNTAwOwogICAgICB9CgogICAgICAueXVlIHAgewog
+ICAgICAgIG1hcmdpbi10b3A6IDA7CiAgICAgICAgbWFyZ2luLWJvdHRvbTog
+MS40NmVtOwogICAgICB9CgogICAgICAueXVlIGEgewogICAgICAgIGNvbG9y
+OiAjMTExOwogICAgICAgIHdvcmQtd3JhcDogYnJlYWstd29yZDsKICAgICAg
+ICAtbW96LXRleHQtZGVjb3JhdGlvbi1jb2xvcjogcmdiYSgwLCAwLCAwLCAw
+LjQpOwogICAgICAgIHRleHQtZGVjb3JhdGlvbi1jb2xvcjogcmdiYSgwLCAw
+LCAwLCAwLjQpOwogICAgICB9CiAgICAgIC55dWUgYTpob3ZlciB7CiAgICAg
+ICAgY29sb3I6ICM1NTU7CiAgICAgICAgLW1vei10ZXh0LWRlY29yYXRpb24t
+Y29sb3I6IHJnYmEoMCwgMCwgMCwgMC42KTsKICAgICAgICB0ZXh0LWRlY29y
+YXRpb24tY29sb3I6IHJnYmEoMCwgMCwgMCwgMC42KTsKICAgICAgfQoKICAg
+ICAgLnl1ZSBoMSBhLAogICAgICAueXVlIGgyIGEsCiAgICAgIC55dWUgaDMg
+YSB7CiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lOwogICAgICB9Cgog
+ICAgICAueXVlIHN0cm9uZywKICAgICAgLnl1ZSBiIHsKICAgICAgICBmb250
+LXdlaWdodDogNzAwOwogICAgICAgIGNvbG9yOiAjMjIyMjIzOwogICAgICB9
+CgogICAgICAueXVlIGVtLAogICAgICAueXVlIGkgewogICAgICAgIGZvbnQt
+c3R5bGU6IGl0YWxpYzsKICAgICAgICBjb2xvcjogIzIyMjIyMzsKICAgICAg
+fQoKICAgICAgLnl1ZSBpbWcgewogICAgICAgIG1heC13aWR0aDogMTAwJTsK
+ICAgICAgICBoZWlnaHQ6IGF1dG87CiAgICAgICAgbWFyZ2luOiAwLjJlbSAw
+OwogICAgICB9CgogICAgICAueXVlIGEgaW1nIHsKICAgICAgICAvKiBSZW1v
+dmUgYm9yZGVyIG9uIElFICovCiAgICAgICAgYm9yZGVyOiBub25lOwogICAg
+ICB9CgogICAgICAueXVlIGZpZ3VyZSB7CiAgICAgICAgcG9zaXRpb246IHJl
+bGF0aXZlOwogICAgICAgIGNsZWFyOiBib3RoOwogICAgICAgIG91dGxpbmU6
+IDA7CiAgICAgICAgbWFyZ2luOiAxMHB4IDAgMzBweDsKICAgICAgICBwYWRk
+aW5nOiAwOwogICAgICAgIG1pbi1oZWlnaHQ6IDEwMHB4OwogICAgICB9Cgog
+ICAgICAueXVlIGZpZ3VyZSBpbWcgewogICAgICAgIGRpc3BsYXk6IGJsb2Nr
+OwogICAgICAgIG1heC13aWR0aDogMTAwJTsKICAgICAgICBtYXJnaW46IGF1
+dG8gYXV0byA0cHg7CiAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDsK
+ICAgICAgfQoKICAgICAgLnl1ZSBmaWd1cmUgZmlnY2FwdGlvbiB7CiAgICAg
+ICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgIHdpZHRoOiAxMDAlOwog
+ICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICAgICAgICBsZWZ0OiAwOwog
+ICAgICAgIG1hcmdpbi10b3A6IDEwcHg7CiAgICAgICAgZm9udC13ZWlnaHQ6
+IDQwMDsKICAgICAgICBmb250LXNpemU6IDE0cHg7CiAgICAgICAgY29sb3I6
+ICM2NjY2NjU7CiAgICAgIH0KCiAgICAgIC55dWUgZmlndXJlIGZpZ2NhcHRp
+b24gYSB7CiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lOwogICAgICAg
+IGNvbG9yOiAjNjY2NjY1OwogICAgICB9CgogICAgICAueXVlIGhyIHsKICAg
+ICAgICBkaXNwbGF5OiBibG9jazsKICAgICAgICB3aWR0aDogMTQlOwogICAg
+ICAgIG1hcmdpbjogNDBweCBhdXRvIDM0cHg7CiAgICAgICAgYm9yZGVyOiAw
+IG5vbmU7CiAgICAgICAgYm9yZGVyLXRvcDogM3B4IHNvbGlkICNkZWRlZGM7
+CiAgICAgIH0KCiAgICAgIC55dWUgYmxvY2txdW90ZSB7CiAgICAgICAgbWFy
+Z2luOiAwIDAgMS42NGVtOwogICAgICAgIGJvcmRlci1sZWZ0OiAzcHggc29s
+aWQgI2RhZGFkYTsKICAgICAgICBwYWRkaW5nLWxlZnQ6IDEycHg7CiAgICAg
+ICAgY29sb3I6ICM2NjY2NjQ7CiAgICAgIH0KCiAgICAgIC55dWUgYmxvY2tx
+dW90ZSBhIHsKICAgICAgICBjb2xvcjogIzY2NjY2NDsKICAgICAgfQoKICAg
+ICAgLnl1ZSB1bCwKICAgICAgLnl1ZSBvbCB7CiAgICAgICAgbWFyZ2luOiAw
+IDAgMjRweCA2cHg7CiAgICAgICAgcGFkZGluZy1sZWZ0OiAxNnB4OwogICAg
+ICB9CgogICAgICAueXVlIHVsIHsKICAgICAgICBsaXN0LXN0eWxlLXR5cGU6
+IHNxdWFyZTsKICAgICAgfQoKICAgICAgLnl1ZSBvbCB7CiAgICAgICAgbGlz
+dC1zdHlsZS10eXBlOiBkZWNpbWFsOwogICAgICB9CgogICAgICAueXVlIGxp
+IHsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjJlbTsKICAgICAgfQoKICAg
+ICAgLnl1ZSBsaSB1bCwKICAgICAgLnl1ZSBsaSBvbCB7CiAgICAgICAgbWFy
+Z2luLXRvcDogMDsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwOwogICAgICAg
+IG1hcmdpbi1sZWZ0OiAxNHB4OwogICAgICB9CgogICAgICAueXVlIGxpIHVs
+IHsKICAgICAgICBsaXN0LXN0eWxlLXR5cGU6IGRpc2M7CiAgICAgIH0KCiAg
+ICAgIC55dWUgbGkgdWwgdWwgewogICAgICAgIGxpc3Qtc3R5bGUtdHlwZTog
+Y2lyY2xlOwogICAgICB9CgogICAgICAueXVlIGxpIHAgewogICAgICAgIG1h
+cmdpbjogMC40ZW0gMCAwLjZlbTsKICAgICAgfQoKICAgICAgLnl1ZSAudW5z
+dHlsZWQgewogICAgICAgIGxpc3Qtc3R5bGUtdHlwZTogbm9uZTsKICAgICAg
+ICBtYXJnaW46IDA7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgfQoKICAg
+ICAgLyoueXVlIGNvZGUsCiAgICAueXVlIHR0IHsKICAgIGNvbG9yOiAjODA4
+MDgwOwogICAgICBmb250LXNpemU6IDEycHghaW1wb3J0YW50OwogICAgICBi
+YWNrZ3JvdW5kLWNvbG9yOiAjRjVGNUY1ICFpbXBvcnRhbnQ7CiAgICAgIHBh
+ZGRpbmc6IDAhaW1wb3J0YW50OwogICAgICBib3JkZXI6IG5vbmUhaW1wb3J0
+YW50OwogICAgICBmb250LWZhbWlseTogSGVsdmV0aWNhOwogICAgICBkaXNw
+bGF5OiBibG9jazsKICAgICAgbGluZS1oZWlnaHQ6IDE1MCU7CiAgICB9Cgog
+ICAgLnl1ZSBwcmUgewogICAgICBtYXJnaW46IDEuNjRlbSAwOwogICAgICBw
+YWRkaW5nOiA3cHg7CiAgICAgIGJvcmRlcjogbm9uZTsKICAgICAgYm9yZGVy
+LWxlZnQ6IDNweCBzb2xpZCAjZGFkYWRhOwogICAgICBwYWRkaW5nLWxlZnQ6
+IDEwcHg7CiAgICAgIG92ZXJmbG93OiBhdXRvOwogICAgICBsaW5lLWhlaWdo
+dDogMS41OwogICAgICBmb250LXNpemU6IDAuOTZlbTsKICAgICAgZm9udC1m
+YW1pbHk6IE1lbmxvLCBNb25hY28sIENvbnNvbGFzLCAiQ291cmllciBOZXci
+LCBtb25vc3BhY2U7CiAgICAgIGNvbG9yOiAjNGM0YzRjOwogICAgICBiYWNr
+Z3JvdW5kLWNvbG9yOiAjZjlmOWY3OwogICAgfQoKICAgIC55dWUgcHJlIGNv
+ZGUsCiAgICAueXVlIHByZSB0dCB7CiAgICAgIGNvbG9yOiAjNGM0YzRjOwog
+ICAgICBib3JkZXI6IG5vbmU7CiAgICAgIGJhY2tncm91bmQtY29sb3I6ICMz
+MzMzMzMKICAgICAgcGFkZGluZzogMDsKICAgIH0qLwoKICAgICAgLnl1ZSB0
+YWJsZSB7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgbWF4LXdpZHRo
+OiAxMDAlOwogICAgICAgIGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7CiAg
+ICAgICAgYm9yZGVyLXNwYWNpbmc6IDA7CiAgICAgICAgbWFyZ2luLWJvdHRv
+bTogMS41ZW07CiAgICAgICAgZm9udC1zaXplOiAwLjk2ZW07CiAgICAgICAg
+Ym94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgfQoKICAgICAgLnl1ZSB0
+aCwKICAgICAgLnl1ZSB0ZCB7CiAgICAgICAgdGV4dC1hbGlnbjogbGVmdDsK
+ICAgICAgICBwYWRkaW5nOiA0cHggOHB4IDRweCAxMHB4OwogICAgICAgIGJv
+cmRlcjogMXB4IHNvbGlkICNkYWRhZGE7CiAgICAgIH0KCiAgICAgIC55dWUg
+dGQgewogICAgICAgIHZlcnRpY2FsLWFsaWduOiB0b3A7CiAgICAgIH0KICAg
+ICAgLnl1ZSB0cjpudGgtY2hpbGQoZXZlbikgewogICAgICAgIGJhY2tncm91
+bmQtY29sb3I6ICNlZmVmZWU7CiAgICAgIH0KCiAgICAgIC55dWUgaWZyYW1l
+IHsKICAgICAgICBkaXNwbGF5OiBibG9jazsKICAgICAgICBtYXgtd2lkdGg6
+IDEwMCU7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMzBweDsKICAgICAgfQoK
+ICAgICAgLnl1ZSBmaWd1cmUgaWZyYW1lIHsKICAgICAgICBtYXJnaW46IGF1
+dG87CiAgICAgIH0KCiAgICAgIC55dWUgdGFibGUgcHJlIHsKICAgICAgICBt
+YXJnaW46IDA7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBib3JkZXI6
+IG5vbmU7CiAgICAgICAgYmFja2dyb3VuZDogbm9uZTsKICAgICAgfQoKICAg
+ICAgQG1lZGlhIChtaW4td2lkdGg6IDExMDBweCkgewogICAgICAgIC55dWUg
+YmxvY2txdW90ZSB7CiAgICAgICAgICBtYXJnaW4tbGVmdDogLTI0cHg7CiAg
+ICAgICAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7CiAgICAgICAgICBib3JkZXIt
+d2lkdGg6IDRweDsKICAgICAgICB9CgogICAgICAgIC55dWUgYmxvY2txdW90
+ZSBibG9ja3F1b3RlIHsKICAgICAgICAgIG1hcmdpbi1sZWZ0OiAwOwogICAg
+ICAgIH0KICAgICAgfQoKICAgIDwvc3R5bGU+CiAgPC9oZWFkPgogIDxib2R5
+PgoKICAgIDxkaXYgY2xhc3M9Inl1ZSI+CiAgICAgIDxoMT5IaSxoZWxsbyzm
+rKLov47mgqjvvIE8L2gxPgogICAgICA8ZGl2IGNsYXNzPSJjb250YWluZXIg
+Y29udGVudCI+CjxzZWN0aW9uIGlkPSJjdXJyaWN1bHVtIj4KICA8cD48c3Bh
+biBjbGFzcz0iZHJvcGNhcC1iZyI+5a+5PC9zcGFuPu+8jOaCqOWKoOWFpeea
+hOaYr+S4gOS4quaPkOmrmOaCqOiHquW3seeahOW5s+WPsO+8jOWcqOaCqOS9
+v+eUqOaIkeS7rOeahOW5s+WPsOS5i+WJje+8jOivt+WFiOivu+S4gOS4i+i/
+meevh+aWh+eroO+8jOeci+eci+iHquW3semAguWQiOi/meS4qumhueebruWQ
+l++8nzwvcD4KPHNlY3Rpb24gY2xhc3M9ImludHJvIj4KPGgxPiA8c3Ryb25n
+IGNsYXNzPSJjb2xvci1ncmVlbiI+6L+Z5Liq6aG555uu6YCC5ZCI5oiR5ZCX
+77yfPC9zdHJvbmc+PC9oMT4KPC9zZWN0aW9uPgo8cD48c3BhbiBjbGFzcz0i
+ZHJvcGNhcC1iZyI+5oiRPC9zcGFuPuS7rOi/meS4quWfueiuremhueebruS4
+jeaYr+S4uuaJgOacieS6uuWHhuWkh+eahO+8jOaIkeS7rOS5n+aXoOazleef
+pemBk+i/meS4quWfueiuremhueebruaYr+S4jeaYr+ecn+eahOmAguWQiOS9
+oOOAguaIkeS7rOWwhuimgeWBmu+8jOWSjOW3sue7j+WcqOWBmueahO+8jOaY
+r+e7p+e7reW8gOWPkeespuWQiOaIkeS7rOeahOaVmeWtpueQhuW/te+8jOaI
+keS7rOeahOS7t+WAvOingueahOWfueiuremhueebru+8jOWQjOaXtuS5n+W4
+jOacm+iDvea7oei2s+aCqOeahOmihOacn+OAguS7jui/memHjO+8jOS9oOS7
+rOW4jOacm+WPr+S7peW4ruWKqeS9oO+8jOaMh+WvvOS4gOadoemAmuWQkeaZ
+uuiDveWItumAoOW3peeoi+W4iOeahOato+ehrueahOmBk+i3r+OAguaIkeS7
+rOaciemihOWkh+ivvueoi++8jOWPr+S7peW4ruWKqeS9oOeQhuino+aIkeS7
+rOeahOmhueebru+8jOS5n+WPr+S7peW4ruWKqeS9oOS9nOWHuuWGs+WumuOA
+guS4jeiuuuaCqOaYr+S9leenjeW3peS9nOiDjOaZr++8jOmDveW6lOivpeS7
+jumihOWkh+ivvueoi+W8gOWni++8jOaEn+WPl+S4gOS4i+aIkeS7rOeahOmh
+ueebruiuoeWIkuOAguWmguaenOaCqOWujOaIkOS6humihOWkh+ivvueoi++8
+jOW5tuS4lOS6q+WPl+i/meS4quWtpuS5oOi/h+eoi++8jOaCqOWPr+S7peiA
+g+iZkeaIkeS7rOeahOS7mOi0ueivvueoi++8m+WmguaenOaCqOaXoOazleWu
+jOaIkOi/meS4qumihOWkh+ivvueoi++8jOW5tuS4lOS5n+aXoOazleS6q+WP
+l+WFtuS4reS5kOi2o++8jOmCo+S5iOaCqOWPr+iDveW5tuS4jemAguWQiO+8
+jOWPr+S7peiAg+iZkeS4jeimgeWPguWKoOi/meS4qumhueebruOAgjwvcD4K
+PHNlY3Rpb24gY2xhc3M9ImludHJvIj4KPGgxPjxzdHJvbmcgY2xhc3M9ImNv
+bG9yLWdyZWVuIj7miJHku6znmoTln7norq3pobnnm67kuI3pgILlkIjku6Xk
+uIvnsbvliKvnmoTkuro8L3N0cm9uZz48L2gxPgo8L3NlY3Rpb24+CjxzZWN0
+aW9uPgo8cD48c3BhbiBjbGFzcz0iZHJvcGNhcC1iZyI+6KaBPC9zcGFuPuef
+pemBk++8jOWBmuS4gOS7veWfueiureeahOivvueoi+aYr+mdnuW4uOeahOiK
+sei0ueaXtumXtOeahO+8jOWtpuS5oOS4gOS7veS5n+i/meagt+eahOivvueo
+i++8jOWQjOagt+mdnuW4uOiKsei0ueaCqOeahOaXtumXtO+8jOWmguaenOaC
+qOW5tuayoeacieS4i+WumuWGs+Wumu+8jOi/m+WFpei/meS4quihjOS4mu+8
+jOmCo+S5iOaCqOacgOWFiOimgeWBmueahOaYr+WuoeinhuiHquW3se+8jOWm
+guaenOaCqOWPkeeOsOiHquW3seaYr+S7peS4i+exu+WIq+eahOS6uu+8jOaC
+qOmcgOimgeiAg+iZkeS4gOS4i+imgeS4jeimgeWPguWKoOi/meS4quivvueo
+izwvcD4KPGJyPgo8aDM+PHN0cm9uZyBjbGFzcz0iY29sb3ItZ3JlZW4iPuaC
+qOWujOWFqOaYr+S4gOS4qumXqOWkluaxieaIluiAheS9oOS4jeehruWumuaZ
+uuiDveWItumAoOmAguWQiOS9oDwvc3Ryb25nPjwvaDM+CjxwPuWmguaenOaC
+qOWvueW3peS4muWujOWFqOaXoOefpe+8jOaIkeS7rOeahOivvueoi+WvueaC
+qOadpeivtOWkqumavuS6huOAguaIkeS7rOS5n+ehruWunueci+WIsOi/h++8
+jOaciembtuefpeivhueahOS6uuecn+eahOWujOaIkOS6hui/meS4quivvueo
+i++8jOS9huaYr+S7luS7mOWHuueahOWKquWKm+aYr+i2heS5juaDs+ixoeea
+hOOAguWvueS6jumbtuefpeivhueahOS6uu+8jOaIkeS7rOmdnuW4uOW7uuiu
+ru+8jOiKseS4gOS6m+aXtumXtO+8jOWlveWlveeahOeci+S4gOS4i+aIkeS7
+rOeahOWFjei0ueivvueoi++8jOaEn+inieS4gOS4i++8jOiHquW3seaYr+S4
+jeaYr+WPr+S7peaOpeWPl+OAgumihOWkh+ivvueoi+WPr+S7peW4ruWKqeaC
+qOW7uueri+i1t+S4gOS4quWfuuehgO+8jOWvueS6juW3peS4mueahOWfuueh
+gO+8jOS9huaYr+aCqOS5n+imgeWBmuWlveiKseS4i+aVsOWRqOaIluiAheaV
+sOaciOeahOaXtumXtO+8jOWOu+eQhuino+W5tuS4lOS4uuesrOS4gOS4quiv
+vueoi+WBmuWlveWHhuWkh+OAgjwvcD4KPGgzPjxzdHJvbmcgY2xhc3M9ImNv
+bG9yLWdyZWVuIj7mgqjpnIDopoHlnKgz5Liq5pyI5Lit5om+5LiA5Lu95paw
+5bel5L2cPC9zdHJvbmc+PC9oMz4KPHA+5oiR5Lus55qE5Z+56K6t6K6h5YiS
+6ZyA6KaB6ICX6LS55aSn6YeP55qE5pe26Ze05ZKM5Yqq5Yqb77yM5oiR5Lus
+5Lmf6K6k5Li65a2m5Lmg5pyJ5LiA5p2h5q2j56Gu55qE6YGT6Lev77yM5oiR
+5Lus5bCG5oqK5p625p6E5biu5oKo55CG5riF5qWa77yM5Z+65pys6YeN5aSN
+55qE5a2m5Lmg5ZKM5L2c5Lia77yM6K6p5oKo5Y2w6LGh5rex5Yi744CC5L2G
+5piv5oiR5Lus5Lmf5LiN5oOz5oqK6L+Z5Lqb6K++56iL5Y6L57yp5YiwOeWI
+sDEy5ZGo6L+Z5qC355qE5pe26Ze077yM5Zug5Li65q+P5Liq5Lq65a2m5Lmg
+55qE6L+H56iL5piv5LiN5LiA5qC355qE44CC5oiR5Lus5YWz5rOo55qE5piv
+5oKo5o6M5o+h5LqG5aSa5bCR5YaF5a6577yM5omA5Lul5a2m5Lmg55qE5pe2
+6Ze05piv5Zug5Lq66ICM5byC55qE44CCPC9wPgo8aDM+PHN0cm9uZyBjbGFz
+cz0iY29sb3ItZ3JlZW4iPuaCqOaDs+imgeWtpuWujOW8gOWni+aZuuiDveWI
+tumAoOWIm+S4mjwvc3Ryb25nPjwvaDM+CjxwPuWfuuS6juaIkeS7rOeahOe7
+j+mqjO+8jOaZuuiDveWItumAoOaYr+S5n+aYr+WxnuS6juS8oOe7n+ihjOS4
+mu+8jOWujOWFqOWfuuS6jui/meS4quivvueoi+W8gOWni+WIm+S4muaIluiA
+heW8gOWPkeaWsOS6p+WTgeW5tuS4jeiDveWBmueahOW+iOWlveOAguaIkeS7
+rOeahOmhueebruS4u+imgeaYr+WfuuS6jumCo+S6m+aDs+WcqOimgeWNiuW5
+tOWIsOS4gOW5tOS5i+WGheaJvuS4gOS7vei/meS4quihjOS4muW3peS9nOea
+hOS6uu+8jOWSjOWcqOi/meS4quihjOS4muWGheW3sue7j+aciee7j+mqjOea
+hOS6uuaDs+abtOa3seWFpeeahOS6huino+aZuuiDveWItumAoOeahOS6uuW8
+gOWPkeeahOOAgjwvcD4KPGgzPjxzdHJvbmcgY2xhc3M9ImNvbG9yLWdyZWVu
+Ij7mgqjmg7PopoHlv6vpgJ/nmoTlrabkuaDlt6XkuJrmnLrlmajkurrvvIxQ
+TEPmiJbogIVQcm9jZXNzPC9zdHJvbmc+PC9oMz4KPHA+5LiA5Liq5oiR5Lus
+5qC45b+D55qE5pWZ5a2m55CG5b+15piv77yM5LuO5pyA5Z+65pys55qE5Y6f
+5YiZ5YWl5omL44CC5Z+656GA55+l6K+G5ZKM5ZCE56eN5bel5YW355qE5L2/
+55So77yM5piv55So5p2l6Kej5Yaz5ZCE56eN5bel5Lia6Zeu6aKY55qE5YWz
+6ZSu77yM6L+Z5Lqb5piv5q+P5LiA5Liq5bel56iL5biI6YO96ZyA6KaB5o6M
+5o+h55qE44CC5oiR5Lus55qE5pWZ5a2m6L+H56iL5piv5LuO5pyA5Z+65pys
+55qE5Yid57qn6K++56iL5byA5aeL77yM54S25ZCO5oWi5oWi55qE6K6y6Kej
+5Z+656GA77yM5LuO5Yid57qn5Yiw6auY57qn77yM5Lit6Ze056m/5o+S5bel
+56iL5biI5Zyo5a6e6ZmF5oOF5Ya15Lit56Kw5Yiw55qE6Zeu6aKY44CC5Zyo
+6Kej5Yaz6L+Z5Lqb6Zeu6aKY55qE6L+H56iL5Lit77yM5b6q5bqP5riQ6L+b
+6Z2e5bi46YeN6KaB44CC5q+P5LiA5Z2X6aKG5Z+f6YO95piv5LiA5Liq6Z2e
+5bi45aSN5p2C55qE5bel5Lia6aKG5Z+f77yM5oKo5oOz5b+r6YCf55qE5o6M
+5o+h6L+Z5Lqb6aKG5Z+f77yM6Iqx6LS555qE5pe26Ze05piv6Z2e5bi46ZW/
+55qE77yM6L+Y6ZyA6KaB5aSn6YeP55qE546w5Zy65bel5L2c57uP6aqM44CC
+5oKo5pyf5b6F5a2m5a6M5ZCO5bCx6IO95o6M5o+h77yM6YKj5LmI6L+Z5Liq
+6K++56iL5bm25LiN5a6M5YWo6YCC5ZCI5L2g44CCPC9wPgo8aDM+PHN0cm9u
+ZyBjbGFzcz0iY29sb3ItZ3JlZW4iPuaCqOWPquaYr+aDs+iKsemSseS5sOS4
+gOS6m+Wfueiureivvueoi+aIluiAheiusuS5iTwvc3Ryb25nPjwvaDM+Cjxw
+PuS4gOaXpuaCqOazqOWGjOS6hui/meS4qumhueebru+8jOaIkeS7rOWwseWc
+qOS4uuaCqOaKlei1hOS6huOAguaCqOWcqOi/meS4qumhueebruS4reWtpuS5
+oOeahOi2iuS5he+8jOaIkeS7rOeahOWFs+ezu+Wwsei2iue0p+Wvhu+8jOaI
+keS7rOS4uuaCqOiKsei0ueeahOaXtumXtOWwsei2iuWkmuOAguWfueiureea
+hOebrueahOaYr+S4uuS6huW4ruWKqeaCqO+8jOWHhuWkh+WlveS6uuS6i+aZ
+uuiDveWItumAoOW3peeoi+W4iOi/meS4quinkuiJsu+8jOS4jeaYr+ivtOaC
+qOS4uuS6huS5sDEwMOWwj+aXtueahOWfueiureivvueoi+aIluiAheivtDEw
+MOmhteeahOiusuS5ieOAguWmguaenOS9oOeahOebrueahOaYr+iKsemSseS5
+sOivvueoi++8jOmCo+S5iOS4gOS6m+S5puacrOWPr+iDveacgOmAguWQiOaC
+qO+8jOaIkeS7rOi/meS4qumhueebruS4jemAguWQiOaCqOS6huOAgjwvcD4K
+PC9zZWN0aW9uPgo8c2VjdGlvbiBjbGFzcz0iaW50cm8iPgo8aDE+PHN0cm9u
+ZyBjbGFzcz0iY29sb3ItZ3JlZW4iPuacgOmAguWQiOi/meS4quiuoeWIkuea
+hOS6ujwvc3Ryb25nPjwvaDE+Cjwvc2VjdGlvbj4KPHA+PHNwYW4gY2xhc3M9
+ImRyb3BjYXAtYmciPuWtpjwvc3Bhbj7vvIzkuaDmmK/kuIDkuKrovpvoi6bn
+moTov4fnqIvvvIzlpoLmnpzmgqjlt7Lnu4/nnIvliLDov5nph4zkuobvvIzp
+gqPkuYjmgqjlupTor6XpnZ7luLjpgILlkIjmiJHku6zov5nkuKrpobnnm67j
+gILmiJHku6zkvJrliJflh7rmiJHku6znmoTkvJjnp4DnmoTlrablkZjnmoTn
+ibnotKjvvIzmgqjliJnlj6/ku6Xoh6rlt7HpgInmi6nov5nkuKrmmK/kuI3m
+mK/pgILlkIg8L3A+PHA+5aaC5p6c5oKo5Lmf5piv5Lul5LiL55qE5a2m5ZGY
+57G75Z6L77yM5bCG5Lya6Z2e5bi45Lqr5Y+X5oiR5Lus55qE6aG555uu77ya
+PC9wPjx1bD48bGk+5oKo5bCG5oS/5oSP5oqK5pm66IO95Yi26YCg5bel56iL
+5biI77yM5b2T5YGa6Ieq5bex55qE6IGM5Lia5Y+R5bGVPC9saT48bGk+5oKo
+5oS/5oSP6Iqx6LS55bC95Y+v6IO95aSa55qE5pe26Ze05Y675a2m5Lmg6L+Z
+5Liq6aG555uu77yM5bm25Zyo5a6e6Le15Y6757uD5LmgPC9saT48bGk+5oKo
+5LiN6ZyA6KaB5Yir5Lq655qE552j5L+D5bCx5Y+v5Lul5L+D5L2/6Ieq5bex
+5pyd552A5q2j56Gu55qE5pa55ZCR5YmN6L+bPC9saT48bGk+5oKo5Lqr5Y+X
+5Y+R546w5ZKM6Kej5Yaz6Zeu6aKY55qE6L+H56iLPC9saT48bGk+5oKo5oOz
+5a2m5Lmg5L2c5Li65LiA5Liq5bel56iL5biI5bqU6K+l5o6M5o+h55qE5omO
+5a6e5Z+656GA77yM6ICM5LiN5piv6YKj5Lqb5L2/55So5ZCE56eN5Y6C5ZWG
+5bel5YW355qE55qE5bCP5oqA6IO9PC9saT48bGk+5oKo5YuH5LqO5o+Q5Ye6
+6Zeu6aKY77yM5oKo5Y+v5Lul5Zyo57q/5LiK5a2m5Lmg5bm25LiU5Y6757q/
+5LiL5Lqk5rWB44CCPC9saT48bGk+5oKo5pyJ5YWF6Laz55qE6ICQ5b+D5a2m
+5Lmg77yM5ZyoNuS4quaciOWIsDEy5Liq5pyI55qE5pe26Ze05oWi5oWi55qE
+5a2m5Lmg5oiQ6ZW/PC9saT48L3VsPgo8c2VjdGlvbiBjbGFzcz0iaW50cm8i
+Pgo8aDE+PHN0cm9uZyBjbGFzcz0iY29sb3ItZ3JlZW4iPuaVmeWtpueQhuW/
+tTwvc3Ryb25nPjwvaDE+Cjwvc2VjdGlvbj4KPHNlY3Rpb24gaWQ9InBoYXNl
+cyI+CjxwPjxzcGFuIGNsYXNzPSJkcm9wY2FwLWJnIj7kuaA8L3NwYW4+5oOv
+5LqO5a2m5Lmg77yM5Lmf5Lya5piv5LiA56eN5Lqr5Y+X44CC5b6I5aSa6KGM
+5Lia55qE5bel56iL5biI77yM5Zyo5a2m5Lmg5paw55qE5oqA5pyv5pe277yM
+5oC75piv5b6I5aS055eb44CC5pm66IO95Yi26YCg6ZyA6KaB5o6M5o+h55qE
+5Lic6KW/5aSq5aSa5LqG77yM5pyJ5ZCE56eN5py65Zmo5Lq65ZOB54mM77yM
+5pyJ5ZCE56eNUExD77yM5pyJ5ZCE56eN55S15rCU6L2v5Lu277yM6Jm954S2
+5paw5oqA5pyv5pu05paw5LiN5aSa77yM5L2G5piv5LiN5ZCM55qE5Y6C5a62
+5pyJ5ZCE56eN5LiN5ZCM55qE5qCH5YeG44CC5a+55LqO5bel5Lia5py65Zmo
+5Lq65oiW6ICFUExD5p2l6K+077yM5rKh5pyJ5Lu75L2V55qE6KaB5rGC6K+0
+5ZOq5LiA5a626ZyA6KaB5YWI5a2m77yM5oiW6ICF5biC5Zy65LiK5ZOq5LiA
+56eN5pyA5Li654Gr5bCx5a2m6YKj5LiA56eN44CCPC9wPgo8YnI+CjxwPuWt
+pueUn+e7j+W4uOS8mumXrueahOaYr++8muKAnOaIkeW6lOivpeWtpuS7gOS5
+iO+8n+KAne+8jOKAnOaIkeW6lOivpeWtpuWIsOS7gOS5iOeoi+W6j++8n+KA
+nSDigJzmiJHlupTor6XmgI7kuYjlrabvvJ/igJ3vvIwg4oCc5a2m5Lmg6L+Z
+5Liq6KaB6Iqx6LS55aSa5bCR5pe26Ze04oCd77yMIOWSjOKAnOS7gOS5iOaX
+tuWAmeaIkeWPr+S7peWBnOS4i+WtpuS5oOS6hu+8n+KAnTwvcD48cD7ov5nk
+upvpl67popjlhbblrp7pg73mmK/lm6DkurrogIzlvILnmoTvvIzmiJHku6zn
+moTpooTmnJ/mmK/lpoLmnpzmgqjog73nkIblv7XmiJHku6znmoTmlZnlrabn
+kIblv7XvvIzov5nkvJrluK7liqnmgqjmib7liLDoh6rlt7HnmoTnrZTmoYjj
+gII8L3A+CjxwPuWcqOivqemYhuWtpuS5oO+8jOWtpueUn+WPr+S7peWcqOS7
+u+S9lemAguWQiOiHquW3seeahOaXtumXtO+8jOaJk+W8gOaVmeWtpuinhumi
+ke+8jOingueci+inhumikeeahOaXtuWAmeWPr+S7peagueaNrumcgOimgeaa
+guWBnO+8jOWujOaIkOaAneiAg+aIluiAheWBmuWlveWtpuS5oOeslOiusOOA
+guWmguaenOingueci+S4gOmBjeS5i+WQjui/mOayoeacieaOjOaPoeWlve+8
+jOWPr+S7peWAkuWbnuWOu+mHjeaWsOaSreaUvu+8jOWwseWDj+aKiuaVmeW4
+iOivt+WbnuS6huWutuS4gOagt+OAguWmguatpOS4gOmBjeWPiOS4gOmBje+8
+jOebtOWIsOaOjOaPoeS4uuatouOAguWcqOi/meS4qui/h+eoi+S4re+8jOWt
+puW+l+W/q+eahOWtpueUn+iKsei0ueeahOWtpuS5oOaXtumXtOavlOi+g+Ww
+ke+8jOWtpuW+l+aFoueahOWtpueUn+iKsei0ueeahOWtpuS5oOaXtumXtOav
+lOi+g+Wkmu+8jOS9huaYr++8jOW5s+ihoei1t+adpe+8jOW5tuayoeacieWP
+keeUn+W7tumVv+WtpuS5oOaXtumXtOOAgeWKoOmHjeWtpueUn+i0n+aLheea
+hOaKpeWRiuOAguacgOS4jeWgquW/jeWPl+eahOS4jeW5s+etieaYr+ehrOim
+geaKiuS4jeWQjOeahOWtpueUn+WQjOetieWvueW+he+8jOWcqOivqemYhu+8
+jOi/meS4quS6mumHjOaWr+WkmuW+t+eahOWkp+WjsOeWvuS5juW3sue7j+Wu
+jOe+juino+WGs+S6huOAgjwvcD4KPGJyPgo8cD7miJHku6zlhbPms6jnmoTl
+rabkuaDmlYjmnpzvvIzmmK/mgqjlr7nkuo7ov5nkuKrnn6Xor4bnmoTnhp/n
+u4Pkvb/nlKjvvIzogIzkuI3ku4Xku4XmmK/poobkvJrjgILmgqjpnIDopoHl
+rabkuaDnlKjnn6Xor4bljrvliIbmnpDpl67popjvvIzogIzkuI3lj6rlhbvn
+nLzkuo7op6PlhrPpl67popjvvIzmgqjpnIDopoHnhp/nu4PnmoTov5DnlKjn
+n6Xor4bvvIznibnliKvmmK/kuJPkuJrnmoTlt6XnqIvluIjvvIzmgqjov5jp
+nIDopoHliqjmiYvjgILlr7nov5nkuKrpoobln5/nmoTnn6Xor4bvvIzmgqjp
+nIDopoHlj6/ku6Xkv6HmiYvnspjmnaXvvIzlkIzml7bkuZ/lj6/ku6Xln7no
+rq3lhbbku5bkurrjgILogIzmiJDkuLrov5nmoLfnmoTkuJPlrrbnmoTmlrnm
+s5Xlj6rmnInkuIDkuKrvvIzlsLHmmK/mlbDljYPnlJroh7PkuIrkuIflsI/m
+l7bnmoTnu4PkuaDlkozlrp7pmYXmk43kvZzjgIIKPC9zZWN0aW9uPgo8c2Vj
+dGlvbiBpZD0icGhhc2VzIj4KCjxwPjxzcGFuIGNsYXNzPSJkcm9wY2FwLWJn
+Ij5EPC9zcGFuPmVhbO+8geaXoueEtuaCqOW3sue7j+eci+WIsOi/memHjO+8
+jOmCo+S5iOi/memHjOmdnuW4uOmAguWQiOaCqO+8jOWboOS4uuaOpeS4i+ad
+peaCqOimgeS4uuaCqOeahOWtpuS5oOS7mOi0ue+8jOaIkeS7rOeahOaUtui0
+ueagh+WHhuaYrzQ5OS45OeS4gOS4quaciO+8jOWtpueUn+aYrzI5OS45OeS4
+gOS4quaciO+8jOWFpemXqOS8muWRmDE5Ljk55LiA5Liq5pyI44CC5aaC5p6c
+5oKo6IO95Zyo5LiA5Liq5pyI5a2m5a6M5omA5pyJ55qE6K++56iL77yM5Lmf
+5piv5LuY6L+Z5LmI5aSa6ZKx77yM5oiR5Lus5biM5pyb5oKo5Yqq5Yqb5Yqq
+5Yqb5YaN5Yqq5Yqb77yM5bCR5LuY5Ye677yM5aSa5pS26I6377yBPC9wPgoK
+PC9zZWN0aW9uPgo8L3NlY3Rpb24+CjwvZGl2PgoKPC9kaXY+CiAgICA8IS0t
+IEZvb3RlciAtLT4KICAgIDxocj4KICAgIDxkaXYgc3R5bGU9InRleHQtYWxp
+Z246IGNlbnRlcjsiPgogICAgICA8ZGl2IGNsYXNzPSJoZWFkbGluZSI+CiAg
+ICAgICAgPGgzIHN0eWxlPSJ0ZXh0LWFsaWduOiBjZW50ZXI7Ij7lhbPms6jo
+r6npmIblvq7kv6HlhazkvJflj7c8L2gzPgogICAgICA8L2Rpdj4KICAgICAg
+PGltZyBzcmM9Ii9hc3NldHMvUVJ4dWx1bmctNmNlNzk1NzBhNGYyNzQ3Njc5
+MTc0MDU4YTM5OTQ5MWMuanBnIj4KICAgICAgPGEgaHJlZj0iLyI+PGltZyBz
+cmM9Ii9hc3NldHMveHVsdW5nX2ljb25fMi4yLTk5YjU0MTA0MTRkOThjMzU4
+NzNkNjcwNzAzYWZhZDkwLnBuZyIgd2lkdGg9IjYwJSIgaGVpZ2h0PSI2MCUi
+IGFsdD0iTG9nbyI+PC9hPgogICAgPC9kaXY+CiAgPC9ib2R5Pgo8L2h0bWw+
+Cg==
+
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2018-04-08 21:56:09.241037"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2018-04-08 21:56:09.241037"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-04-08 21:56:09.241806"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 1113ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-08 21:56:09 +0800
+Processing by WelcomeController#home as HTML
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at DESC
+  Rendered welcome/_mastery.html.erb (0.0ms)
+  Rendered welcome/_register.html.erb (0.1ms)
+  Rendered welcome/home.html.erb within layouts/home (1.3ms)
+  Rendered shared/_head.html.erb (670.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered shared/_headerV3.html.erb (3.6ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 681ms (Views: 679.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/desktop/index" for 127.0.0.1 at 2018-04-08 21:56:11 +0800
+Processing by DesktopController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mConsultant Load (0.1ms)[0m  [1mSELECT  "consultants".* FROM "consultants"  WHERE "consultants"."user_id" = ? LIMIT 1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "videos"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes"[0m
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mVideo Load (0.1ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at ASC LIMIT 9 OFFSET 0[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 't' AND "posts"."approved" = 't'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 'f'[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."approved" = 'f'
+  [1m[36mVideo Load (0.1ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE (user_id=1)[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT "videos".* FROM "videos" INNER JOIN "favorites" ON "videos"."id" = "favorites"."favorited_id" WHERE "favorites"."user_id" = ? AND "favorites"."favorited_type" = 'Video'  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT DISTINCT tags.*, count(taggings.tag_id) as count FROM "tags" INNER JOIN "taggings" ON "taggings"."tag_id" = "tags"."id" INNER JOIN "videos" ON "videos"."id" = "taggings"."video_id" INNER JOIN "taggings" "taggings_tags" ON "taggings_tags"."tag_id" = "tags"."id" GROUP BY taggings.tag_id,taggings.video_id[0m
+  Rendered desktop/_myuploadedcourse.html.erb (0.7ms)
+  Rendered desktop/_newcourse.html.erb (12.3ms)
+  Rendered desktop/_user.html.erb (27.0ms)
+  Rendered desktop/index.html.erb within layouts/desktop (28.5ms)
+  Rendered shared/_head.html.erb (646.9ms)
+  Rendered shared/_headerV3.html.erb (1.6ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered desktop/_nav.html.erb (13.2ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 748ms (Views: 697.0ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2018-04-08 21:56:14 +0800
+Processing by VideosController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "videos"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes"[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT  "videos".* FROM "videos"  WHERE "videos"."published" = 't' AND "videos"."approved" = 't'  ORDER BY created_at DESC LIMIT 9 OFFSET 0
+  [1m[36mVideo Load (0.1ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't' AND "videos"."approved" = 't'  ORDER BY created_at DESC[0m
+  Rendered service/_course.html.erb (0.8ms)
+  Rendered videos/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_head.html.erb (620.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered shared/_headerV3.html.erb (3.2ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 637ms (Views: 632.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/timeline-right.svg" for 127.0.0.1 at 2018-04-08 21:56:15 +0800
+
+
+Started GET "/service/isthisforme" for 127.0.0.1 at 2018-04-08 21:56:17 +0800
+Processing by ServiceController#isthisforme as HTML
+  Rendered service/isthisforme.html.erb within layouts/application (0.8ms)
+  Rendered shared/_head.html.erb (671.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered shared/_headerV3.html.erb (3.2ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 681ms (Views: 679.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2018-04-08 21:56:19 +0800
+Processing by VideosController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "videos"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes"[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT  "videos".* FROM "videos"  WHERE "videos"."published" = 't' AND "videos"."approved" = 't'  ORDER BY created_at DESC LIMIT 9 OFFSET 0
+  [1m[36mVideo Load (0.1ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't' AND "videos"."approved" = 't'  ORDER BY created_at DESC[0m
+Completed 304 Not Modified in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/learning/%E9%A2%84%E5%A4%87%E8%AF%BE%E7%A8%8B" for 127.0.0.1 at 2018-04-08 21:56:21 +0800
+Processing by DesktopController#startlearning as HTML
+  Parameters: {"tag"=>"预备课程"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT  "tags".* FROM "tags"  WHERE "tags"."name" = '预备课程' LIMIT 1[0m
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (ActiveRecord::RecordNotFound):
+  app/models/video.rb:87:in `tagged_with'
+  app/controllers/desktop_controller.rb:120:in `startlearning'
+
+
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/bruceboty/.rvm/gems/ruby-2.1.5/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.5ms)
+
+
+Started GET "/service/isthisforme" for 127.0.0.1 at 2018-04-08 21:56:25 +0800
+Processing by ServiceController#isthisforme as HTML
+  Rendered service/isthisforme.html.erb within layouts/application (0.2ms)
+  Rendered shared/_head.html.erb (672.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered shared/_headerV3.html.erb (3.2ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 681ms (Views: 680.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/desktop/index" for 127.0.0.1 at 2018-04-08 21:56:31 +0800
+Processing by DesktopController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mConsultant Load (0.1ms)[0m  SELECT  "consultants".* FROM "consultants"  WHERE "consultants"."user_id" = ? LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "videos"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes"
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT  "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at ASC LIMIT 9 OFFSET 0
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 't' AND "posts"."approved" = 't'[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 'f'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."approved" = 'f'[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT "videos".* FROM "videos"  WHERE (user_id=1)
+Completed 304 Not Modified in 6ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2018-04-08 21:56:35 +0800
+Processing by VideosController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "videos"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes"
+  [1m[36mVideo Load (0.2ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."published" = 't' AND "videos"."approved" = 't'  ORDER BY created_at DESC LIMIT 9 OFFSET 0[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't' AND "videos"."approved" = 't'  ORDER BY created_at DESC
+Completed 304 Not Modified in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/desktop/index" for 127.0.0.1 at 2018-04-08 21:56:36 +0800
+Processing by DesktopController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mConsultant Load (0.1ms)[0m  SELECT  "consultants".* FROM "consultants"  WHERE "consultants"."user_id" = ? LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "videos"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes"
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT  "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at ASC LIMIT 9 OFFSET 0
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 't' AND "posts"."approved" = 't'[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 'f'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."approved" = 'f'[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT "videos".* FROM "videos"  WHERE (user_id=1)
+Completed 304 Not Modified in 6ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/desktop/tech" for 127.0.0.1 at 2018-04-08 21:56:37 +0800
+Processing by DesktopController#tech as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mVideo Load (0.1ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at ASC[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT DISTINCT tags.*, count(taggings.tag_id) as count FROM "tags" INNER JOIN "taggings" ON "taggings"."tag_id" = "tags"."id" INNER JOIN "videos" ON "videos"."id" = "taggings"."video_id" INNER JOIN "taggings" "taggings_tags" ON "taggings_tags"."tag_id" = "tags"."id" GROUP BY taggings.tag_id,taggings.video_id
+  Rendered desktop/_tagcourse.html.erb (1.3ms)
+  Rendered desktop/tech.html.erb within layouts/desktop (2.4ms)
+  Rendered shared/_head.html.erb (674.8ms)
+  Rendered shared/_headerV3.html.erb (1.9ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered desktop/_nav.html.erb (0.9ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 689ms (Views: 686.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/desktop/sharetech" for 127.0.0.1 at 2018-04-08 21:56:40 +0800
+Processing by DesktopController#sharetech as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 't'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"  WHERE "posts"."user_id" = 1 AND "posts"."published" = 'f'[0m
+  Rendered posts/_newpost.html.erb (11.1ms)
+  Rendered desktop/sharetech.html.erb within layouts/desktop (13.7ms)
+  Rendered shared/_head.html.erb (663.1ms)
+  Rendered shared/_headerV3.html.erb (2.4ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered desktop/_nav.html.erb (1.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 688ms (Views: 685.2ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-04-08 21:57:03 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tZtWHQIuvf2u9cf1Or0oEc9/44qM5PaXPFXHLqRqGH0="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-08 21:57:03 +0800
+Processing by WelcomeController#home as HTML
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mVideo Load (0.1ms)[0m  SELECT "videos".* FROM "videos"  WHERE "videos"."published" = 't'  ORDER BY created_at DESC
+  Rendered welcome/_mastery.html.erb (0.1ms)
+  Rendered welcome/_register.html.erb (0.1ms)
+  Rendered welcome/home.html.erb within layouts/home (1.6ms)
+  Rendered shared/_head.html.erb (677.4ms)
+  Rendered shared/_headerV3.html.erb (2.8ms)
+  Rendered shared/_flash.html.erb (0.1ms)
+  Rendered shared/_footerV3.html.erb (0.2ms)
+Completed 200 OK in 688ms (Views: 686.1ms | ActiveRecord: 0.2ms)

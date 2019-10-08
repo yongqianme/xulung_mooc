@@ -1,0 +1,13 @@
+
+<%= div_for comment do %>
+<div class="media">
+	<div class="pull-left">
+<img class="media-object" src="<%=letter_avatar_url(PinYin.permlink(comment.author), 200)%>", width="50">
+</div>
+<div class="media-body">
+	<small class="color-green"> @<%=comment.author  %>/<%= time_ago_in_words(comment.created_at) %>/<a href="#leavecomment"><%=t('comments.reply')  %></a></small>
+	<br>
+	<%=markdown(comment.body)  %>
+</div>
+</div>
+<% end %>

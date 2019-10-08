@@ -1,0 +1,37 @@
+
+<div class="row illustration-v2 margin-bottom-30">    
+  <h1 class="pull-left"><%= link_to @tag.upcase, videotag_path(@tag) %></h1>
+  <p class="badge badge-red rounded"><%= @videos.count %><%=t('videos.coursenum')  %></p>
+  <div class="col-md-12">
+    <%- @videos.each do |video| %>
+    <div class="listtight col-md-4">
+      <div class="thumbnails thumbnail-style">
+        <ul class="list-inline badge-lists badge-box-v1">
+        <% if video.created_at>(Time.now-7.day)%>
+          <li><span class="badge badge-red rounded">New</span>
+       <% else %>
+       <% if  video.membergroup=="free" %>
+          <li><span class="badge badge-red rounded"><%=video.membergroup  %></span>
+          <% end %>
+       <% end %>
+           <a href="<%=video_path(video)%>"><img alt="" src="<%= video.still.thumb %>" class="full-width img-responsive " ></a>
+           </li>
+       </ul>
+       <%-if user_signed_in? and current_user.membership==video.membergroup  -%>
+       <%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+        <%= link_to t('videos.addlist'), favorites_path(video_id: video), method: :post, :class => 'btn-sm btn-success' %>
+        <%- else -%>
+          <%= link_to t('videos.removefromlist'), favorite_path(video), method: :delete,:class => 'btn-sm btn-danger' %>
+        <%- end -%>
+        <% end %>
+        <p></p>
+        <p><a href="<%=video_path(video)%>"><%=video.filename %></a></p>
+            
+    </div>
+  </div>
+  <% end -%>
+</div>
+</div>
+<%=paginate @videos %>
+
+

@@ -1,0 +1,26 @@
+
+<div class="panel panel-green margin-bottom-40">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% cache do %>
+      <%- @videos.each do |video| %>
+      <tr>
+        <td><%=video.id %></td>
+        <td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+        <td><a href="<%=video_path(video)%>"><button type="button" class="btn-u btn-u-sea-shop"><%=t('videos.watch') %></button></a></td>
+        </tr>
+        <% end -%>
+      </tbody>
+    </table>
+    <%=paginate @videos %>
+    <% end %>
+  </div>
+</div>
+</div>                                    

@@ -1,0 +1,41 @@
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">成功案例</h1>
+    <ul class="pull-right breadcrumb">
+      <li>
+        <a href="<%=root_path %>">首页</a>
+      </li>
+      <li class="active">成功案例</li>
+    </ul>
+  </div>
+  <!--/container-->
+</div>
+<!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+<div class="container content">
+  <div class="row">
+  <%- 21.times do-%>
+    <div class="col-md-4">
+          <div class="testimonials testimonials-v1 testimonials-bg-dark">
+            <p>Crasjusto ducimus qui cupiditate non provident, similique sunt in culpaid est anditiis praesentium praesentium blanditiis praesentium non provident, similique sunt in culpaid est anditiis praesentium praesentium..</p>
+            <div class="testimonial-info">
+              <img class="rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
+              <span class="testimonial-author">
+                Kate Davenport
+                <em>Web Designer, Google Inc.</em>
+              </span>
+            </div>
+          </div>
+          <p><br><br></p>
+    </div>
+    <%end%>
+  </div>
+</div>
+<!--=== End Content Part ===-->

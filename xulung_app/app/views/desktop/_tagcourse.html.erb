@@ -1,0 +1,24 @@
+<div class="sorting-block">
+  <ul class="row sorting-grid">
+    <% tag_cloud Video.tag_counts, %w{s m l} do |tag, css_class| %>
+    <%video=Video.by_tag(tag.name).last  %>
+    <li class="col-md-6 col-sm-6 col-xs-12">
+      <div class="thumbnails thumbnail-style">
+      <a class="info" href="<%=learning_path(tag.name)%>">
+        <ul class="list-inline badge-lists badge-box-v1">
+          <li>
+            <span class="badge badge-red rounded"><%=video.membergroup.capitalize  %></span>
+            <img class="img-responsive" src="<%=video.still.large  %>" alt="<%=video.filename %>" width="100%" height="100%">
+          </li>
+        </ul>
+        <div class="caption">
+          <span></span>
+          <h3><a class="hover-effect" href="#"><%=tag.name.upcase %></a></h3>
+          <p><%=sanitize(video.description) %></p>
+          <p><a href="<%=learning_path(tag.name)%>" class="btn-u btn-u-s">开始学习 <i class="fa fa-angle-right margin-left-5"></i></a></p>
+        </div>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</div>

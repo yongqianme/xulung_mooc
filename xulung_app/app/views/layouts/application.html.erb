@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<%=render 'shared/head'  %>
+
+</head>
+<body id="home">
+	<%=render 'shared/headerV3'  %>
+	<%=render 'shared/flash'  %>
+		<div class="wrapper">
+
+		<%= yield :layout %>
+		</div>
+<div>
+	<%= render :partial => "shared/footerV3" %>
+	</div>
+	</div>
+</body>
+
+</html>

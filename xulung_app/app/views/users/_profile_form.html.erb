@@ -1,0 +1,24 @@
+
+<%= form_for [@user, Profile.new] do |f| %>
+<div>
+		<h3>申请成为技术顾问</h3>
+		<p>成为技术顾问，在业余时间制作课程，您将获得80%的收入。
+		诩阆还将为您推荐经过我们严格筛选的靠谱兼职，对于兼职工作，诩阆承诺按时薪付费，先支付后工作。</p>
+		<div class="post-comment">
+		<fieldset>
+			<section>
+				<label class="label"></label>
+				<label class="textarea">
+					<%= f.text_area :experience, placeholder: t('comments.message'),:rows=>'1' %>
+          <!-- <%= f.text_area :reward, placeholder: t('comments.message'),:rows=>'1' %> -->
+          <!-- <%= f.text_area :avatar, placeholder: t('comments.message'),:rows=>'1' %> -->
+				</label>
+
+			</section>
+
+			<%= f.submit t('submit'), :class => 'btn-u btn-success' %>
+		</fieldset>
+	</div>
+</div>
+<% end %>
+<!-- End Comment Form -->

@@ -1,0 +1,59 @@
+<div class="tab-content">
+
+	<div class="tab-pane fade in <%= is_active?(desktop_index_path) %>" id="user">
+		<%=render "user"  %>
+	</div>
+
+
+	<%=render 'taglist'  %>
+
+	<!-- <div class="tab-pane fade in <%= is_active?(desktop_course_path) %>" id="courses">
+		<%=render "course"  %>
+	</div> -->
+
+	<div class="tab-pane fade in <%= is_active?(desktop_mycourse_path) %>" id="mycourselist">
+
+		<table class="table table-bordered">
+			<tbody>
+				<% cache do %>
+				<%current_user.favorite_videos.each do |video|  %>
+				<tr>
+					<td><a href="<%=video_path(video)%>"><%=video.filename %></a></td>
+
+					<td>
+						<small><a href="<%=video_path(video)%>" class="btn-sm btn-success"><i class="fa fa-play"></i></a>
+							<% if user_signed_in? %>
+							<%- unless current_user.favorite_videos.exists?(id: video.id) -%>
+							<%= link_to t('videos.addlist'), favorite_index_path(video_id: video), method: :post, :class => 'btn-sm btn-success' %>
+							<%- else -%>
+							<%= link_to t('videos.removefromlist'), favorite_path(video), method: :delete,:class => 'btn-sm btn-danger' %>
+							<%- end -%>
+							<% end %></small>
+						</td>
+					</tr>
+					<% end -%>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div class="tab-pane fade in <%= is_active?(desktop_report_path) %>" id="report">
+
+			<% tag_cloud current_user.favorite_videos.tag_counts, %w{s m l} do |tag, css_class| %>
+			<h2><%a=current_user.favorite_videos.by_tag(tag.name).size.to_f %></h2>
+			<h2><%b=Video.by_tag(tag.name).size.to_f  %></h2>
+			<h2><%c=a/b  %>
+				<h2><%d=c.round(2)  %></h2>
+				<h2><%e=d*100  %>
+
+					<h3 class="heading-xs"><%=tag.name.upcase%> <span class="pull-right"><%=e.round(0)  %>%</span></h3>
+					<div class="progress progress-u progress-sm">
+						<div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%=d*100  %>" aria-valuemin="0" aria-valuemax="100" style="width: <%=d*100%>%">
+						</div>
+					</div>
+					<% end %>
+
+				</div>
+
+			</div>

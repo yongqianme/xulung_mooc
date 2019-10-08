@@ -1,0 +1,134 @@
+
+h3.major-section {
+    padding: 2em;
+}
+
+section.phase-summary h2 {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0.75em;
+}
+
+h3.major-section {
+    padding: 2em;
+}
+
+div.tealeaf-markup p {
+    margin-top: 1.7em;
+}
+
+
+
+#curriculum #phases table td {
+    color: #848484
+}
+ #curriculum h1 {
+    text-align: center;
+    margin-bottom: 4.5rem
+}
+
+ #curriculum .track-nav-wrapper {
+    display: block;
+    width: 100%
+}
+
+ #curriculum .track-nav-wrapper .track-nav-list {
+    margin: 0;
+    width: 100%
+}
+
+ #curriculum .track-nav-wrapper .track-nav-list a:hover .track-name,
+ #curriculum .track-nav-wrapper .track-nav-list a:focus .track-name {
+    color: #f25858
+}
+ #curriculum .track-nav-wrapper .track-nav-list article {
+    text-align: center
+}
+
+@media only screen {
+     #curriculum .track-nav-wrapper .track-nav-list article {
+        padding-bottom: 0.625rem;
+        background: url("timeline-down.svg") no-repeat center bottom 0.625rem
+    }
+
+     #curriculum .track-nav-wrapper .track-nav-list article .track-duration {
+        margin-top: 0
+    }
+}
+
+@media only screen and (min-width: 64.063em) {
+     #curriculum .track-nav-wrapper .track-nav-list article {
+        padding: 0 0.625rem;
+        width: 20%;
+        height: 100%;
+        display: inline-block;
+        background: url("timeline-right.svg") no-repeat center bottom 40px
+
+    }
+
+     #curriculum .track-nav-wrapper .track-nav-list article .track-duration {
+        margin-top: 3.1875rem;
+        margin-bottom: 0
+    }
+}
+
+ #curriculum .track-nav-wrapper .track-nav-list article .track-name {
+    color: #45494d;
+    font-family: "Avenir", "myriad-pro", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1.5em
+}
+
+ #curriculum .track-nav-wrapper .track-nav-list article .track-duration {
+    font-family: "Avenir", "myriad-pro", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    text-align: center;
+    color: #f25858
+}
+
+ #curriculum #phases h3 {
+    text-align: center;
+    margin-bottom: 3.75rem
+}
+
+ #curriculum #phases table .course-no {
+    width: 15%
+}
+
+ #curriculum #phases table .course-hours {
+    width: 15%
+}
+
+ #curriculum #phases table th:first-of-type,  #curriculum #phases table td:first-of-type {
+    padding-left: 1.875rem
+}
+
+ #curriculum #phases .phase:last-of-type table {
+    margin-bottom: 0
+}
+
+ #curriculum .course-premise section h1 {
+    margin-bottom: 0.9375rem;
+    text-align: left
+}
+
+ #curriculum .course-premise section h2 {
+    margin-bottom: 1.75rem;
+    font-family: "Avenir", "myriad-pro", Arial, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #45494d !important
+}
+
+ #curriculum .course-premise section h1 + h2 {
+    margin-top: 1.4375rem
+}
+
+ #curriculum .course-premise section p + p {
+    margin-top: 1.9375rem
+}
+
+ #curriculum .course-premise section {
+    margin-bottom: 3.875rem
+}

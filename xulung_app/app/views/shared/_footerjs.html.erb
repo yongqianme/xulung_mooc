@@ -1,0 +1,102 @@
+<% if !browser.device.mobile? %>
+        <br>
+        <!-- Footer Version 2 -->
+        <div class="footer-v2">
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <!-- visitors -->
+
+                        <div class="col-md-3 md-margin-bottom-40">
+                            <div class="headline"><h2>对于来访者</h2></div>
+                            <ul class="list-unstyled link-list">
+                            <li><a href="<%=main_app.new_user_registration_path %>">注册</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="<%=main_app.videos_path %>">逛课程</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="<%=main_app.tech_path %>">学技术</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="<%=main_app.service_tech_path %>">诩知识</a></a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="<%=main_app.service_telephone_path  %>">打电话</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="<%=consultants_path%>"><%=t('user.consultant')%></a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="<%=pages_path  %>">使用帮助</a><i class="fa fa-angle-right"></i></li>
+                        </ul>
+                        </div>
+                        <!-- Engineer-->
+                        <div class="col-md-3 md-margin-bottom-40">
+                        <div class="headline"><h2>对于工程师</h2></div>
+                            <ul class="list-unstyled link-list">
+                            <li><a href="<%=new_post_path %>">写文章</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="/pages/xu-lang-gong-cheng-shi-ru-zhu-biao-zhun">入驻标准</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="<%=new_consultant_path %>">申请入驻</a><i class="fa fa-angle-right"></i></li>
+                        </ul>
+                        </div>
+
+                        <!-- about -->
+                        <div class="col-md-3 md-margin-bottom-40">
+                                <div class="headline"><h2>关于</h2></div>
+                        <ul class="list-unstyled link-list">
+                            <li><a href="/pages/guan-yu-xu-lang">关于我们</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="/pages/jia-ru-wo-men">加入我们</a><i class="fa fa-angle-right"></i></li>
+                            <li>客服邮箱:<%= mail_to("contact@xulung.com", "contact@xulung.com", :encode => "hex") %><i class="fa fa-angle-right"></i></li>
+                            <li>工作时间：工作日9:00 -- 17:00 <i class="fa fa-angle-right"></i></li>
+                        </ul>
+                                </div>
+                        <div class="col-md-3 md-margin-bottom-40">
+                        <div class="headline"><h2>关注我们</h2></div>
+                        <img src="<%=image_path('QRxulung.jpg')%>" width="60%">
+
+                            <!-- Social Links -->
+                            <ul class="social-icons">
+                                <li><a href="http://weibo.com/xulung" data-original-title="weibo" class="rounded-x social_weibo"></a></li>
+                                <li><a href="https://twitter.com/xulungco" data-original-title="Twitter" class="rounded-x social_twitter"></a></li>
+                                <li><a href="#xulungcom" data-original-title="Weixin"><i class="fa fa-weixin"></i></a></li>
+                                <li><a href="http://www.linkedin.com/in/xulung" data-original-title="Linkedin" class="rounded-x social_linkedin"></a></li>
+                            </ul>
+                            <!-- End Social Links -->
+                        </div>
+
+                        <!-- End Address -->
+                    </div>
+                </div>
+            </div><!--/footer-->
+
+            <div class="copyright">
+                <div class="container">
+                    <p class="text-center">
+                    <%=t('version_html') %>
+                           <a href="https://xulung.com/pages/fu-wu-tiao-kuan"><%=t('policy') %><%=t('tos') %></a>
+                           </p>
+                </div>
+            </div><!--/copyright-->
+        </div>
+        <!-- End Footer Version 2 -->
+<!--[if lt IE 9]>
+    <script src="assets/plugins/respond.js"></script>
+    <script src="assets/plugins/html5shiv.js"></script>
+    <script src="assets/js/plugins/placeholder-IE-fixes.js"></script>
+<![endif]-->
+<% else %>
+
+    <div class="text-center">
+        <div class="headline"><h2>关注我们</h2></div>
+                        <img src="<%=image_path('QRxulung.jpg')%>" width="60%">
+                        <div class="copyright">
+                <div class="container">
+                    <p class="text-center">
+                      <%=t('version_html') %>
+                             <a href="https://xulung.com/pages/fu-wu-tiao-kuan"><%=t('policy') %><%=t('tos') %></a>
+                           <!-- <%= APP_VERSION %></p> -->
+                </div>
+            </div><!--/copyright-->
+    </div>
+    <% end %>
+  <!--google-analytics-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-73431216-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+<!--google-analytics-->

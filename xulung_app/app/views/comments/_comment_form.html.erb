@@ -1,0 +1,36 @@
+
+<%= form_for [@post, Comment.new] do |f| %>
+<div class="sky-form">
+	<!-- Comment Form -->
+	<%if user_signed_in?  %>
+		<h3><%=t('comments.leavecomments')  %></h3>
+		<div class="post-comment">
+		<fieldset>
+			<section>
+				<label class="label"><strong>@<%=current_user.username  %>,<%=t('comments.message')  %></strong></label>
+				<label class="textarea">
+					<%= f.text_area :body, placeholder: t('comments.message'),:rows=>'8' %>
+				</label>
+
+			</section>
+
+			<%= f.submit t('comments.submit'), :class => 'btn-u btn-success' %>
+		</fieldset>
+	</div>
+</div>
+<% else %>
+<div>
+<h2>请留下评论</h2>
+<p>
+	<%= link_to t('user.signin'), new_user_session_path,:class=>"btn-u btn-lg rounded btn-default  col-lg-4" %>
+<%= link_to t('user.signup'), main_app.new_user_registration_path ,:class=>"btn-u btn-lg rounded btn-default  col-lg-4" %>
+	</p>
+	<br>
+
+<% end %>
+</div>
+<% end %>
+<!-- End Comment Form -->
+
+
+

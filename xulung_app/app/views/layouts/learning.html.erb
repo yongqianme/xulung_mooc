@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<%=render 'shared/head'  %>
+
+</head>
+<body id="home">
+
+	<%=render 'shared/headerV3'  %>
+
+		<!--=== Breadcrumbs ===-->
+	    <div class="breadcrumbs">
+	        <div class="container">
+	            <h1 class="pull-left">学习</h1>
+	            <ul class="pull-right breadcrumb">
+	                <li><a href="<%=root_path %>">首页</a></li>
+	                <li>诩学院</li>
+	            </ul>
+	        </div><!--/container-->
+	        <%=render 'shared/flash'  %>
+	    </div><!--/breadcrumbs-->
+	    <!--=== End Breadcrumbs ===-->
+		<div class="wrapper">
+		<%=render 'shared/flash'  %>
+		<%= yield  %>
+		</div>
+
+	<div>
+		<%= render 'shared/footerV3' %>
+	</div>
+
+
+
+</body>
+</html>

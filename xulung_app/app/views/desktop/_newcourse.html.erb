@@ -1,0 +1,56 @@
+
+<div class="sky-form">
+  
+  <%= form_for(Video.new) do |f| %>
+  <fieldset>
+    
+    <section>
+      <label class="label"><strong><%=t('videos.still') %></strong></label>
+      <%= f.file_field :still %>
+    </section>
+<section>
+      <label class="label"><strong><%= t('videos.filename') %></strong></label>
+      <label class="input"><%= f.text_field :filename,placeholder: t('videos.filenamehint')%></label>
+
+    </section>
+    <section>
+        <label class="label"><strong><%=t('videos.tags') %></strong></label>
+        <label class="input"><%= f.text_field :tag_list, placeholder: t('videos.tagshint') %></label>
+
+      </section>
+    <section>
+      <label class="label"><strong><%=t('videos.description') %></strong></label>
+      <%= f.text_field :description,:type =>'hidden'%>
+       <section>
+        <label class="input-group margin-bottom-30">
+        <%= f.check_box :published, :as => :boolean %>
+        <span class="text-highlights text-highlights-purple rounded tooltips"><%=t('videos.publishedhint') %></span>
+       </label>
+     </section>
+
+     <section>
+      <%= f.submit t('videos.upload'), :class => 'btn btn-primary' %>
+      <%= link_to t('videos.cancel'),videos_path, :class => 'btn btn-default' %>
+    </section>
+  </fieldset>
+  <% end %>
+</div>
+
+ <script type="text/javascript">
+var editor = new Simditor({
+  textarea: $('#video_description'),
+  toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', 'link','image', '|','hr','indent','outdent','alignment','fullscreen'],
+  placeholder: '这里输入文字...',
+  pasteImage: true,
+  fileKey: 'file',
+  upload: {
+    url: '/photos',
+    params: null,
+    connectionCount: 3,
+    leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+  }
+});
+</script>
+
+        
+

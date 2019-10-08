@@ -1,0 +1,14 @@
+// Append new data
+<%- if params[:tag] %>
+$("<%=j render :partial => 'listbytag', :object => @videos %>")
+<% else %>
+$("<%=j render :partial => 'list_videos', :object => @videos %>")
+<% end %>
+  .appendTo($(".infinite-table"));
+// Update pagination link
+<% if @videos.last_page? %>
+  $('.pagination').html(" ");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@videos, '加载中...', :remote => true) %>");
+<% end %>

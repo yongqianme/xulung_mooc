@@ -1,0 +1,19 @@
+<div>
+	<div class="counters pull-right">
+		<%= link_to sanitize('<span class="counter-icon"><i class="fa fa-thumbs-up rounded"></i></span>'), upvote_video_path %>
+
+		<span class="counter"><%=@video.votes.count %></span>
+	</div>
+	<h1>Course #<%=@video.id%>-<%= @video.filename %></h1>
+
+	<p><%= @video.description %></p>
+	<div class="responsive-video margin-bottom-30">
+
+		<%= videojs_rails sources: { mp4: @video.still}, setup: "{}", controls: {
+			preload:"no"} , width:"640",height: "480", poster: @video.still.thumb %>
+
+		</div>
+		<hr class="devider devider-db">
+		<p><%= @video.description %></p>
+		<!-- <span>Tags: <%= raw @video.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></span> -->
+	</div>

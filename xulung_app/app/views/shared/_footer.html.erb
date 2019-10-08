@@ -1,0 +1,68 @@
+
+<div class="footer-v7">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="copyright-section">
+                    <p>
+                        <i class="fa fa-copyright"></i><%=t('version') %>
+                        <a href="#"><%=t('policy') %></a> | <a href="#"><%=t('tos') %></a> 
+                        <p><%= mail_to("contact@xulung.com", "Email: contact@xulung.com") %></p>
+                        <br>
+                        <a href="<%=blog_path %>"><%=t('welcome.blog') %></a><br>
+                        <% if current_controller?('welcome') %>
+                        <a href="<%=set_locale(:en)%>" class="btn-u btn-brd btn-brd-hover rounded-4x">English</a>
+                        <a href="<%=set_locale('zh-CN')%>" class="btn-u btn-brd btn-brd-hover rounded-4x">简体中文</a>
+                        <% end %>
+                    </p>            
+                    <ul class="footer-socials list-inline">
+                        <li><a href="https://twitter.com/xulungcom"><i class="fa fa-twitter icon-lg"></i></a></li>
+                        <li><a href="http://www.linkedin.com/in/xulung"><i class="fa fa-linkedin icon-lg"></i></a></li>
+                        <!-- <li><a href="#"><i class="fa fa-facebook icon-lg"></i></a></li> -->
+                        <li><a href="http://weibo.com/xulung"><i class="fa fa-weibo icon-lg"></i></a></li>
+                        <li><a href="#xulungcom"><i class="fa fa-weixin icon-lg"></i></a></li>
+                    </ul>
+
+
+                    <span class="page-scroll"><a href="#home"><i class="fa fa-angle-double-up back-to-top"></i></a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="/assets/plugins/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/jquery-migrate-1.2.1.min.js"></script>    
+<script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="/assets/plugins/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/pace/pace.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/jquery.parallax.js"></script>
+<script type="text/javascript" src="/assets/plugins/counter/waypoints.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/counter/jquery.counterup.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/owl-carousel/owl.carousel.js"></script>    
+<script type="text/javascript" src="/assets/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/cube-portfolio/templates/lightbox-gallery/js/main.js"></script>
+<!-- JS Page Level-->
+<script type="text/javascript" src="/assets/js/one.app.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/pace-loader.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/owl-carousel.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/style-switcher.js"></script>    
+<script type="text/javascript" src="/assets/js/plugins/revolution-slider.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initCounter();
+        App.initParallaxBg();
+        OwlCarousel.initOwlCarousel();
+        StyleSwitcher.initStyleSwitcher();            
+        RevolutionSlider.initRSfullScreen();
+    });
+</script>
+    <!--[if lt IE 9]>
+        <script src="/assets/plugins/respond.js"></script>
+        <script src="/assets/plugins/html5shiv.js"></script>
+        <![endif]-->    

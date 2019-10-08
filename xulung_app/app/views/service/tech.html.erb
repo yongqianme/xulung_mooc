@@ -1,0 +1,38 @@
+
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">找知识</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li class="active">找知识</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+<!--=== Content Part ===-->
+<div class="container content">
+        <div class="yue">
+        <h1>
+        <ul class="list-group">
+            <ul class="list-unstyled tech-tags margin-bottom-30">
+            <% tag_cloud Post.tag_counts, %w{s m l} do |tag, css_class| %>
+            <li><%= link_to tag.name, posttag_path(tag.name) %></li>
+            <% end %>
+            </ul>
+
+            <ul class="list-unstyled tech-tags margin-bottom-30">
+            <% tag_cloud Video.tag_counts, %w{s m l} do |tag, css_class| %>
+            <li><%= link_to tag.name, videotag_path(tag.name) %></li>
+            <% end %>
+            </ul>
+        </ul>
+        </h1>
+    </div>
+</div>
+    <!--=== End Content Part ===-->

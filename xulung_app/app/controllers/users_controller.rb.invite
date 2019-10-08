@@ -1,0 +1,16 @@
+class Users::InvitationsController < Devise::InvitationsController
+def create
+end
+def new
+end
+def edit
+end
+def update
+  if this
+  redirect_to root_path
+else
+  super
+end
+end
+
+end

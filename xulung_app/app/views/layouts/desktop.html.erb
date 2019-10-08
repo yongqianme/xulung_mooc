@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<%=render 'shared/head'  %>
+</head>
+<body id="home">
+	<%=render 'shared/headerV3'  %>
+
+<% if !browser.device.mobile? %>
+	<!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">我的诩阆</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="<%=root_path %>">首页</a></li>
+                <li>诩学院</li>
+                <li class="active">我的诩阆</li>
+            </ul>
+        </div><!--/container-->
+        <%=render 'shared/flash'  %>
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+    <div class="container">
+<div class="wrapper">
+<div class="row tab-v3">
+	<!-- Begin Sidebar Menu -->
+	<div class="col-md-3">
+	<%=render 'desktop/nav'  %>
+	</div>
+	<!-- End Sidebar Menu -->
+	<div class="col-md-9">
+		<%=yield  %>
+	</div>
+</div>
+		<% else %>
+		<div class="wrapper">
+	<div class="col-md-12">
+	<%=render 'desktop/nav'  %>
+		<%=yield  %>
+		</div>
+		<% end %>
+
+
+	<hr class="devider devider-db-dashed"><br>
+	<div>
+		<%= render 'shared/footerV3' %>
+	</div>
+</div>
+
+</body>
+</html>

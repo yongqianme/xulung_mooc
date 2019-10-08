@@ -1,0 +1,29 @@
+<div class="panel panel-green margin-bottom-40">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fa fa-users"></i><%=t('user.invitedesc')  %></h3>
+	</div>
+
+	<div class="sky-form">
+		<div class="reg-block">
+
+
+		<%= form_for(:invite, :remote=>"true",:url => invites_path) do |f| %>
+			<div class="input-group margin-bottom-30">
+				<%= f.hidden_field :sender_id, :value => current_user.id %>
+			</div>
+			<div class="input-group margin-bottom-30">
+				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+				<%= f.email_field :email,autofocus: true,:class=>"form-control",:placeholder=>t('user.email')%>
+			</div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<%= f.submit t('user.sendinvite'),:class=>"btn-u btn-block" %>
+				</div>
+				<div class="input-group margin-bottom-30"></div>
+			</div>
+		</div>
+
+		<% end %>
+	</div>
+</div>
+</div>

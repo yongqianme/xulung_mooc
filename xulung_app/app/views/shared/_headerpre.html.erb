@@ -1,0 +1,51 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+    
+            <span><%=t('welcome.beta') %></span>
+            <a class="navbar-brand" href="/">
+                <span><%=t('welcome.title1')  %></span><%=t('welcome.title2')  %>
+                <!-- <img src="assets/img/logo1.png" alt="Logo"> -->
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="page-scroll home">
+                    <a href="#home"><%=t('welcome.home')%></a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#about"><%=t('welcome.about') %></a>
+                </li>
+                <!-- <li class="page-scroll">
+                    <a href="#team">团队</a>
+                </li> -->
+                <li class="page-scroll">
+                    <a href="#course"><%=t('welcome.course') %></a>
+                </li>
+                
+                <li class="page-scroll">
+                <a href="#features"><%=t('welcome.features') %></a>
+                </li>
+                <li class="page-scroll">
+                    <a href="<%=blog_path %>"><%=t('welcome.blog') %></a>
+                </li>
+                <li class="page-scroll">
+                    <a href="http://roboticsfaq.com"><%=t('welcome.forum') %></a>
+                </li>
+                <% if user_signed_in? %>
+                <li class="page-scroll"><%= link_to t('user.logout'), destroy_user_session_path, method: :delete%></li>
+               
+               <% else %>
+
+                <li class="page-scroll"><%= link_to t('user.signup'), new_user_registration_path %> </li>
+                <li class="page-scroll"><%= link_to t('user.signin'), new_user_session_path%></li>
+               
+               <% end %>
+                
+            </ul>
+        </div>
+</div>
+<!-- /.container -->
+</nav>
+<!--=== End Header ===-->    

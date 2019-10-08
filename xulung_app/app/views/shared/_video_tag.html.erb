@@ -1,0 +1,19 @@
+
+<div class='panel panel-success'>
+	<div class='panel-heading'>
+		<h3 class='panel-title'><%=t('videos.tech') %></h3>
+	</div>
+	<div class='panel-body' id="accordion-v2">
+		<ul class="list-group sidebar-nav-v1" id="sidebar-nav-1">
+			<% tag_cloud Video.tag_counts, %w{s m l} do |tag, css_class| %>
+			<li class="list-group-item">
+				<span class="badge rounded-2x badge-orange">
+					<%= tag.count %>
+				</span>
+				<%= link_to tag.name, videotag_path(tag.name) %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+

@@ -1,0 +1,22 @@
+<%
+meta title: @title,
+     description: @description,
+     keywords: @keywords
+%>
+<% tag_cloud @user_favideos.tag_counts, %w{s m l} do |tag, css_class| %>
+
+<h2><%a=current_user.favorite_videos.by_tag(tag.name).size.to_f %></h2>
+<% if a!=0 %>
+<h2><%b=Video.by_tag(tag.name).size.to_f  %></h2>
+<h2><%c=a/b  %>
+	<h2><%d=c.round(2)  %></h2>
+	<h2><%e=d*100  %>
+	<h3 class="heading-xs"><strong><%=tag.name.upcase%></strong> --- <%=e.round(0)  %>% </h3>
+		<div class="progress">
+		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%=d*100  %>" aria-valuemin="0" aria-valuemax="100" style="width: <%=d*100%>%">
+		</div>
+	</div>
+  	<% end %>
+		<% end %>
+
+	</div>

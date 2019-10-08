@@ -1,0 +1,13 @@
+
+<%= div_for consultant do %>
+<div class="media">
+	<div class="pull-left">
+<img class="media-object" src="<%=letter_avatar_url(PinYin.permlink(consultant.user), 200)%>", width="50">
+</div>
+<div class="media-body">
+	<small class="color-green"> @<%=consultant.user  %></a></small>
+	<br>
+	<%=markdown(consultant.experience)  %>
+</div>
+</div>
+<% end %>

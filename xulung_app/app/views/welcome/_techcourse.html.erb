@@ -1,0 +1,37 @@
+
+
+<div class="container content-lg">
+	<div class="title-v1">
+		<h2><%=t('welcome.slider.course')  %></h2>
+		<p><%=t('welcome.slider.course1_html')  %><br><p><%=t('welcome.slider.course2_html')  %>
+
+		</div>
+
+		<div class="wrapper-portfolio">
+			<div id="grid-container" class="cbp-l-grid-gallery">
+				<ul>
+
+					<% tag_cloud Video.tag_counts.limit(9), %w{s m l} do |tag, css_class| %>
+						<%video=Video.by_tag(tag.name).first  %>
+					<%counts=Video.by_tag(tag.name).count  %>
+					<li class="cbp-item">
+						<a href="<%=videotag_path(tag.name) %>">
+
+							<div class="cbp-caption">
+							<h2 class="color-green"><%=tag.name %> <%=counts%><%=t('videos.coursenum')  %></h2>
+								<div class="cbp-caption-defaultWrap">
+									<img class="img-responsive rounded-xs" src="<%=video.still.thumb%>" alt="">
+									<h2 class="color-green"><%=tag.name %> <%=counts%><%=t('videos.coursenum')  %></h2>
+								</div>
+
+
+							</div>
+						</a>
+
+					</li>
+
+					<% end %>
+				</div>
+			</ul>
+		</div>
+	</div>
