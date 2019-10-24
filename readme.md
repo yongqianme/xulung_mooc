@@ -15,22 +15,6 @@ docker build -t xulung .
 docker run -itP xulung
 ```
 
-##  界面照片/screenshot
+##  界面/Screen Gif
 
-- 主页/Home 
-![](images/desktop.index.png)
-
-- 课程/Course
-![](images/desktop.course.png)
-
-- 我的课程/Course
-![](images/desktop.mycourse.png)
-
-- 我的心得/Share
-![](images/desktop.share.png)
-
-- 写心得/Editor
-![](images/xinde.png)
-
-- 学习报告/Report 
-![](images/desktop.report.png)
+![](images/xulung_mooc.gif)
