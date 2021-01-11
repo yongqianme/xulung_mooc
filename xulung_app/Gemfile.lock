@@ -214,7 +214,7 @@ GEM
     randomstring (1.0.1)
     rdoc (4.2.2)
       json (~> 1.4)
-    redcarpet (3.3.4)
+    redcarpet (3.5.1)
     ref (2.0.0)
     require_all (1.3.3)
     responders (1.1.2)
