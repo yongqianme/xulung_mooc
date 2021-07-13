@@ -61,7 +61,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    addressable (2.4.0)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     aliyun-oss-sdk (0.1.6)
       addressable
       gyoku
@@ -179,6 +180,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    public_suffix (4.0.6)
     qiniu (6.5.1)
       json (~> 1.8)
       mime-types (~> 2.4.3)
