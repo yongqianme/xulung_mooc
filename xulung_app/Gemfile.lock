@@ -1,36 +1,36 @@
 GIT
-  remote: git://github.com/brucebot/friendly_id.git
+  remote: git://github.com/huobazi/carrierwave-qiniu.git
+  revision: cd4ea588533c6ce0d0d68c17062649d44cfca756
+  specs:
+    carrierwave-qiniu (1.2.2)
+      carrierwave (>= 1)
+      qiniu (~> 6.9, >= 6.9.0)
+
+GIT
+  remote: https://github.com/brucebot/friendly_id.git
   revision: 8531cdce5737df541bc2dbf9c0fa3ee4824b6fc8
   specs:
     friendly_id (5.2.0.beta.1)
       activerecord (>= 4.0.0)
 
 GIT
-  remote: git://github.com/brucebot/letter_avatar.git
+  remote: https://github.com/brucebot/letter_avatar.git
   revision: 3c55218e341eb70bac4f8513765b3af2c3b0623e
   specs:
     letter_avatar (0.0.9)
 
 GIT
-  remote: git://github.com/brucebot/simditor-rails.git
+  remote: https://github.com/brucebot/simditor-rails.git
   revision: 454fdcfbdb72e87f8ff37c8c0ccf8ddf26f8d264
   specs:
     simditor (2.3.5)
 
 GIT
-  remote: git://github.com/huobazi/carrierwave-qiniu.git
-  revision: 673ac85895fc072080b8fe0833e7c80809433c58
+  remote: https://github.com/jumph4x/canonical-rails.git
+  revision: c062988ccfe2669a12f29bcb615ad9790380bcf7
   specs:
-    carrierwave-qiniu (0.2.2)
-      carrierwave
-      qiniu (~> 6.5.1)
-
-GIT
-  remote: git://github.com/jumph4x/canonical-rails.git
-  revision: 3b50d047066f04e1aa1a39cad3dad93b7e532310
-  specs:
-    canonical-rails (0.0.11)
-      rails (>= 3.1, < 5.0)
+    canonical-rails (0.2.14)
+      rails (>= 4.1, <= 7.1)
 
 GEM
   remote: https://rubygems.org/
@@ -61,11 +61,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    addressable (2.4.0)
-    aliyun-oss-sdk (0.1.6)
-      addressable
-      gyoku
-      httparty
+    aliyun-sdk (0.8.0)
+      nokogiri (~> 1.6)
+      rest-client (~> 2.0)
     arel (5.0.1.20140414130214)
     auto-space (0.0.4)
       activesupport (> 3.0.0)
@@ -81,13 +79,15 @@ GEM
       slim (>= 1.3.6, < 4.0)
       terminal-table (~> 1.4)
     browser (2.0.3)
-    builder (3.2.2)
-    carrierwave (0.6.2)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-    carrierwave-aliyun (0.4.3)
-      aliyun-oss-sdk (>= 0.1.6)
-      carrierwave (>= 0.5.7)
+    builder (3.2.4)
+    carrierwave (1.3.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+      ssrf_filter (~> 1.0)
+    carrierwave-aliyun (1.2.3)
+      aliyun-sdk (>= 0.7.0)
+      carrierwave (>= 1)
     carrierwave-video-thumbnailer (0.1.4)
       carrierwave
     chinese_pinyin (1.0.0)
@@ -102,6 +102,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     commonjs (0.2.7)
+    concurrent-ruby (1.1.10)
     devise (3.5.6)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -110,6 +111,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     devise-i18n (1.0.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
     fabrication (2.15.0)
@@ -117,16 +120,15 @@ GEM
       i18n (~> 0.5)
     font-awesome-rails (4.5.0.1)
       railties (>= 3.2, < 5.1)
-    gyoku (1.3.1)
-      builder (>= 2.1.2)
     haml (4.0.7)
       tilt
     highline (1.7.8)
     hike (1.2.3)
-    httparty (0.13.7)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
-    i18n (0.7.0)
+    http-accept (1.7.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -140,7 +142,7 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    json (1.8.3)
+    json (1.8.6)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -157,12 +159,13 @@ GEM
     metamagic (3.1.7)
       rails (>= 3.0.0)
     method_source (0.8.2)
-    mime-types (2.4.3)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2022.0105)
     mini_magick (4.5.1)
     mini_portile2 (2.0.0)
-    minitest (5.8.4)
+    minitest (5.16.3)
     multi_json (1.11.2)
-    multi_xml (0.5.5)
     netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -179,11 +182,10 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    qiniu (6.5.1)
-      json (~> 1.8)
-      mime-types (~> 2.4.3)
-      rest-client (~> 1.7.3)
-      ruby-hmac (~> 0.4)
+    qiniu (6.9.1)
+      mime-types (~> 3.1)
+      rest-client (~> 2.0)
+      rexml (~> 3.2)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -219,14 +221,16 @@ GEM
     require_all (1.3.3)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    rest-client (1.7.3)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     reverse_markdown (0.8.2)
       nokogiri
+    rexml (3.2.5)
     rmmseg-cpp (0.2.9)
     rouge (1.10.1)
-    ruby-hmac (0.4.0)
     ruby-pinyin (0.4.8)
       rmmseg-cpp (~> 0.2)
     ruby-progressbar (1.7.5)
@@ -268,6 +272,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.11)
+    ssrf_filter (1.1.1)
     streamio-ffmpeg (2.0.0)
       multi_json (~> 1.8)
     super_cache (0.0.2)
@@ -277,7 +282,7 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (1.4.1)
     traceroute (0.5.0)
       rails (>= 3.0.0)
@@ -288,10 +293,13 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    tzinfo (1.2.2)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.2)
     videojs_rails (4.12.14)
     warden (1.2.6)
       rack (>= 1.0)
@@ -305,7 +313,7 @@ DEPENDENCIES
   brakeman
   browser
   canonical-rails!
-  carrierwave (= 0.6.2)
+  carrierwave (= 1.3.2)
   carrierwave-aliyun
   carrierwave-qiniu!
   carrierwave-video-thumbnailer
