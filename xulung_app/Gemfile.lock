@@ -1,23 +1,4 @@
 GIT
-  remote: git://github.com/brucebot/friendly_id.git
-  revision: 8531cdce5737df541bc2dbf9c0fa3ee4824b6fc8
-  specs:
-    friendly_id (5.2.0.beta.1)
-      activerecord (>= 4.0.0)
-
-GIT
-  remote: git://github.com/brucebot/letter_avatar.git
-  revision: 3c55218e341eb70bac4f8513765b3af2c3b0623e
-  specs:
-    letter_avatar (0.0.9)
-
-GIT
-  remote: git://github.com/brucebot/simditor-rails.git
-  revision: 454fdcfbdb72e87f8ff37c8c0ccf8ddf26f8d264
-  specs:
-    simditor (2.3.5)
-
-GIT
   remote: git://github.com/huobazi/carrierwave-qiniu.git
   revision: 673ac85895fc072080b8fe0833e7c80809433c58
   specs:
@@ -26,11 +7,30 @@ GIT
       qiniu (~> 6.5.1)
 
 GIT
-  remote: git://github.com/jumph4x/canonical-rails.git
-  revision: 3b50d047066f04e1aa1a39cad3dad93b7e532310
+  remote: https://github.com/brucebot/friendly_id.git
+  revision: 8531cdce5737df541bc2dbf9c0fa3ee4824b6fc8
   specs:
-    canonical-rails (0.0.11)
-      rails (>= 3.1, < 5.0)
+    friendly_id (5.2.0.beta.1)
+      activerecord (>= 4.0.0)
+
+GIT
+  remote: https://github.com/brucebot/letter_avatar.git
+  revision: 3c55218e341eb70bac4f8513765b3af2c3b0623e
+  specs:
+    letter_avatar (0.0.9)
+
+GIT
+  remote: https://github.com/brucebot/simditor-rails.git
+  revision: 454fdcfbdb72e87f8ff37c8c0ccf8ddf26f8d264
+  specs:
+    simditor (2.3.5)
+
+GIT
+  remote: https://github.com/jumph4x/canonical-rails.git
+  revision: c062988ccfe2669a12f29bcb615ad9790380bcf7
+  specs:
+    canonical-rails (0.2.14)
+      rails (>= 4.1, <= 7.1)
 
 GEM
   remote: https://rubygems.org/
@@ -159,13 +159,14 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_magick (4.5.1)
-    mini_portile2 (2.0.0)
+    mini_portile2 (2.8.0)
     minitest (5.8.4)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     netrc (0.11.0)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.13.9)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nprogress-rails (0.1.6.7)
     orm_adapter (0.5.0)
     passenger (5.0.26)
@@ -184,6 +185,7 @@ GEM
       mime-types (~> 2.4.3)
       rest-client (~> 1.7.3)
       ruby-hmac (~> 0.4)
+    racc (1.6.0)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
